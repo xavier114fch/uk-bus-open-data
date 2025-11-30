@@ -1138,7 +1138,7 @@ def compareStopPoints(_data_dir):
 	def openNaptan() -> bool:
 		global _naptan_list
 		try:
-			_response = retryRequest('https://github.com/xavier114fch/naptan/raw/gh-pages/data/naptan/naptan_stop_points_all.json')
+			_response = retryRequest('https://github.com/xavier114fch/uk-bus-open-data/raw/gh-pages/data/naptan/naptan_stop_points_all.json')
 			_naptan_list = _response.json()
 			# with open(os.path.join(f'{_naptan_dir}','naptan_stop_points_all.json'), 'r') as f:
 			# 	_naptan_list = json.load(f)
