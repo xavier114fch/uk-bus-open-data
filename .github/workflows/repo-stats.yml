@@ -28,7 +28,6 @@ jobs:
 
       - name: Find top 10 largest files
         run: |
-          run: |
           echo ""
           echo "=== Top 10 Largest Files in data/ ==="
           echo ""
