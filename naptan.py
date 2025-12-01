@@ -37,7 +37,7 @@ def retryRequest(url):
 
 def getAtcoList():
 	try:
-		_data = retryRequest('https://github.com/xavier114fch/naptan/raw/gh-pages/data/nptg/nptg_atcoareas.json')
+		_data = retryRequest('https://github.com/xavier114fch/uk-bus-open-data/raw/gh-pages/data/nptg/nptg_atcoareas.json')
 		# with open(os.path.join(nptg_dir, 'nptg_atcoareas.json'), 'r') as f:
 		# 	_data = json.load(f)
 
@@ -105,7 +105,7 @@ def getNaptan(atco):
 	def openNptgLocalities():
 		global _locality_list
 		try:
-			_response = retryRequest('https://raw.githubusercontent.com/xavier114fch/naptan/refs/heads/gh-pages/data/nptg/nptg_localities.json')
+			_response = retryRequest('https://raw.githubusercontent.com/xavier114fch/uk-bus-open-data/refs/heads/gh-pages/data/nptg/nptg_localities.json')
 			_locality_list = _response.json()
 			# with open(os.path.join(f'{nptg_dir}','nptg_localities.json'), 'r') as f:
 			# 	_locality_list = json.load(f)
