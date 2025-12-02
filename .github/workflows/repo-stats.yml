@@ -16,7 +16,35 @@ jobs:
 
       - name: List directories with file counts and total size
         run: |
-          echo "=== Directory Summary ==="
+          echo "=== Directory Summary Before Removing Empty Files ==="
+          echo ""
+          # For each directory (including root)
+          # Print: total size + number of files + directory name
+          find . -type d | while read dir; do
+            count=$(find "$dir" -maxdepth 1 -type f | wc -l)
+            size=$(du -sh "$dir" | awk '{print $1}')
+            printf "%-50s Files: %-6s Size: %s\n" "$dir" "$count" "$size"
+          done
+
+      - name: Remove empty files
+        run: |
+          find . -type f \( -name "*.json" -o -name "*.geojson" \) -print0 | xargs -0 -P $(nproc) sh -c '
+            for f do
+              s=$(tr -d " \t\n\r" < "$f")
+
+              if [ "$s" = "[]" ]; then
+                rm "$f"
+              fi
+
+              if [ "$s" = "{}" ]; then
+                rm "$f"
+              fi
+            done
+          ' sh
+
+      - name: List directories with file counts and total size
+        run: |
+          echo "=== Directory Summary After Removing Empty Files ==="
           echo ""
           # For each directory (including root)
           # Print: total size + number of files + directory name
@@ -38,7 +66,7 @@ jobs:
 
             find "$dir" -type f -printf "%s %p\0" \
             | sort -z -nr \
-            | head -z -n 10 \
+            | head -z -n 10 || true \
             | awk -v RS='\0' '
               {
                 # split only on the *first* space: size and rest is the path
