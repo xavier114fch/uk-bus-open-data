@@ -26,14 +26,14 @@ jobs:
             printf "%-50s Files: %-6s Size: %s\n" "$dir" "$count" "$size"
           done
 
-      - name: Find top 10 largest files
+      - name: Find top 10 largest files in TNDS
         run: |
           echo ""
-          echo "=== Top 10 Largest Files in data/ ==="
+          echo "=== Top 10 Largest Files in TNDS/ ==="
           echo ""
 
-          # Loop through each first-level directory inside ./data
-          for dir in ./data/*/; do
+          # Loop through each first-level directory inside ./data/tnds
+          for dir in ./data/tnds/*/; do
             echo "=== Top 10 largest files in $dir ==="
 
             find "$dir" -type f -printf "%s %p\n" \
