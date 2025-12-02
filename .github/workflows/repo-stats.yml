@@ -36,17 +36,27 @@ jobs:
           for dir in ./data/tnds/*/; do
             echo "=== Top 10 largest files in $dir ==="
 
-            find "$dir" -type f -printf "%s %p\n" \
-              | sort -nr \
-              | sed -n '1,10p' \
-              | awk '{
-                  size=$1; path=$2;
-                  hum[1024**3]="GB"; hum[1024**2]="MB"; hum[1024]="KB";
-                  for (x=1024**3; x>=1024; x/=1024) {
-                    if (size>=x) { printf("%.2f %s  %s\n", size/x, hum[x], path); next }
+            find "$dir" -type f -printf "%s %p\0" \
+            | sort -z -nr \
+            | head -z -n 10 \
+            | awk -v RS='\0' '
+              {
+                # split only on the *first* space: size and rest is the path
+                space = index($0, " ");
+                size = substr($0, 1, space - 1);
+                path = substr($0, space + 1);
+
+                hum["GB"] = 1024^3; hum["MB"] = 1024^2; hum["KB"] = 1024;
+
+                for (u in hum) {
+                  if (size >= hum[u]) {
+                    printf "%.2f %s  %s\n", size / hum[u], u, path;
+                    next;
                   }
-                  printf("%d B  %s\n", size, path);
-                }'
+                }
+                printf "%d B  %s\n", size, path;
+              }
+            '
 
             echo ""  # blank line between folders
           done
