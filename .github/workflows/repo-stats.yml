@@ -66,7 +66,7 @@ jobs:
 
             find "$dir" -type f -printf "%s %p\0" \
             | sort -z -nr \
-            | head -z -n 10 || true \
+            | head -z -n 10 \
             | awk -v RS='\0' '
               {
                 # split only on the *first* space: size and rest is the path
