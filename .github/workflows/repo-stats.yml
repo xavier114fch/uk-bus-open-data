@@ -32,15 +32,21 @@ jobs:
           echo "=== Top 10 Largest Files in data/ ==="
           echo ""
 
-          # Only search inside ./data
-          find ./data -type f -printf "%s %p\n" \
-            | sort -nr \
-            | sed -n '1,10p' \
-            | awk '{
-                size=$1; path=$2;
-                hum[1024**3]="GB"; hum[1024**2]="MB"; hum[1024]="KB";
-                for (x=1024**3; x>=1024; x/=1024) {
-                  if (size>=x) { printf("%.2f %s  %s\n", size/x, hum[x], path); next }
-                }
-                printf("%d B  %s\n", size, path);
-              }'
+          # Loop through each first-level directory inside ./data
+          for dir in ./data/*/; do
+            echo "=== Top 10 largest files in $dir ==="
+
+            find "$dir" -type f -printf "%s %p\n" \
+              | sort -nr \
+              | sed -n '1,10p' \
+              | awk '{
+                  size=$1; path=$2;
+                  hum[1024**3]="GB"; hum[1024**2]="MB"; hum[1024]="KB";
+                  for (x=1024**3; x>=1024; x/=1024) {
+                    if (size>=x) { printf("%.2f %s  %s\n", size/x, hum[x], path); next }
+                  }
+                  printf("%d B  %s\n", size, path);
+                }'
+
+            echo ""  # blank line between folders
+          done
