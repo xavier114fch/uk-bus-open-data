@@ -89,7 +89,7 @@ def fetchTndsData(_data_dir):
 					_ftp.set_pasv(True) # Enable passive mode
 
 				_ftp.retrbinary(f'RETR {_file_name}', _local_file.write)
-				_ftp.quit()
+				# _ftp.quit()
 
 			if _file_name.endswith('.zip'):
 				print(f'Unzipping {_file_name} ...')
