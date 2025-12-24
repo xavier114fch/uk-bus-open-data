@@ -95,7 +95,7 @@ def fetchTndsData(_data_dir):
 			print(f'{_file_name} is up to date.')
 
 	# Unzip each ZIP file
-	for _file_name in _file_list:
+	for _file_name in _data_dir:
 		if _file_name.endswith('.zip'):
 			print(f'Unzipping {_file_name} ...')
 			_zip_file_path = os.path.join(_data_dir, _file_name)
