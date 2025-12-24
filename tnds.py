@@ -91,14 +91,16 @@ def fetchTndsData(_data_dir):
 				_ftp.retrbinary(f'RETR {_file_name}', _local_file.write)
 				# _ftp.quit()
 
-			if _file_name.endswith('.zip'):
-				print(f'Unzipping {_file_name} ...')
-				_zip_file_path = os.path.join(_data_dir, _file_name)
-				extractZip(_zip_file_path, _data_dir)
-				# convertTnds(_data_dir, os.path.splitext(os.path.basename(_file_name))[0])
-
 		else:
 			print(f'{_file_name} is up to date.')
+
+	# Unzip each ZIP file
+	for _file_name in _file_list:
+		if _file_name.endswith('.zip'):
+			print(f'Unzipping {_file_name} ...')
+			_zip_file_path = os.path.join(_data_dir, _file_name)
+			extractZip(_zip_file_path, _data_dir)
+			# convertTnds(_data_dir, os.path.splitext(os.path.basename(_file_name))[0])
 
 	# Disconnect from the FTP server
 	if isFTPAlive(_ftp):
