@@ -54,7 +54,7 @@ def fetchTndsData(_data_dir):
 		raise RuntimeError('Missing FTP credentials from env variables.')
 
 	# Connect to the FTP server
-	_ftp = FTP(_ftp_host, timeout=30)
+	_ftp = FTP(_ftp_host, timeout=60)
 	_ftp.login(_ftp_username, _ftp_password)
 	_ftp.set_pasv(True) # Enable passive mode
 
