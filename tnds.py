@@ -40,7 +40,7 @@ def isFTPAlive(ftp: FTP) -> bool:
 
 @retry(
 	wait = wait_fixed(5),
-	stop = stop_after_attempt(3),
+	stop = stop_after_attempt(10),
 	retry = retry_if_exception_type((ConnectionResetError, error_temp))
 )
 def fetchTndsData(_data_dir):
@@ -68,7 +68,7 @@ def fetchTndsData(_data_dir):
 	for _file_name in _file_list:
 		if not isFTPAlive(_ftp):
 			# Connect to the FTP server
-			_ftp = FTP(_ftp_host, timeout=30)
+			_ftp = FTP(_ftp_host, timeout=60)
 			_ftp.login(_ftp_username, _ftp_password)
 			_ftp.set_pasv(True) # Enable passive mode
 
@@ -84,23 +84,21 @@ def fetchTndsData(_data_dir):
 			with open(_local_file_path, 'wb') as _local_file:
 				if not isFTPAlive(_ftp):
 					# Connect to the FTP server
-					_ftp = FTP(_ftp_host, timeout=30)
+					_ftp = FTP(_ftp_host, timeout=60)
 					_ftp.login(_ftp_username, _ftp_password)
 					_ftp.set_pasv(True) # Enable passive mode
 
 				_ftp.retrbinary(f'RETR {_file_name}', _local_file.write)
 				# _ftp.quit()
 
+			if _file_name.endswith('.zip'):
+				print(f'Unzipping {_file_name} ...')
+				_zip_file_path = os.path.join(_data_dir, _file_name)
+				extractZip(_zip_file_path, _data_dir)
+				# convertTnds(_data_dir, os.path.splitext(os.path.basename(_file_name))[0])
+
 		else:
 			print(f'{_file_name} is up to date.')
-
-	# Unzip each ZIP file
-	for _file_name in _data_dir:
-		if _file_name.endswith('.zip'):
-			print(f'Unzipping {_file_name} ...')
-			_zip_file_path = os.path.join(_data_dir, _file_name)
-			extractZip(_zip_file_path, _data_dir)
-			# convertTnds(_data_dir, os.path.splitext(os.path.basename(_file_name))[0])
 
 	# Disconnect from the FTP server
 	if isFTPAlive(_ftp):
