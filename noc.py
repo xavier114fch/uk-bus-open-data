@@ -1,4 +1,8 @@
-import time, os, requests, json, xmltodict, re
+import time
+import os
+import requests
+import json
+import xmltodict
 import xml.etree.ElementTree as ET
 
 data_dir = 'data/noc'
@@ -25,8 +29,8 @@ def getNoc():
 		try:
 			_data = retryRequest('https://www.travelinedata.org.uk/noc/api/1.0/nocrecords.xml')
 
-		except Exception as err:
-			print(f'Cannot fetch NOC data. Retrying after 10 sec ...')
+		except Exception:
+			print('Cannot fetch NOC data. Retrying after 10 sec ...')
 			time.sleep(10)
 			fetchNocData()
 
@@ -48,7 +52,7 @@ def getNoc():
 
 			return _data
 
-	print(f'Getting NOC XML from API ...')
+	print('Getting NOC XML from API ...')
 	_data = fetchNocData()
 
 	print('Converting to JSON ...')
@@ -56,7 +60,7 @@ def getNoc():
 	_data = _data.replace('@', '')
 
 	os.makedirs(data_dir, exist_ok=True)
-	with open(os.path.join(data_dir, f'noc.json'), 'w') as f:
+	with open(os.path.join(data_dir, 'noc.json'), 'w') as f:
 		f.write(_data)
 
 def main():

@@ -1,4 +1,8 @@
-import time, os, requests, json, xmltodict, re
+import time
+import os
+import requests
+import json
+import xmltodict
 
 data_dir = 'data/bods'
 
@@ -43,7 +47,7 @@ def fetchTfLRef():
 
 			return _data.content
 
-	print(f'Getting TFLO lineRef from BODS API ...')
+	print('Getting TFLO lineRef from BODS API ...')
 	_data = fetchBods(_api_key)
 
 	if _data is not None:

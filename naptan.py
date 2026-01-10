@@ -1,4 +1,9 @@
-import time, os, requests, json, xmltodict, re
+import time
+import os
+import requests
+import json
+import xmltodict
+import re
 from pyproj import Transformer
 
 data_dir = 'data/naptan'
@@ -41,7 +46,7 @@ def getAtcoList():
 		# with open(os.path.join(nptg_dir, 'nptg_atcoareas.json'), 'r') as f:
 		# 	_data = json.load(f)
 
-	except Exception as err:
+	except Exception:
 		print('Cannot fetch NPTG data to obtain ATCO list. Retrying ...')
 		time.sleep(10)
 		getAtcoList()
@@ -644,7 +649,7 @@ def main():
 		with open(os.path.join(f'{data_dir}/stopPoints', f'{_k}.json'), 'w') as f:
 			f.write(json.dumps(_d, ensure_ascii = False, separators=(',', ':')))
 
-	with open(os.path.join(f'{data_dir}', f'naptan_stop_points_all.json'), 'w') as f:
+	with open(os.path.join(f'{data_dir}', 'naptan_stop_points_all.json'), 'w') as f:
 			f.write(json.dumps([_k for _k in _stops_all], ensure_ascii = False, separators=(',', ':')))
 
 	print('Splitting StopAreas ...')
@@ -656,7 +661,7 @@ def main():
 		with open(os.path.join(f'{data_dir}/stopAreas', f'{_k}.json'), 'w') as f:
 			f.write(json.dumps(_d, ensure_ascii = False, separators=(',', ':')))
 
-	with open(os.path.join(f'{data_dir}', f'naptan_stop_areas_all.json'), 'w') as f:
+	with open(os.path.join(f'{data_dir}', 'naptan_stop_areas_all.json'), 'w') as f:
 			f.write(json.dumps([_k for _k in _stop_areas_all], ensure_ascii = False, separators=(',', ':')))
 
 if __name__ == "__main__":

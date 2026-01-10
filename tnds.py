@@ -1,6 +1,11 @@
-import os, zipfile, json, xmltodict, re, requests
-import xml.etree.ElementTree as ET
-from ftplib import FTP, error_temp, error_perm, all_errors
+import os
+import zipfile
+import json
+import xmltodict
+import re
+import requests
+import time
+from ftplib import FTP, error_temp, all_errors
 from datetime import datetime, timedelta
 from tenacity import retry, wait_fixed, stop_after_attempt, retry_if_exception_type
 
@@ -28,7 +33,7 @@ def retryRequest(url):
 def isFTPAlive(ftp: FTP) -> bool:
 	try:
 		if ftp.sock is None:
-			print(f'FTP connection is closed')
+			print('FTP connection is closed')
 			return False
 
 		ftp.voidcmd('NOOP')
@@ -842,7 +847,7 @@ def outputTnds(_data_dir):
 						# })
 
 
-					if _single_service is not {}:
+					if _single_service != {}:
 						with open(os.path.join(_dir, f'{_file[1:]}'), 'w') as f:
 							f.write(json.dumps(_single_service, ensure_ascii = False, separators=(',', ':')))
 
@@ -1117,7 +1122,7 @@ def mergeStopPoints(_data_dir, _previous_slugs):
 		with open(os.path.join(f'{_data_dir}/stopPoints', f'{_k}.json'), 'w') as f:
 			f.write(json.dumps(_d, ensure_ascii = False, separators=(',', ':')))
 
-	with open(os.path.join(f'{_data_dir}', f'all_stop_points.json'), 'w') as f:
+	with open(os.path.join(f'{_data_dir}', 'all_stop_points.json'), 'w') as f:
 		f.write(json.dumps(_merged_stops, ensure_ascii = False, separators=(',', ':')))
 
 	print('=====')

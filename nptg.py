@@ -1,4 +1,9 @@
-import time, os, requests, json, xmltodict, re
+import time
+import os
+import requests
+import json
+import xmltodict
+import re
 from pyproj import Transformer
 
 data_dir = 'data/nptg'
@@ -23,21 +28,21 @@ def retryRequest(url):
 def getNptg():
 	def fetchNptgData():
 		try:
-			_data = retryRequest(f'https://naptan.api.dft.gov.uk/v1/nptg')
+			_data = retryRequest('https://naptan.api.dft.gov.uk/v1/nptg')
 
-		except Exception as err:
-			print(f'Cannot fetch NPTG data. Retrying after 10 sec ...')
+		except Exception:
+			print('Cannot fetch NPTG data. Retrying after 10 sec ...')
 			time.sleep(10)
 			fetchNptgData()
 
 		else:
 			os.makedirs(data_dir, exist_ok=True)
-			with open(os.path.join(data_dir, f'nptg.xml'), 'wb') as f:
+			with open(os.path.join(data_dir, 'nptg.xml'), 'wb') as f:
 				f.write(_data.content)
 
 			return _data.content
 
-	print(f'Getting NPTG XML from API ...')
+	print('Getting NPTG XML from API ...')
 	_data = fetchNptgData()
 
 	print('Converting to JSON ...')
@@ -46,7 +51,7 @@ def getNptg():
 	_data = re.sub(_pattern, r'"\2"', _data)
 	_data = _data.replace('@', '')
 
-	with open(os.path.join(data_dir, f'nptg.json'), 'w') as f:
+	with open(os.path.join(data_dir, 'nptg.json'), 'w') as f:
 		f.write(_data)
 
 	_data = json.loads(_data)
@@ -67,10 +72,10 @@ def getNptg():
 	for _point in _data.get('NationalPublicTransportGazetteer', {}).get('Regions', {}).get('Region', []):
 		appendRegions(_point)
 
-	with open(os.path.join(data_dir, f'nptg_regions.json'), 'w') as f:
+	with open(os.path.join(data_dir, 'nptg_regions.json'), 'w') as f:
 		f.write(json.dumps(_new_data, ensure_ascii = False, separators=(',', ':')))
 
-	with open(os.path.join(data_dir, f'nptg_atcoareas.json'), 'w') as f:
+	with open(os.path.join(data_dir, 'nptg_atcoareas.json'), 'w') as f:
 		f.write(json.dumps(_atco_data, ensure_ascii = False, separators=(',', ':')))
 
 	print('Creating JSON for Localities ...')
@@ -146,10 +151,10 @@ def getNptg():
 	# with open(os.path.join(data_dir, f'nptg_localities.json'), 'w') as f:
 	# 	f.write(json.dumps(_new_data, ensure_ascii = False, separators=(',', ':')))
 
-	with open(os.path.join(data_dir, f'nptg_localities.geojson'), 'w') as f:
+	with open(os.path.join(data_dir, 'nptg_localities.geojson'), 'w') as f:
 		f.write(json.dumps(_geodata, ensure_ascii = False, separators=(',', ':')))
 
-	with open(os.path.join(data_dir, f'nptg_localities.json'), 'w') as f:
+	with open(os.path.join(data_dir, 'nptg_localities.json'), 'w') as f:
 		f.write(json.dumps(_revised_data, ensure_ascii = False, separators=(',', ':')))
 
 	for _k, _v in _revised_data.items():
@@ -208,10 +213,10 @@ def getNptg():
 	# with open(os.path.join(data_dir, f'nptg_plusbuszones.json'), 'w') as f:
 	# 	f.write(json.dumps(_new_data, ensure_ascii = False, separators=(',', ':')))
 
-	with open(os.path.join(data_dir, f'nptg_plusbuszones.geojson'), 'w') as f:
+	with open(os.path.join(data_dir, 'nptg_plusbuszones.geojson'), 'w') as f:
 		f.write(json.dumps(_geodata, ensure_ascii = False, separators=(',', ':')))
 
-	with open(os.path.join(data_dir, f'nptg_plusbuszones.json'), 'w') as f:
+	with open(os.path.join(data_dir, 'nptg_plusbuszones.json'), 'w') as f:
 		f.write(json.dumps(_revised_data, ensure_ascii = False, separators=(',', ':')))
 
 	for _k, _v in _revised_data.items():
