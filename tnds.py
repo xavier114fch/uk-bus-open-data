@@ -8,6 +8,7 @@ import time
 from ftplib import FTP, error_temp, all_errors
 from datetime import datetime, timedelta
 from tenacity import retry, wait_fixed, stop_after_attempt, retry_if_exception_type
+from pypolyline.cutil import encode_coordinates, decode_polyline
 
 _data_dir = 'data/tnds'
 _nptg_dir = 'data/nptg'
