@@ -679,6 +679,14 @@ def outputTnds(_data_dir):
 										if _lon and _lat:
 											_tracks.append([float(_lon), float(_lat)])
 
+								if not isinstance(_tracks, list) or _tracks == []:
+									_tracks = ''
+
+								else:
+									_tracks = encode_coordinates(_tracks, 6)
+
+								if isinstance(_tracks, bytes):
+									_tracks.decode('utf-8')
 
 								_link = _links[-1]
 								_stop_points.append(_link.get('To', {}).get('StopPointRef', ''))
@@ -749,6 +757,15 @@ def outputTnds(_data_dir):
 											
 										if _lon and _lat:
 											_tracks.append([float(_lon), float(_lat)])
+
+								if not isinstance(_tracks, list) or _tracks == []:
+									_tracks = ''
+
+								else:
+									_tracks = encode_coordinates(_tracks, 6)
+
+								if isinstance(_tracks, bytes):
+									_tracks.decode('utf-8')
 
 								_link = _links[-1]
 								_stop_points.append(_link.get('To', {}).get('StopPointRef', ''))
