@@ -48,6 +48,7 @@ def getSlugs(_data_dir) -> dict:
 				with open(os.path.join(_dir, _file), 'r') as f:
 					_data = json.load(f)
 					_total_slugs = _total_slugs + len(list(_data.keys()))
+					_tracks_updated = False
 
 					for _slug, _services in _data.items():
 						_all_slugs.setdefault(_slug, [])
@@ -62,10 +63,12 @@ def getSlugs(_data_dir) -> dict:
 
 								if _tracks == []:
 									_tracks = ''
+									_tracks_updated = True
 									print(f'{_slug} has converted empty tracks to empty string.')
 
 								elif isinstance(_tracks, list):
 									_tracks = encode_coordinates(_tracks, 6).decode('utf-8')
+									_tracks_updated = True
 									print(f'{_slug} has converted from coordinates to polyine encoded string.')
 
 							_start_date = _service.get('startDate', None)
@@ -93,6 +96,10 @@ def getSlugs(_data_dir) -> dict:
 
 						if _not_expired == 0:
 							_all_slugs.pop(_slug, None)
+
+					if _tracks_updated:
+						with open(os.path.join(_dir, _file), 'w') as f:
+							f.write(json.dumps(_data, ensure_ascii = False, separators=(',', ':')))
 
 	for _slug, _services in _all_slugs.items():
 		_duplicated = 0
