@@ -3,6 +3,7 @@ import json
 import requests
 import time
 from datetime import datetime
+from pypolyline.cutil import encode_coordinates, decode_polyline
 
 _data_dir = 'data/tnds'
 
@@ -54,6 +55,19 @@ def getSlugs(_data_dir) -> dict:
 						_not_expired = 0
 
 						for _service in _services:
+							_routes = _service.get('routes', [])
+
+							for _route in _routes:
+								_tracks = _route.get(_tracks, None)
+
+								if _tracks == []:
+									_tracks = ''
+									print(f'{_slug} has converted empty tracks to empty string.')
+
+								elif isinstance(_tracks, list):
+									_tracks = encode_coordinates(_tracks, 6).decode('utf-8')
+									print(f'{_slug} has converted from coordinates to polyine encoded string.')
+
 							_start_date = _service.get('startDate', None)
 							_end_date = _service.get('endDate', None)
 							_last_modified = _service.get('lastModified', None)
