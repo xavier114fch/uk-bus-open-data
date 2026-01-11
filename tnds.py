@@ -684,10 +684,7 @@ def outputTnds(_data_dir):
 									_tracks = ''
 
 								else:
-									_tracks = encode_coordinates(_tracks, 6)
-
-								if isinstance(_tracks, bytes):
-									_tracks.decode('utf-8')
+									_tracks = encode_coordinates(_tracks, 6).decode('utf-8')
 
 								_link = _links[-1]
 								_stop_points.append(_link.get('To', {}).get('StopPointRef', ''))
@@ -763,10 +760,7 @@ def outputTnds(_data_dir):
 									_tracks = ''
 
 								else:
-									_tracks = encode_coordinates(_tracks, 6)
-
-								if isinstance(_tracks, bytes):
-									_tracks.decode('utf-8')
+									_tracks = encode_coordinates(_tracks, 6).decode('utf-8')
 
 								_link = _links[-1]
 								_stop_points.append(_link.get('To', {}).get('StopPointRef', ''))
