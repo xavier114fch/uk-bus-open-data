@@ -28,13 +28,14 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
+  deploy:
     name: Create Artifact to Deploy
     runs-on: ubuntu-latest
     steps:
       - name: Maximise build space
         uses: easimon/maximize-build-space@master
         with:
+          overprovision-lvm: 'true'
           root-reserve-mb: 512
           swap-size-mb: 1024
           remove-dotnet: 'true'
@@ -72,41 +73,46 @@ jobs:
           echo "Data size after cleaning up stale content: "
           du -sh data
 
-      - name: Archive Artifact
-        run: |
-          mkdir -p artifact
-          tar \
-            --dereference --hard-dereference \
-            -czf artifact/artifact.tar.gz \
-            --exclude=artifact \
-            --exclude=.git \
-            --exclude=.github \
-            --exclude=".[^/]*" \
-            .
-
-          echo "Tarball size: "
-          ls -lh artifact/artifact.tar.gz
-
-      - name: Upload Artifact
-        id: upload-artifact
-        uses: actions/upload-artifact@v5
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: 'github-pages'
-          path: artifact/
-          retention-days: '1'
-          if-no-files-found: error
+          path: .
 
-  deploy:
-    name: Download Artifact and Deploy
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download Artifact
-        uses: actions/download-artifact@v7
-        with:
-          name: 'github-pages'
-          path: artifact/
-          
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+  #     - name: Archive Artifact
+  #       run: |
+  #         mkdir -p artifact
+  #         tar \
+  #           --dereference --hard-dereference \
+  #           -czf artifact/artifact.tar.gz \
+  #           --exclude=artifact \
+  #           --exclude=.git \
+  #           --exclude=.github \
+  #           --exclude=".[^/]*" \
+  #           .
+
+  #         echo "Tarball size: "
+  #         ls -lh artifact/artifact.tar.gz
+
+  #     - name: Upload Artifact
+  #       id: upload-artifact
+  #       uses: actions/upload-artifact@v5
+  #       with:
+  #         name: 'github-pages'
+  #         path: artifact/
+  #         retention-days: '1'
+  #         if-no-files-found: error
+
+  # deploy:
+  #   name: Download Artifact and Deploy
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Download Artifact
+  #       uses: actions/download-artifact@v7
+  #       with:
+  #         name: 'github-pages'
+  #         path: artifact/
+
+  #     - name: Deploy to GitHub Pages
+  #       id: deployment
+  #       uses: actions/deploy-pages@v4
