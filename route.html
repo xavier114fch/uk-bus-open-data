@@ -5,7 +5,8 @@
   <title>JSON File Loader</title>
   <script src="https://api.mapbox.com/mapbox-gl-js/v3.14.0/mapbox-gl.js"></script>
   <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v3.14.0/mapbox-gl.css" />
-  <script src=" https://cdn.jsdelivr.net/npm/geojson/geojson.min.js "></script>
+  <script src="https://cdn.jsdelivr.net/npm/geojson/geojson.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mapbox/polyline@1.2.1/src/polyline.min.js"></script>
   <style>
   body {
     font-size: .8rem;
@@ -251,7 +252,7 @@
                       'type': 'Feature',
                       'geometry': {
                         type: 'LineString',
-                        coordinates: route.tracks
+                        coordinates: polyline.decode(route.tracks, 6)
                       },
                       'properties': {}
                     };
