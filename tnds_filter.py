@@ -62,12 +62,12 @@ def getSlugs(_data_dir) -> dict:
 								_tracks = _route.get('tracks', None)
 
 								if _tracks == []:
-									_tracks = ''
+									_route['tracks'] = ''
 									_tracks_updated = True
 									print(f'{_slug} has converted empty tracks to empty string.')
 
 								elif isinstance(_tracks, list):
-									_tracks = encode_coordinates(_tracks, 6).decode('utf-8')
+									_route['tracks'] = encode_coordinates(_tracks, 6).decode('utf-8')
 									_tracks_updated = True
 									print(f'{_slug} has converted from coordinates to polyine encoded string.')
 
