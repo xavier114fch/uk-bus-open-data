@@ -1,0 +1,104 @@
+name: Deploy to GitHub Pages
+
+on:
+  # workflow_run:
+  #   workflows: ["NOC Download and Parse Data", "NPTG Download and Parse Data", "Naptan Download and Parse Data", "Filter valid TNDS data"]
+  #   types:
+  #     - completed
+  # schedule:
+  #   - cron: '0 0,6,12,18 * * *'
+  # # Runs on pushes targeting the default branch
+  # push:
+  #   branches:
+  #     - gh-pages
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Single deploy job since we're just deploying
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Maximise build space
+        uses: easimon/maximize-build-space@master
+        with:
+          root-reserve-mb: 512
+          swap-size-mb: 1024
+          remove-dotnet: 'true'
+          remove-android: 'true'
+          remove-haskell: 'true'
+          remove-codeql: 'true'
+          remove-docker-images: 'true'
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          fetch-depth: 1
+
+      - name: Remove empty files
+        run: |
+          set -euo pipefail
+          echo "Data size before cleaning up stale content: "
+          du -sh data
+
+          find . -type f \( -name "*.json" -o -name "*.geojson" \) -print0 | xargs -0 -P $(nproc) sh -c '
+            for f do
+              s=$(tr -d " \t\n\r" < "$f")
+
+              if [ "$s" = "[]" ]; then
+                rm "$f"
+              fi
+
+              if [ "$s" = "{}" ]; then
+                rm "$f"
+              fi
+            done
+          ' sh
+
+          echo "Data size after cleaning up stale content: "
+          du -sh data
+
+      - name: Archive Artifact
+        run: |
+          mkdir -p artifact
+          tar \
+            --dereference --hard-dereference \
+            -czf artifact/artifact.tar.gz \
+            --exclude=artifact \
+            --exclude=.git \
+            --exclude=.github \
+            --exclude=".[^/]*" \
+            .
+
+          echo "Tarball size: "
+          ls -lh artifact/artifact.tar.gz
+
+      - name: Upload Artifact
+        id: upload-artifact
+        uses: actions/upload-artifact@v5
+        with:
+          name: 'github-pages'
+          path: artifact/
+          retention-days: '1'
+          if-no-files-found: error
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
