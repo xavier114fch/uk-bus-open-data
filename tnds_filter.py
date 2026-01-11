@@ -58,7 +58,7 @@ def getSlugs(_data_dir) -> dict:
 							_routes = _service.get('routes', [])
 
 							for _route in _routes:
-								_tracks = _route.get(_tracks, None)
+								_tracks = _route.get('tracks', None)
 
 								if _tracks == []:
 									_tracks = ''
