@@ -28,11 +28,8 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Single deploy job since we're just deploying
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
+    name: Create Artifact to Deploy
     runs-on: ubuntu-latest
     steps:
       - name: Maximise build space
@@ -99,6 +96,17 @@ jobs:
           retention-days: '1'
           if-no-files-found: error
 
+  deploy:
+    name: Download Artifact and Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v7
+        with:
+          name: 'github-pages'
+          path: artifact/
+          
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
