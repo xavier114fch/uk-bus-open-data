@@ -230,34 +230,34 @@ def getNaptan(atco):
 									_start_point = _bus.get('HailAndRideSection', {}).get('StartPoint')
 									_end_point = _bus.get('HailAndRideSection', {}).get('EndPoint')
 
-									for _location in [_start_point, _end_point]:
-										_location = _location.get('Translation', _location)
+									for _har_location in [_start_point, _end_point]:
+										_har_location = _har_location.get('Translation', _har_location)
 
-										if _location.get('Longitude') not in [None, '0.000000000'] and _location.get('Latitude') not in [None, '0.000000000']:
-											_lon, _lat = _location.get('Longitude'), _location.get('Latitude')
+										if _har_location.get('Longitude') not in [None, '0.000000000'] and _har_location.get('Latitude') not in [None, '0.000000000']:
+											_har_lon, _har_lat = _har_location.get('Longitude'), _har_location.get('Latitude')
 
-										elif 'Easting' in _location and 'Northing' in _location:
-											_lon, _lat = _transformer.transform(_location.get('Easting'),_location.get('Northing'))
+										elif 'Easting' in _har_location and 'Northing' in _har_location:
+											_har_lon, _har_lat = _transformer.transform(_har_location.get('Easting'),_har_location.get('Northing'))
 
-										_section.append([float(_lon), float(_lat)])
+										_section.append([float(_har_lon), float(_har_lat)])
 
 								else:
 									_bearing = _bus.get('MarkedPoint', {}).get('Bearing', {}).get('CompassPoint', '')
 
 							case 'FLX':
 								_bus_type = 'flexible'
-								_locations = _bus.get('FlexibleZone', {}).get('Location', [])
+								_flx_locations = _bus.get('FlexibleZone', {}).get('Location', [])
 
-								for _location in _locations:
-									_location = _location.get('Translation', _location)
+								for _flx_location in _flx_flx_locations:
+									_flx_location = _flx_location.get('Translation', _flx_location)
 
-									if _location.get('Longitude') not in [None, '0.000000000'] and _location.get('Latitude') not in [None, '0.000000000']:
-										_lon, _lat = _location.get('Longitude'), _location.get('Latitude')
+									if _flx_location.get('Longitude') not in [None, '0.000000000'] and _flx_location.get('Latitude') not in [None, '0.000000000']:
+										_flx_lon, _flx_lat = _flx_location.get('Longitude'), _flx_location.get('Latitude')
 
-									elif 'Easting' in _location and 'Northing' in _location:
-										_lon, _lat = _transformer.transform(_location.get('Easting'),_location.get('Northing'))
+									elif 'Easting' in _flx_location and 'Northing' in _flx_location:
+										_flx_lon, _flx_lat = _transformer.transform(_flx_location.get('Easting'),_flx_location.get('Northing'))
 
-									_section.append([float(_lon), float(_lat)])
+									_section.append([float(_flx_lon), float(_flx_lat)])
 
 						# if _bearing == '':
 						# 	print(f"{_atco_code}: {_name} ({_stop_type}-{_bus_stop_type}) does not have compass point.")
