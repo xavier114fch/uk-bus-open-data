@@ -248,11 +248,12 @@
                       'features': []
                     };
 
+                    const trackGeoCoords = polyline.decode(route.tracks, 6);
                     var trackGeo = {
                       'type': 'Feature',
                       'geometry': {
                         type: 'LineString',
-                        coordinates: polyline.decode(route.tracks, 6)
+                        coordinates: trackGeoCoords.map(([lat, lon]) => [lon, lat])
                       },
                       'properties': {}
                     };
