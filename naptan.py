@@ -248,7 +248,7 @@ def getNaptan(atco):
 								_bus_type = 'flexible'
 								_flx_locations = _bus.get('FlexibleZone', {}).get('Location', [])
 
-								for _flx_location in _flx_flx_locations:
+								for _flx_location in _flx_locations:
 									_flx_location = _flx_location.get('Translation', _flx_location)
 
 									if _flx_location.get('Longitude') not in [None, '0.000000000'] and _flx_location.get('Latitude') not in [None, '0.000000000']:
