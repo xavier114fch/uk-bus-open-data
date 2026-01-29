@@ -27,7 +27,7 @@ def retryRequest(url):
 def compareDates(_start, _end) -> bool:
 	_today = datetime.today().date()
 	_start = datetime.fromisoformat(_start).date() if _start and _start != '' else _today
-	_end = datetime.fromisoformat(_end).date() if _end and _end != '' else datetime.max
+	_end = datetime.fromisoformat(_end).date() if _end and _end != '' else datetime.max.date()
 
 	return (_today < _start) or (_start <= _today <= _end)
 
