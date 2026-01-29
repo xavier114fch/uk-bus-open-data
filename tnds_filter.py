@@ -101,49 +101,49 @@ def getSlugs(_data_dir) -> dict:
 						with open(os.path.join(_dir, _file), 'w') as f:
 							f.write(json.dumps(_data, ensure_ascii = False, separators=(',', ':')))
 
-	for _slug, _services in _all_slugs.items():
-		_duplicated = 0
-		_overlapped = 0
-		_total = len(_services)
-		_to_be_removed = []
+	# for _slug, _services in _all_slugs.items():
+	# 	_duplicated = 0
+	# 	_overlapped = 0
+	# 	_total = len(_services)
+	# 	_to_be_removed = []
 
-		if _total > 1:
-			for _i in range(1, _total):
-				_previous_service = _services[_i - 1]
-				_previous_start_date = _previous_service.get('startDate')
-				_previous_start_date = datetime.fromisoformat(_previous_start_date).date() if _previous_start_date else None
-				_previous_end_date = _previous_service.get('endDate')
-				_previous_end_date = datetime.fromisoformat(_previous_end_date).date() if _previous_end_date else None
-				_previous_last_modified = _previous_service.get('lastModified')
-				_previous_last_modified = datetime.fromisoformat(_previous_last_modified).date() if _previous_last_modified else None
+	# 	if _total > 1:
+	# 		for _i in range(1, _total):
+	# 			_previous_service = _services[_i - 1]
+	# 			_previous_start_date = _previous_service.get('startDate')
+	# 			_previous_start_date = datetime.fromisoformat(_previous_start_date).date() if _previous_start_date else None
+	# 			_previous_end_date = _previous_service.get('endDate')
+	# 			_previous_end_date = datetime.fromisoformat(_previous_end_date).date() if _previous_end_date else None
+	# 			_previous_last_modified = _previous_service.get('lastModified')
+	# 			_previous_last_modified = datetime.fromisoformat(_previous_last_modified).date() if _previous_last_modified else None
 
-				_current_service = _services[_i]
-				_current_start_date = _current_service.get('startDate')
-				_current_start_date = datetime.fromisoformat(_current_start_date).date() if _current_start_date else None
-				_current_end_date = _current_service.get('endDate')
-				_current_end_date = datetime.fromisoformat(_current_end_date).date() if _current_end_date else None
-				_current_last_modified = _current_service.get('lastModified')
-				_current_last_modified = datetime.fromisoformat(_current_last_modified).date() if _current_last_modified else None
+	# 			_current_service = _services[_i]
+	# 			_current_start_date = _current_service.get('startDate')
+	# 			_current_start_date = datetime.fromisoformat(_current_start_date).date() if _current_start_date else None
+	# 			_current_end_date = _current_service.get('endDate')
+	# 			_current_end_date = datetime.fromisoformat(_current_end_date).date() if _current_end_date else None
+	# 			_current_last_modified = _current_service.get('lastModified')
+	# 			_current_last_modified = datetime.fromisoformat(_current_last_modified).date() if _current_last_modified else None
 
-				if all((_previous_start_date, _previous_end_date, _previous_last_modified, _current_start_date, _current_end_date, _current_last_modified)):
-					if _previous_start_date == _current_start_date and _previous_end_date == _current_end_date and  _previous_last_modified <= _current_last_modified:
-						_to_be_removed.append(_i - 1)
-						_duplicated = _duplicated + 1
+	# 			if all((_previous_start_date, _previous_end_date, _previous_last_modified, _current_start_date, _current_end_date, _current_last_modified)):
+	# 				if _previous_start_date == _current_start_date and _previous_end_date == _current_end_date and  _previous_last_modified <= _current_last_modified:
+	# 					_to_be_removed.append(_i - 1)
+	# 					_duplicated = _duplicated + 1
 
-					elif _current_start_date < _previous_end_date:
-						_to_be_removed.append(_i - 1)
-						_overlapped = _overlapped + 1
+	# 				elif _current_start_date < _previous_end_date:
+	# 					_to_be_removed.append(_i - 1)
+	# 					_overlapped = _overlapped + 1
 
-		_services = [_service for _i, _service in enumerate(_services) if _i not in _to_be_removed]
+	# 	_services = [_service for _i, _service in enumerate(_services) if _i not in _to_be_removed]
 
-		if len(_services) == 0:
-			_all_slugs.pop(_slug, None)
-			print(f'{_slug} has removed {_duplicated} duplicated and {_overlapped} overlapped services with nothing left.')
+	# 	if len(_services) == 0:
+	# 		_all_slugs.pop(_slug, None)
+	# 		print(f'{_slug} has removed {_duplicated} duplicated and {_overlapped} overlapped services with nothing left.')
 
-		elif _duplicated > 0 or _overlapped > 0:
-			print(f'{_slug} has removed {_duplicated} duplicated and {_overlapped} overlapped services out of {_total}.')
+	# 	elif _duplicated > 0 or _overlapped > 0:
+	# 		print(f'{_slug} has removed {_duplicated} duplicated and {_overlapped} overlapped services out of {_total}.')
 
-		_all_slugs[_slug] = _services
+	# 	_all_slugs[_slug] = _services
 
 	with open(os.path.join(_data_dir, 'all_slugs.json'), 'w') as f:
 		f.write(json.dumps(_all_slugs, ensure_ascii = False, separators=(',', ':')))
