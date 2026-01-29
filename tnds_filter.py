@@ -26,10 +26,10 @@ def retryRequest(url):
 
 def compareDates(_start, _end) -> bool:
 	_today = datetime.today().date()
-	_start = datetime.fromisoformat(_start).date() if _start and _start != '' else None
-	_end = datetime.fromisoformat(_end).date() if _end and _end != '' else None
+	_start = datetime.fromisoformat(_start).date() if _start and _start != '' else _today
+	_end = datetime.fromisoformat(_end).date() if _end and _end != '' else _today
 
-	return (_start and _today < _start) or (_start and _end and _start <= _today <= _end) or (_start and not _end and _today >= _start)
+	return (_today < _start) or (_start <= _today <= _end) or (_today >= _start)
 
 def getSlugs(_data_dir) -> dict:
 	_all_slugs = {}
