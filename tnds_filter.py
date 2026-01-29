@@ -52,8 +52,6 @@ def getSlugs(_data_dir) -> dict:
 
 					for _slug, _services in _data.items():
 						_all_slugs.setdefault(_slug, [])
-						_total_services = len(_services)
-						_not_expired = 0
 
 						for _service in _services:
 							_routes = _service.get('routes', [])
@@ -76,8 +74,6 @@ def getSlugs(_data_dir) -> dict:
 							_last_modified = _service.get('lastModified', None)
 
 							if compareDates(_start_date, _end_date):
-								_not_expired = _not_expired + 1
-
 								_all_slugs[_slug].append({
 									'filename': _service.get('filename')[1:],
 									'mode': _service.get('mode'),
@@ -91,10 +87,7 @@ def getSlugs(_data_dir) -> dict:
 									'endDate': _end_date,
 								})
 
-						if _not_expired < _total_services and _not_expired > 0:
-							print(f'{_slug} has {_not_expired}/{_total_services} services still valid.')
-
-						if _not_expired == 0:
+						if len(_all_slugs[_slug]) == 0:
 							_all_slugs.pop(_slug, None)
 
 					if _tracks_updated:
