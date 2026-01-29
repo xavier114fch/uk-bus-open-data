@@ -29,7 +29,7 @@ def compareDates(_start, _end) -> bool:
 	_start = datetime.fromisoformat(_start).date() if _start and _start != '' else _today
 	_end = datetime.fromisoformat(_end).date() if _end and _end != '' else _today
 
-	return (_today < _start) or (_start <= _today <= _end) or (_today >= _start)
+	return (_today < _start) or (_start <= _today <= _end)
 
 def getSlugs(_data_dir) -> dict:
 	_all_slugs = {}
