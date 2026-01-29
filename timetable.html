@@ -195,9 +195,16 @@
             document.getElementById('details').appendChild(serviceSelect);
 
             var timetables = detail.timetables;
-            for (let routeId in timetables) {
-              var routes = detail.routes;
+            var routes = detail.routes;
 
+            routes.forEach((route, i) => {
+              var serviceOption = document.createElement('option');
+              serviceOption.value = `${route.routeId}`;
+              serviceOption.innerHTML = `${route.description} (${route.routeId})`;
+              document.getElementById('routes').appendChild(serviceOption);
+            });
+
+            for (let routeId in timetables) {
               routes.forEach((route, i) => {
                 timetables[routeId].forEach((timetable, j) => {
                   timetable.stopPoints.forEach((stop, k) => {
@@ -206,7 +213,7 @@
                   });
                 });
               });   
-              }
+            }
 
             fetch(`${baseUrl}/data/tnds/stops_tnds_only.json`)
               .then(response => response.json())
@@ -222,245 +229,241 @@
                 });
 
                 Promise.all(promises).then(() => {
-                  for (let routeId in timetables) {
-                    var routes = detail.routes;
-                    routes.forEach((route, i) => {
-                      if (true) {
-                        var serviceOption = document.createElement('option');
-                        serviceOption.value = `${route.routeId}`;
-                        serviceOption.innerHTML = `${route.description} (${route.routeId})`;
-                        document.getElementById('routes').appendChild(serviceOption);
+                  var routes = detail.routes;
+                  routes.forEach((route, i) => {
+                    // var serviceOption = document.createElement('option');
+                    // serviceOption.value = `${route.routeId}`;
+                    // serviceOption.innerHTML = `${route.description} (${route.routeId})`;
+                    // document.getElementById('routes').appendChild(serviceOption);
 
-                        document.getElementById('details').appendChild(document.createElement('hr'));
+                    document.getElementById('details').appendChild(document.createElement('hr'));
 
-                        var routeContent = document.createElement('section');
-                        routeContent.id = `${route.routeId}`;
-                        routeContent.innerHTML = `<h3>${route.description} (${route.routeId})</h3>`;
-                        document.getElementById('details').appendChild(routeContent);
+                    var routeContent = document.createElement('section');
+                    routeContent.id = `${route.routeId}`;
+                    routeContent.innerHTML = `<h3>${route.description} (${route.routeId})</h3>`;
+                    document.getElementById('details').appendChild(routeContent);
 
-                        timetables[routeId].forEach((timetable, j) => {
-                          var schedules = timetable.schedules;
-                          schedules.forEach((schedule, k) => {
-                            var timetableContent = document.createElement('section');
-                            var regular = schedule.profiles.regular.flat().join(', ');
-                            var holidaysRunning, holidaysNotRunning;
-                            var specialRunning = '', specialNotRunning = '';
+                    timetables[route.routeId].forEach((timetable, j) => {
+                      var schedules = timetable.schedules;
+                      schedules.forEach((schedule, k) => {
+                        var timetableContent = document.createElement('section');
+                        var regular = schedule.profiles.regular.flat().join(', ');
+                        var holidaysRunning, holidaysNotRunning;
+                        var specialRunning = '', specialNotRunning = '';
 
-                            if (schedule.profiles.hasOwnProperty('holidays')) {
-                              if (schedule.profiles.holidays.hasOwnProperty('running'))
-                                holidaysRunning = schedule.profiles.holidays.running.flat().join(', ');
+                        if (schedule.profiles.hasOwnProperty('holidays')) {
+                          if (schedule.profiles.holidays.hasOwnProperty('running'))
+                            holidaysRunning = schedule.profiles.holidays.running.flat().join(', ');
 
-                              if (schedule.profiles.holidays.hasOwnProperty('notRunning'))
-                                holidaysNotRunning = schedule.profiles.holidays.notRunning.flat().join(', ');
-                            }
+                          if (schedule.profiles.holidays.hasOwnProperty('notRunning'))
+                            holidaysNotRunning = schedule.profiles.holidays.notRunning.flat().join(', ');
+                        }
 
-                            if (schedule.profiles.hasOwnProperty('special')) {
-                              if (schedule.profiles.special.hasOwnProperty('running')) {
-                                schedule.profiles.special.running.forEach((run, m) => {
-                                  specialRunning += (run.startDate != run.endDate) ? `${run.startDate}-${run.endDate}` : `${run.startDate}`;
-                                  specialRunning += (m < schedule.profiles.special.running.length - 1) ? ',' : '';
-                                });
-                              }
-
-                              if (schedule.profiles.special.hasOwnProperty('notRunning')) {
-                                schedule.profiles.special.notRunning.forEach((run, m) => {
-                                  specialNotRunning += (run.startDate != run.endDate) ? `${run.startDate}-${run.endDate}` : `${run.startDate}`;
-                                  specialNotRunning += (m < schedule.profiles.special.notRunning.length - 1) ? ', ' : '';
-                                });
-                              }
-                            }
-
-                            timetableContent.innerHTML = `<p><b>Running at these times</b>`;
-                            timetableContent.innerHTML += `Regular: ${regular}<br>`;
-                            timetableContent.innerHTML += holidaysRunning ? `Holidays: ${holidaysRunning}<br>` : '';
-                            timetableContent.innerHTML += (specialRunning != '') ? `Special: ${specialRunning}<br>` : '';
-                            timetableContent.innerHTML += `</p>`;
-
-                            if (holidaysNotRunning || specialNotRunning != '') {
-                              timetableContent.innerHTML += `<p><b>Not Running at these times</b>`;
-                              timetableContent.innerHTML += holidaysNotRunning ? `Holidays: ${holidaysNotRunning}<br>` : '';
-                              timetableContent.innerHTML += (specialNotRunning != '') ? `Special: ${specialNotRunning}<br>` : '';
-                              timetableContent.innerHTML += `</p>`;
-                            }
-
-                            document.getElementById('details').appendChild(timetableContent);
-
-                            var routeTable = document.createElement('table');
-                            var row = document.createElement('tr');
-                            row.innerHTML += '<th>#</th>';
-                            row.innerHTML += '<th>ATCO</th>';
-                            row.innerHTML += '<th>Naptan</th>';
-                            row.innerHTML += '<th>Name</th>';
-                            // row.innerHTML += '<th>Landmark</th>';
-                            // row.innerHTML += '<th>Street</th>';
-                            // row.innerHTML += '<th>Crossing</th>';
-                            row.innerHTML += '<th>Locality</th>';
-                            // row.innerHTML += '<th>Town</th>';
-                            // row.innerHTML += '<th>Suburb</th>';
-                            row.innerHTML += '<th>Indicator</th>';
-                            row.innerHTML += '<th>Compass</th>';
-                            row.innerHTML += '<th>Timing Status</th>';
-                            // row.innerHTML += '<th>Distance</th>';
-                            // row.innerHTML += '<th>Bound</th>';
-                            // row.innerHTML += '<th>WaitTime</th>';
-                            row.innerHTML += '<th>Runtime</th>';
-                            row.innerHTML += `<th colspan=${schedule.departures.length}></th>`;
-
-                            routeTable.appendChild(row);
-
-                            timetable.stopPoints.forEach((stop, l) => {
-                              row = document.createElement('tr');
-                              var seqColumn = document.createElement('td');
-                              var stopColumn = document.createElement('td');
-                              var naptanColumn = document.createElement('td');
-                              var nameColumn = document.createElement('td');
-                              // var landmarkColumn = document.createElement('td');
-                              // var streetColumn = document.createElement('td');
-                              // var crossingColumn = document.createElement('td');
-                              var localityColumn = document.createElement('td');
-                              // var townColumn = document.createElement('td');
-                              // var suburbColumn = document.createElement('td');
-                              var indicatorColumn = document.createElement('td');
-                              var compassColumn = document.createElement('td');
-                              // var distanceColumn = document.createElement('td');
-                              // var dirColumn = document.createElement('td');
-                              var timingColumn = document.createElement('td');
-                              var runtimeColumn = document.createElement('td');
-                              // var waitTimeColumn = document.createElement('td');
-
-                              seqColumn.textContent = timetable.sequenceNumber[l];
-                              stopColumn.textContent = stop;
-
-
-                              naptanColumn.textContent = stopStore[stop].naptanCode ? stopStore[stop].naptanCode : '';
-                              nameColumn.textContent = stopStore[stop].name ? stopStore[stop].name : '';
-                              // landmarkColumn.textContent = stopStore[stop].landmark ? stopStore[stop].landmark : '';
-                              // streetColumn.textContent = stopStore[stop].street ? stopStore[stop].street : '';
-                              // crossingColumn.textContent = stopStore[stop].crossin ? stopStore[stop].crossing : '';
-                              localityColumn.textContent = stopStore[stop].locality ? stopStore[stop].locality : '';
-                              // townColumn.textContent = stopStore[stop].town ? stopStore[stop].town : '';
-                              // suburbColumn.textContent = stopStore[stop].suburb ? stopStore[stop].suburb : '';
-                              indicatorColumn.textContent = stopStore[stop].indicator ? stopStore[stop].indicator : '';
-                              compassColumn.textContent = stopStore[stop].properties && stopStore[stop].properties.bearing ? stopStore[stop].properties.bearing : '';
-
-                              timingColumn.textContent = timetable.timingStatuses[l];
-                              // distanceColumn.textContent = route.distance[l];
-                              // dirColumn.textContent = route.direction[l];
-
-                              runtimeColumn.innerHTML = '';
-                              if (timetable.waitTimes[l] != '')
-                                runtimeColumn.innerHTML += `<i>${timetable.waitTimes[l]}</i><br>`;
-                              runtimeColumn.innerHTML += timetable.runtimes[l] ? timetable.runtimes[l] : '';
-
-                              // waitTimeColumn.textContent = timetable.waitTimes[l];
-
-                              row.appendChild(seqColumn);
-                              row.appendChild(stopColumn);
-                              row.appendChild(naptanColumn);
-                              row.appendChild(nameColumn);
-                              // row.appendChild(landmarkColumn);
-                              // row.appendChild(streetColumn);
-                              // row.appendChild(crossingColumn);
-                              row.appendChild(localityColumn);
-                              // row.appendChild(townColumn);
-                              // row.appendChild(suburbColumn);
-                              row.appendChild(indicatorColumn);
-                              row.appendChild(compassColumn);
-                              row.appendChild(timingColumn);
-                              // row.appendChild(distanceColumn);
-                              // row.appendChild(dirColumn);
-                              // row.appendChild(waitTimeColumn);
-                              row.appendChild(runtimeColumn);
-
-                              schedule.departures.forEach((departure, m) => {
-                                var departureColumn = document.createElement('td');
-                                var dayShift = (schedule.dayShift[m] == 1) ? '*' : '';
-                                var waittime;
-
-                                if (l == 0) {
-                                  departureColumn.innerHTML = `${departure}${dayShift}`;
-                                  waittime = timetable.waitTimes[l];
-
-                                  if (waittime != '') {
-                                    [hours, minutes, seconds] = departure.split(':').map(Number);
-                                    match = waittime.match(/PT(\d+H)?(\d+M)?(\d+S)?/);
-                                    hoursToAdd = match[1] ? parseInt(match[1]) : 0;
-                                    minutesToAdd = match[2] ? parseInt(match[2]) : 0;
-                                    secondsToAdd = match[3] ? parseInt(match[3]) : 0;
-                                    totalSeconds = hours * 3600 + hoursToAdd * 3600 + minutes * 60 + minutesToAdd * 60 + seconds + secondsToAdd;
-                                    
-                                    newHours = Math.floor(totalSeconds / 3600);
-                                    if (newHours > 23) {
-                                      newHours -= 24;
-                                      dayShift = '*';
-                                    }
-                                    newMinutes = Math.floor((totalSeconds % 3600) / 60);
-                                    newSeconds = totalSeconds % 60;
-                                    departure = [newHours, newMinutes, newSeconds].map(num => String(num).padStart(2, '0')).join(':');
-
-                                    departureColumn.innerHTML += `<br>${departure}${dayShift}`;
-                                  }
-                                }
-
-                                else {
-                                  for (n = 0; n <= l - 1; n++) {
-                                    departureColumn.innerHTML = '';
-
-                                    var [hours, minutes, seconds] = departure.split(':').map(Number);
-                                    var runtime = timetable.runtimes[n];
-                                    var match = runtime.match(/PT(\d+H)?(\d+M)?(\d+S)?/);
-                                    var hoursToAdd = match[1] ? parseInt(match[1]) : 0;
-                                    var minutesToAdd = match[2] ? parseInt(match[2]) : 0;
-                                    var secondsToAdd = match[3] ? parseInt(match[3]) : 0;
-                                    var totalSeconds = hours * 3600 + hoursToAdd * 3600 + minutes * 60 + minutesToAdd * 60 + seconds + secondsToAdd;
-
-                                    var newHours = Math.floor(totalSeconds / 3600);
-                                    if (newHours > 23) {
-                                      newHours -= 24;
-                                      dayShift = '*';
-                                    }
-                                    var newMinutes = Math.floor((totalSeconds % 3600) / 60);
-                                    var newSeconds = totalSeconds % 60;
-                                    departure = [newHours, newMinutes, newSeconds].map(num => String(num).padStart(2, '0')).join(':');
-
-                                    departureColumn.innerHTML += `${departure}${dayShift}`;
-                                    waittime = timetable.waitTimes[n + 1];
-
-                                    if (waittime != '') {
-                                      [hours, minutes, seconds] = departure.split(':').map(Number);
-                                      match = waittime.match(/PT(\d+H)?(\d+M)?(\d+S)?/);
-                                      hoursToAdd = match[1] ? parseInt(match[1]) : 0;
-                                      minutesToAdd = match[2] ? parseInt(match[2]) : 0;
-                                      secondsToAdd = match[3] ? parseInt(match[3]) : 0;
-                                      totalSeconds = hours * 3600 + hoursToAdd * 3600 + minutes * 60 + minutesToAdd * 60 + seconds + secondsToAdd;
-                                      
-                                      newHours = Math.floor(totalSeconds / 3600);
-                                      if (newHours > 23) {
-                                        newHours -= 24;
-                                        dayShift = '*';
-                                      }
-                                      newMinutes = Math.floor((totalSeconds % 3600) / 60);
-                                      newSeconds = totalSeconds % 60;
-                                      departure = [newHours, newMinutes, newSeconds].map(num => String(num).padStart(2, '0')).join(':');
-
-                                      departureColumn.innerHTML += `<br>${departure}${dayShift}`;
-                                    }
-                                  }
-                                }
-
-                                row.appendChild(departureColumn);
-                              });
-
-                              routeTable.appendChild(row);
+                        if (schedule.profiles.hasOwnProperty('special')) {
+                          if (schedule.profiles.special.hasOwnProperty('running')) {
+                            schedule.profiles.special.running.forEach((run, m) => {
+                              specialRunning += (run.startDate != run.endDate) ? `${run.startDate}-${run.endDate}` : `${run.startDate}`;
+                              specialRunning += (m < schedule.profiles.special.running.length - 1) ? ',' : '';
                             });
+                          }
 
-                            document.getElementById('details').appendChild(routeTable);
-                            document.getElementById('details').appendChild(document.createElement('br'));
+                          if (schedule.profiles.special.hasOwnProperty('notRunning')) {
+                            schedule.profiles.special.notRunning.forEach((run, m) => {
+                              specialNotRunning += (run.startDate != run.endDate) ? `${run.startDate}-${run.endDate}` : `${run.startDate}`;
+                              specialNotRunning += (m < schedule.profiles.special.notRunning.length - 1) ? ', ' : '';
+                            });
+                          }
+                        }
+
+                        timetableContent.innerHTML = `<p><b>Running at these times</b>`;
+                        timetableContent.innerHTML += `Regular: ${regular}<br>`;
+                        timetableContent.innerHTML += holidaysRunning ? `Holidays: ${holidaysRunning}<br>` : '';
+                        timetableContent.innerHTML += (specialRunning != '') ? `Special: ${specialRunning}<br>` : '';
+                        timetableContent.innerHTML += `</p>`;
+
+                        if (holidaysNotRunning || specialNotRunning != '') {
+                          timetableContent.innerHTML += `<p><b>Not Running at these times</b>`;
+                          timetableContent.innerHTML += holidaysNotRunning ? `Holidays: ${holidaysNotRunning}<br>` : '';
+                          timetableContent.innerHTML += (specialNotRunning != '') ? `Special: ${specialNotRunning}<br>` : '';
+                          timetableContent.innerHTML += `</p>`;
+                        }
+
+                        document.getElementById('details').appendChild(timetableContent);
+
+                        var routeTable = document.createElement('table');
+                        var row = document.createElement('tr');
+                        row.innerHTML += '<th>#</th>';
+                        row.innerHTML += '<th>ATCO</th>';
+                        row.innerHTML += '<th>Naptan</th>';
+                        row.innerHTML += '<th>Name</th>';
+                        // row.innerHTML += '<th>Landmark</th>';
+                        // row.innerHTML += '<th>Street</th>';
+                        // row.innerHTML += '<th>Crossing</th>';
+                        row.innerHTML += '<th>Locality</th>';
+                        // row.innerHTML += '<th>Town</th>';
+                        // row.innerHTML += '<th>Suburb</th>';
+                        row.innerHTML += '<th>Indicator</th>';
+                        row.innerHTML += '<th>Compass</th>';
+                        row.innerHTML += '<th>Timing Status</th>';
+                        // row.innerHTML += '<th>Distance</th>';
+                        // row.innerHTML += '<th>Bound</th>';
+                        // row.innerHTML += '<th>WaitTime</th>';
+                        row.innerHTML += '<th>Runtime</th>';
+                        row.innerHTML += `<th colspan=${schedule.departures.length}></th>`;
+
+                        routeTable.appendChild(row);
+
+                        timetable.stopPoints.forEach((stop, l) => {
+                          row = document.createElement('tr');
+                          var seqColumn = document.createElement('td');
+                          var stopColumn = document.createElement('td');
+                          var naptanColumn = document.createElement('td');
+                          var nameColumn = document.createElement('td');
+                          // var landmarkColumn = document.createElement('td');
+                          // var streetColumn = document.createElement('td');
+                          // var crossingColumn = document.createElement('td');
+                          var localityColumn = document.createElement('td');
+                          // var townColumn = document.createElement('td');
+                          // var suburbColumn = document.createElement('td');
+                          var indicatorColumn = document.createElement('td');
+                          var compassColumn = document.createElement('td');
+                          // var distanceColumn = document.createElement('td');
+                          // var dirColumn = document.createElement('td');
+                          var timingColumn = document.createElement('td');
+                          var runtimeColumn = document.createElement('td');
+                          // var waitTimeColumn = document.createElement('td');
+
+                          seqColumn.textContent = timetable.sequenceNumber[l];
+                          stopColumn.textContent = stop;
+
+
+                          naptanColumn.textContent = stopStore[stop].naptanCode ? stopStore[stop].naptanCode : '';
+                          nameColumn.textContent = stopStore[stop].name ? stopStore[stop].name : '';
+                          // landmarkColumn.textContent = stopStore[stop].landmark ? stopStore[stop].landmark : '';
+                          // streetColumn.textContent = stopStore[stop].street ? stopStore[stop].street : '';
+                          // crossingColumn.textContent = stopStore[stop].crossin ? stopStore[stop].crossing : '';
+                          localityColumn.textContent = stopStore[stop].locality ? stopStore[stop].locality : '';
+                          // townColumn.textContent = stopStore[stop].town ? stopStore[stop].town : '';
+                          // suburbColumn.textContent = stopStore[stop].suburb ? stopStore[stop].suburb : '';
+                          indicatorColumn.textContent = stopStore[stop].indicator ? stopStore[stop].indicator : '';
+                          compassColumn.textContent = stopStore[stop].properties && stopStore[stop].properties.bearing ? stopStore[stop].properties.bearing : '';
+
+                          timingColumn.textContent = timetable.timingStatuses[l];
+                          // distanceColumn.textContent = route.distance[l];
+                          // dirColumn.textContent = route.direction[l];
+
+                          runtimeColumn.innerHTML = '';
+                          if (timetable.waitTimes[l] != '')
+                            runtimeColumn.innerHTML += `<i>${timetable.waitTimes[l]}</i><br>`;
+                          runtimeColumn.innerHTML += timetable.runtimes[l] ? timetable.runtimes[l] : '';
+
+                          // waitTimeColumn.textContent = timetable.waitTimes[l];
+
+                          row.appendChild(seqColumn);
+                          row.appendChild(stopColumn);
+                          row.appendChild(naptanColumn);
+                          row.appendChild(nameColumn);
+                          // row.appendChild(landmarkColumn);
+                          // row.appendChild(streetColumn);
+                          // row.appendChild(crossingColumn);
+                          row.appendChild(localityColumn);
+                          // row.appendChild(townColumn);
+                          // row.appendChild(suburbColumn);
+                          row.appendChild(indicatorColumn);
+                          row.appendChild(compassColumn);
+                          row.appendChild(timingColumn);
+                          // row.appendChild(distanceColumn);
+                          // row.appendChild(dirColumn);
+                          // row.appendChild(waitTimeColumn);
+                          row.appendChild(runtimeColumn);
+
+                          schedule.departures.forEach((departure, m) => {
+                            var departureColumn = document.createElement('td');
+                            var dayShift = (schedule.dayShift[m] == 1) ? '*' : '';
+                            var waittime;
+
+                            if (l == 0) {
+                              departureColumn.innerHTML = `${departure}${dayShift}`;
+                              waittime = timetable.waitTimes[l];
+
+                              if (waittime != '') {
+                                [hours, minutes, seconds] = departure.split(':').map(Number);
+                                match = waittime.match(/PT(\d+H)?(\d+M)?(\d+S)?/);
+                                hoursToAdd = match[1] ? parseInt(match[1]) : 0;
+                                minutesToAdd = match[2] ? parseInt(match[2]) : 0;
+                                secondsToAdd = match[3] ? parseInt(match[3]) : 0;
+                                totalSeconds = hours * 3600 + hoursToAdd * 3600 + minutes * 60 + minutesToAdd * 60 + seconds + secondsToAdd;
+                                
+                                newHours = Math.floor(totalSeconds / 3600);
+                                if (newHours > 23) {
+                                  newHours -= 24;
+                                  dayShift = '*';
+                                }
+                                newMinutes = Math.floor((totalSeconds % 3600) / 60);
+                                newSeconds = totalSeconds % 60;
+                                departure = [newHours, newMinutes, newSeconds].map(num => String(num).padStart(2, '0')).join(':');
+
+                                departureColumn.innerHTML += `<br>${departure}${dayShift}`;
+                              }
+                            }
+
+                            else {
+                              for (n = 0; n <= l - 1; n++) {
+                                departureColumn.innerHTML = '';
+
+                                var [hours, minutes, seconds] = departure.split(':').map(Number);
+                                var runtime = timetable.runtimes[n];
+                                var match = runtime.match(/PT(\d+H)?(\d+M)?(\d+S)?/);
+                                var hoursToAdd = match[1] ? parseInt(match[1]) : 0;
+                                var minutesToAdd = match[2] ? parseInt(match[2]) : 0;
+                                var secondsToAdd = match[3] ? parseInt(match[3]) : 0;
+                                var totalSeconds = hours * 3600 + hoursToAdd * 3600 + minutes * 60 + minutesToAdd * 60 + seconds + secondsToAdd;
+
+                                var newHours = Math.floor(totalSeconds / 3600);
+                                if (newHours > 23) {
+                                  newHours -= 24;
+                                  dayShift = '*';
+                                }
+                                var newMinutes = Math.floor((totalSeconds % 3600) / 60);
+                                var newSeconds = totalSeconds % 60;
+                                departure = [newHours, newMinutes, newSeconds].map(num => String(num).padStart(2, '0')).join(':');
+
+                                departureColumn.innerHTML += `${departure}${dayShift}`;
+                                waittime = timetable.waitTimes[n + 1];
+
+                                if (waittime != '') {
+                                  [hours, minutes, seconds] = departure.split(':').map(Number);
+                                  match = waittime.match(/PT(\d+H)?(\d+M)?(\d+S)?/);
+                                  hoursToAdd = match[1] ? parseInt(match[1]) : 0;
+                                  minutesToAdd = match[2] ? parseInt(match[2]) : 0;
+                                  secondsToAdd = match[3] ? parseInt(match[3]) : 0;
+                                  totalSeconds = hours * 3600 + hoursToAdd * 3600 + minutes * 60 + minutesToAdd * 60 + seconds + secondsToAdd;
+                                  
+                                  newHours = Math.floor(totalSeconds / 3600);
+                                  if (newHours > 23) {
+                                    newHours -= 24;
+                                    dayShift = '*';
+                                  }
+                                  newMinutes = Math.floor((totalSeconds % 3600) / 60);
+                                  newSeconds = totalSeconds % 60;
+                                  departure = [newHours, newMinutes, newSeconds].map(num => String(num).padStart(2, '0')).join(':');
+
+                                  departureColumn.innerHTML += `<br>${departure}${dayShift}`;
+                                }
+                              }
+                            }
+
+                            row.appendChild(departureColumn);
                           });
+
+                          routeTable.appendChild(row);
                         });
-                      }
+
+                        document.getElementById('details').appendChild(routeTable);
+                        document.getElementById('details').appendChild(document.createElement('br'));
+                      });
                     });
-                  }
+                  });
                 });
             });
           });
