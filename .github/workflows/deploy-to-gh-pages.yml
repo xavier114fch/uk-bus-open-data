@@ -73,6 +73,12 @@ jobs:
           echo "Data size after cleaning up stale content: "
           du -sh data
 
+      - name: Sanitise
+        run: |
+          rsync -aL data/ clean-data/
+          rm -rf data/
+          mv clean-data data
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
