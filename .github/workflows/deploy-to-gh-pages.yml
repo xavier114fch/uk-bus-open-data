@@ -50,10 +50,6 @@ jobs:
           ref: gh-pages
           fetch-depth: 1
 
-      - name: Remove BODS
-        run: |
-          rm -rf bods
-
       - name: Remove empty files
         run: |
           set -euo pipefail
