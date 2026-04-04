@@ -377,6 +377,7 @@ def outputTnds(_data_dir):
 								_vehicle_journey_list = [_vehicle_journey_list]
 
 							_departures = []
+							_journey_pattern_notes = []
 							for _vj in _vehicle_journey_list:
 								_journey_pattern.setdefault('lineId', _vj.get('LineRef', ''))
 								_notes = _vj.get('Note', [])
@@ -385,7 +386,7 @@ def outputTnds(_data_dir):
 									_notes = [_notes]
 
 								for _note in _notes:
-									_journey_pattern.setdefault('note', []).append(_note.get('NoteText', ''))
+									_journey_pattern_notes.append(_note.get('NoteText', ''))
 
 								_operating_profile = {}
 
@@ -608,6 +609,7 @@ def outputTnds(_data_dir):
 							# 	_departure['departures'] = sorted(list(set(_departure['departures'])))
 
 							_journey_pattern.setdefault('schedules', _departures)
+							_journey_pattern.setdefault('note', _journey_pattern_notes)
 							_journey_patterns[_jp_key].append(_journey_pattern)
 
 						_operators_list = _data.get('Operators', {}).get('Operator', [])
