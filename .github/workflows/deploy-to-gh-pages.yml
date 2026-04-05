@@ -75,6 +75,7 @@ jobs:
 
       - name: Sanitise
         run: |
+          rm -rf data/tnds/
           rsync -aL data/ clean-data/
           rm -rf data/
           mv clean-data data
