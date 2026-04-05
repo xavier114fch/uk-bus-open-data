@@ -49,6 +49,7 @@ def getSlugs(_data_dir) -> dict:
 					_data = json.load(f)
 					_total_slugs = _total_slugs + len(list(_data.keys()))
 					_tracks_updated = False
+					_notes_updated = False
 
 					for _slug, _services in _data.items():
 						_all_slugs.setdefault(_slug, [])
@@ -68,6 +69,17 @@ def getSlugs(_data_dir) -> dict:
 									_route['tracks'] = encode_coordinates(_tracks, 6).decode('utf-8')
 									_tracks_updated = True
 									print(f'{_slug} has converted from coordinates to polyine encoded string.')
+
+							_timetables = _service.get('timetables', {})
+
+							for _j, _journeys in _timetables.items():
+								for _journey in _journeys:
+									_note = _journey.get('note', [])
+
+									if len(_note) > 0:
+										_journey['note'] = [_note[0]]
+										_notes_updated = True
+										print(f'{_slug} has stripped multiple notes to single note')
 
 							_start_date = _service.get('startDate', None)
 							_end_date = _service.get('endDate', None)
@@ -90,7 +102,7 @@ def getSlugs(_data_dir) -> dict:
 						if len(_all_slugs[_slug]) == 0:
 							_all_slugs.pop(_slug, None)
 
-					if _tracks_updated:
+					if _tracks_updated or _notes_updated:
 						with open(os.path.join(_dir, _file), 'w') as f:
 							f.write(json.dumps(_data, ensure_ascii = False, separators=(',', ':')))
 
