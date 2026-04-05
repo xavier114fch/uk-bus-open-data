@@ -75,6 +75,7 @@ jobs:
 
       - name: Sanitise
         run: |
+          rm -rf data/tnds/SW/
           rm -rf data/tnds/W/
           rm -rf data/tnds/WM/
           rm -rf data/tnds/Y/
