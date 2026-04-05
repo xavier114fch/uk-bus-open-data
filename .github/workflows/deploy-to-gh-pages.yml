@@ -75,7 +75,7 @@ jobs:
 
       - name: Sanitise
         run: |
-          rm -rf data/tnds/S/
+          find data/tnds/S -type f ! -name '[0-9]*' -delete
           rsync -aL data/ clean-data/
           rm -rf data/
           mv clean-data data
