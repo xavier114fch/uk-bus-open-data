@@ -70,16 +70,16 @@ def getSlugs(_data_dir) -> dict:
 									_tracks_updated = True
 									print(f'{_slug} has converted from coordinates to polyine encoded string.')
 
-							_timetables = _service.get('timetables', {})
+							# _timetables = _service.get('timetables', {})
 
-							for _j, _journeys in _timetables.items():
-								for _journey in _journeys:
-									_note = _journey.get('note', [])
+							# for _j, _journeys in _timetables.items():
+							# 	for _journey in _journeys:
+							# 		_note = _journey.get('note', [])
 
-									if len(_note) > 0:
-										_journey['note'] = [_note[0]]
-										_notes_updated = True
-										print(f'{_slug} has stripped multiple notes to single note')
+							# 		if len(_note) > 0:
+							# 			_journey['note'] = [_note[0]]
+							# 			_notes_updated = True
+							# 			print(f'{_slug} has stripped multiple notes to single note')
 
 							_start_date = _service.get('startDate', None)
 							_end_date = _service.get('endDate', None)
