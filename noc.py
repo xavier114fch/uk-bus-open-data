@@ -56,7 +56,7 @@ def getNoc():
 	_data = fetchNocData()
 
 	print('Converting to JSON ...')
-	_data = json.dumps(xmltodict.parse(_data), ensure_ascii = False, separators=(',', ':'))
+	_data = json.dumps(xmltodict.parse(_data), ensure_ascii = False, separators=(',', ':'), sort_keys=True)
 	_data = _data.replace('@', '')
 
 	os.makedirs(data_dir, exist_ok=True)
