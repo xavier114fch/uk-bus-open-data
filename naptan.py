@@ -133,7 +133,7 @@ def getNaptan(atco):
 
 		if _data is not None:
 			print('Converting to JSON ...')
-			_data = json.dumps(xmltodict.parse(_data), ensure_ascii = False, separators=(',', ':'), sort_keys=True)
+			_data = json.dumps(xmltodict.parse(_data), ensure_ascii = False, separators=(',', ':'))
 			_pattern = r'{(?:\'|")@xml:lang(?:\'|"):(?:\'|")en(?:\'|"),(?:\'|")#text(?:\'|"):(?:\'|")(.*?)(?:\'|")}'
 			_data = re.sub(_pattern, r'"\1"', _data)
 			_data = _data.replace('@', '')
@@ -647,10 +647,10 @@ def main():
 		_d[_k] = _v
 
 		with open(os.path.join(f'{data_dir}/stopPoints', f'{_k}.json'), 'w') as f:
-			f.write(json.dumps(_d, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
+			f.write(json.dumps(_d, ensure_ascii = False, separators=(',', ':')))
 
 	with open(os.path.join(f'{data_dir}', 'naptan_stop_points_all.json'), 'w') as f:
-			f.write(json.dumps([_k for _k in _stops_all], ensure_ascii = False, separators=(',', ':'), sort_keys=True))
+			f.write(json.dumps([_k for _k in _stops_all], ensure_ascii = False, separators=(',', ':')))
 
 	print('Splitting StopAreas ...')
 	os.makedirs(f'{data_dir}/stopAreas', exist_ok=True)
@@ -659,10 +659,10 @@ def main():
 		_d[_k] = _v
 
 		with open(os.path.join(f'{data_dir}/stopAreas', f'{_k}.json'), 'w') as f:
-			f.write(json.dumps(_d, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
+			f.write(json.dumps(_d, ensure_ascii = False, separators=(',', ':')))
 
 	with open(os.path.join(f'{data_dir}', 'naptan_stop_areas_all.json'), 'w') as f:
-			f.write(json.dumps([_k for _k in _stop_areas_all], ensure_ascii = False, separators=(',', ':'), sort_keys=True))
+			f.write(json.dumps([_k for _k in _stop_areas_all], ensure_ascii = False, separators=(',', ':')))
 
 if __name__ == "__main__":
 	main()
