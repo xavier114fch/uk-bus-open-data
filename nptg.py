@@ -46,7 +46,7 @@ def getNptg():
 	_data = fetchNptgData()
 
 	print('Converting to JSON ...')
-	_data = json.dumps(xmltodict.parse(_data), ensure_ascii = False, separators=(',', ':'))
+	_data = json.dumps(xmltodict.parse(_data), ensure_ascii = False, separators=(',', ':'), sort_keys=True)
 	_pattern = r'{(?:\'|")@xml:lang(?:\'|"):(?:\'|")([A-Za-z]{2})(?:\'|"),(?:\'|")#text(?:\'|"):(?:\'|")(.*?)(?:\'|")}'
 	_data = re.sub(_pattern, r'"\2"', _data)
 	_data = _data.replace('@', '')
@@ -73,10 +73,10 @@ def getNptg():
 		appendRegions(_point)
 
 	with open(os.path.join(data_dir, 'nptg_regions.json'), 'w') as f:
-		f.write(json.dumps(_new_data, ensure_ascii = False, separators=(',', ':')))
+		f.write(json.dumps(_new_data, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 
 	with open(os.path.join(data_dir, 'nptg_atcoareas.json'), 'w') as f:
-		f.write(json.dumps(_atco_data, ensure_ascii = False, separators=(',', ':')))
+		f.write(json.dumps(_atco_data, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 
 	print('Creating JSON for Localities ...')
 	_new_data, _revised_data = {}, {}
