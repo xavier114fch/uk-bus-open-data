@@ -1,1 +1,1 @@
-{"N0060321":{"name":"Stratford, London","altName":null,"adminArea":"082","nptgDistrict":"300","sourceType":"Add","classification":null,"parent":"N0060403","coords":[4.837985e-05,51.54054],"children":["N0060322"]}}
+{"N0060321":{"name":"{'#text': 'Stratford', 'xml:lang': 'EN'}, {'#text': 'London', 'xml:lang': 'en'}","altName":null,"adminArea":"082","nptgDistrict":"300","sourceType":"Add","classification":null,"parent":"N0060403","coords":[4.837985e-05,51.54054],"children":["N0060322"]}}
