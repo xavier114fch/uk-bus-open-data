@@ -647,10 +647,10 @@ def main():
 		_d[_k] = _v
 
 		with open(os.path.join(f'{data_dir}/stopPoints', f'{_k}.json'), 'w') as f:
-			f.write(json.dumps(_d, ensure_ascii = False, separators=(',', ':')))
+			f.write(json.dumps(_d, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 
 	with open(os.path.join(f'{data_dir}', 'naptan_stop_points_all.json'), 'w') as f:
-			f.write(json.dumps([_k for _k in _stops_all], ensure_ascii = False, separators=(',', ':')))
+			f.write(json.dumps([_k for _k in _stops_all], ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 
 	print('Splitting StopAreas ...')
 	os.makedirs(f'{data_dir}/stopAreas', exist_ok=True)
@@ -659,10 +659,10 @@ def main():
 		_d[_k] = _v
 
 		with open(os.path.join(f'{data_dir}/stopAreas', f'{_k}.json'), 'w') as f:
-			f.write(json.dumps(_d, ensure_ascii = False, separators=(',', ':')))
+			f.write(json.dumps(_d, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 
 	with open(os.path.join(f'{data_dir}', 'naptan_stop_areas_all.json'), 'w') as f:
-			f.write(json.dumps([_k for _k in _stop_areas_all], ensure_ascii = False, separators=(',', ':')))
+			f.write(json.dumps([_k for _k in _stop_areas_all], ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 
 if __name__ == "__main__":
 	main()
