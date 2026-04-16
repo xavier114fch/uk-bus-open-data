@@ -137,7 +137,7 @@ def convertTnds(_data_dir):
 
 				with open(os.path.join(_dir, _file), 'r') as f:
 					_content = f.read()
-					_data = json.dumps(xmltodict.parse(_content), ensure_ascii=False, separators=(',', ':'))
+					_data = json.dumps(xmltodict.parse(_content), ensure_ascii=False, separators=(',', ':'), sort_keys=True)
 					_data = _data.replace('@', '')
 
 					with open(os.path.join(_dir, f'_{os.path.splitext(_file)[0]}.json'), 'w') as f:
@@ -864,7 +864,7 @@ def outputTnds(_data_dir):
 
 					if _single_service != {}:
 						with open(os.path.join(_dir, f'{_file[1:]}'), 'w') as f:
-							f.write(json.dumps(_single_service, ensure_ascii = False, separators=(',', ':')))
+							f.write(json.dumps(_single_service, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 
 	# with open(os.path.join(_data_dir, 'all_slugs.json'), 'w') as f:
 	# 	f.write(json.dumps(_all_slugs, ensure_ascii = False, separators=(',', ':')))
@@ -899,7 +899,7 @@ def mergeSlugs(_data_dir, _previous_slugs):
 	_merged_slugs = dict(sorted(_merged_slugs.items()))
 
 	with open(os.path.join(_data_dir, 'all_slugs.json'), 'w') as f:
-		f.write(json.dumps(_merged_slugs, ensure_ascii = False, separators=(',', ':')))
+		f.write(json.dumps(_merged_slugs, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 		_len = len(_merged_slugs)
 		print(f'Merged {_len} slugs.')
 
@@ -1065,7 +1065,7 @@ def getStopPointsFromTnds(_data_dir):
 		_d[_k] = _v
 
 		with open(os.path.join(f'{_data_dir}/stopPoints', f'{_k}.json'), 'w') as f:
-			f.write(json.dumps(_d, ensure_ascii = False, separators=(',', ':')))
+			f.write(json.dumps(_d, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 	
 	print('=====')
 
@@ -1128,17 +1128,17 @@ def mergeStopPoints(_data_dir, _previous_slugs):
 		_d[_stop]['slugs'] = _m_slugs
 
 		with open(os.path.join(f'{_data_dir}/stopPoints', f'{_stop}.json'), 'w') as f:
-			f.write(json.dumps(_d, ensure_ascii = False, separators=(',', ':')))
+			f.write(json.dumps(_d, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 
 	for _k, _v in _stops_only_in_previous.items():
 		_d = {}
 		_d[_k] = _v
 
 		with open(os.path.join(f'{_data_dir}/stopPoints', f'{_k}.json'), 'w') as f:
-			f.write(json.dumps(_d, ensure_ascii = False, separators=(',', ':')))
+			f.write(json.dumps(_d, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 
 	with open(os.path.join(f'{_data_dir}', 'all_stop_points.json'), 'w') as f:
-		f.write(json.dumps(_merged_stops, ensure_ascii = False, separators=(',', ':')))
+		f.write(json.dumps(_merged_stops, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 
 	print('=====')
 
@@ -1182,7 +1182,7 @@ def compareStopPoints(_data_dir):
 		# _stops_in_naptan = {_k:_v for _k, _v in _naptan_list.items() if _k not in _common_naptan}
 
 		with open(os.path.join(_data_dir, 'stops_tnds_only.json'), 'w') as f:
-			f.write(json.dumps(_stops_in_tnds, ensure_ascii = False, separators=(',', ':')))
+			f.write(json.dumps(_stops_in_tnds, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 			print(f'There are {len(_stops_in_tnds)} stop points only appear in TNDS')
 			print('=====')
 
