@@ -46,7 +46,7 @@ def getNptg():
 	_data = fetchNptgData()
 
 	print('Converting to JSON ...')
-	_data = json.dumps(xmltodict.parse(_data), ensure_ascii = False, separators=(',', ':'), sort_keys=True)
+	_data = json.dumps(xmltodict.parse(_data), ensure_ascii = False, separators=(',', ':'))
 	_pattern = r'{(?:\'|")@xml:lang(?:\'|"):(?:\'|")([A-Za-z]{2})(?:\'|"),(?:\'|")#text(?:\'|"):(?:\'|")(.*?)(?:\'|")}'
 	_data = re.sub(_pattern, r'"\2"', _data)
 	_data = _data.replace('@', '')
@@ -152,10 +152,10 @@ def getNptg():
 	# 	f.write(json.dumps(_new_data, ensure_ascii = False, separators=(',', ':')))
 
 	with open(os.path.join(data_dir, 'nptg_localities.geojson'), 'w') as f:
-		f.write(json.dumps(_geodata, ensure_ascii = False, separators=(',', ':')))
+		f.write(json.dumps(_geodata, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 
 	with open(os.path.join(data_dir, 'nptg_localities.json'), 'w') as f:
-		f.write(json.dumps(_revised_data, ensure_ascii = False, separators=(',', ':')))
+		f.write(json.dumps(_revised_data, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 
 	for _k, _v in _revised_data.items():
 		_d = {}
@@ -163,7 +163,7 @@ def getNptg():
 
 		os.makedirs(f'{data_dir}/localities', exist_ok=True)
 		with open(os.path.join(f'{data_dir}/localities', f'{_k}.json'), 'w') as f:
-			f.write(json.dumps(_d, ensure_ascii = False, separators=(',', ':')))
+			f.write(json.dumps(_d, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 
 	print('Creating JSON for PlusbusZones ...')
 	_new_data, _revised_data = {}, {}
@@ -211,13 +211,13 @@ def getNptg():
 		appendPlusbusZones(_point)
 
 	# with open(os.path.join(data_dir, f'nptg_plusbuszones.json'), 'w') as f:
-	# 	f.write(json.dumps(_new_data, ensure_ascii = False, separators=(',', ':')))
+	# 	f.write(json.dumps(_new_data, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 
 	with open(os.path.join(data_dir, 'nptg_plusbuszones.geojson'), 'w') as f:
-		f.write(json.dumps(_geodata, ensure_ascii = False, separators=(',', ':')))
+		f.write(json.dumps(_geodata, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 
 	with open(os.path.join(data_dir, 'nptg_plusbuszones.json'), 'w') as f:
-		f.write(json.dumps(_revised_data, ensure_ascii = False, separators=(',', ':')))
+		f.write(json.dumps(_revised_data, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 
 	for _k, _v in _revised_data.items():
 		_d = {}
@@ -225,7 +225,7 @@ def getNptg():
 
 		os.makedirs(f'{data_dir}/plusbuszones', exist_ok=True)
 		with open(os.path.join(f'{data_dir}/plusbuszones', f'{_k}.json'), 'w') as f:
-			f.write(json.dumps(_d, ensure_ascii = False, separators=(',', ':')))
+			f.write(json.dumps(_d, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 
 def main():
 	getNptg()
