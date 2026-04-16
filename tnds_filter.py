@@ -104,7 +104,7 @@ def getSlugs(_data_dir) -> dict:
 
 					if _tracks_updated or _notes_updated:
 						with open(os.path.join(_dir, _file), 'w') as f:
-							f.write(json.dumps(_data, ensure_ascii = False, separators=(',', ':')))
+							f.write(json.dumps(_data, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 
 	for _slug, _services in _all_slugs.items():
 		_duplicated = 0
@@ -151,7 +151,7 @@ def getSlugs(_data_dir) -> dict:
 		_all_slugs[_slug] = _services
 
 	with open(os.path.join(_data_dir, 'all_slugs.json'), 'w') as f:
-		f.write(json.dumps(_all_slugs, ensure_ascii = False, separators=(',', ':')))
+		f.write(json.dumps(_all_slugs, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 		_len = len(_all_slugs)
 		print(f'Filtered {_len} over {_total_slugs} slugs.')
 	print('=====')
@@ -183,7 +183,7 @@ def getStopPoints(_data_dir):
 	_all_stops = list(set(_all_stops))
 
 	with open(os.path.join(_data_dir, 'all_stop_points.json'), 'w') as f:
-		f.write(json.dumps(_all_stops, ensure_ascii = False, separators=(',', ':')))
+		f.write(json.dumps(_all_stops, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 		_len = len(_all_stops)
 		print(f'Filtered {_len} stops.')
 	print('=====')
@@ -225,7 +225,7 @@ def compareStopPoints(_data_dir):
 		_stops_in_tnds = [_k for _k in _tnds_stop_list if _k not in _common_naptan]
 
 		with open(os.path.join(_data_dir, 'stops_tnds_only.json'), 'w') as f:
-			f.write(json.dumps(_stops_in_tnds, ensure_ascii = False, separators=(',', ':')))
+			f.write(json.dumps(_stops_in_tnds, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 			print(f'There are {len(_stops_in_tnds)} stop points only appear in TNDS')
 			print('=====')
 
