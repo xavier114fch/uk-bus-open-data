@@ -1,668 +1,497 @@
-import time
 import os
-import requests
 import json
 import xmltodict
-import re
+import time
+import logging
+import requests
 from pyproj import Transformer
 
-data_dir = 'data/naptan'
-nptg_dir = 'data/nptg'
+# Logger configuration
+logging.basicConfig(
+	level=logging.INFO,
+	format='%(asctime)s [%(levelname)s] %(message)s',
+	datefmt='%Y-%m-%d %H:%M:%S'
+)
+logger = logging.getLogger(__name__)
 
-_transformer = Transformer.from_crs(27700, 4326, always_xy=True)
+# Data and URL configuration
+naptan_dir = 'data/naptan'
+atco_url = 'https://raw.githubusercontent.com/xavier114fch/uk-bus-open-data/refs/heads/gh-pages/data/nptg/nptg_atcoareas.json'
+nptg_localities_url = 'https://raw.githubusercontent.com/xavier114fch/uk-bus-open-data/refs/heads/gh-pages/data/nptg/nptg_localities.json'
 
-_stops_all, _stop_areas_all = {}, {}
+# Session configuration
+session = requests.Session()
+request_timeout = 30
 
-_geodata_stops_all = {
+# Transformer configuration
+transformer = Transformer.from_crs(27700, 4326, always_xy=True)
+
+# Global state containers
+stops_all: dict = {}
+stop_areas_all: dict = {}
+geodata_stops_all: dict = {
+	'type': 'FeatureCollection',
+	'features': []
+}
+geodata_areas_all: dict = {
 	'type': 'FeatureCollection',
 	'features': []
 }
 
-_geodata_areas_all = {
-	'type': 'FeatureCollection',
-	'features': []
-}
+# -------------------------------------------------------------------------
+# Retry logic
+# -------------------------------------------------------------------------
 
-def retryRequest(url):
-	while True:
-		r = requests.get(url)
+def retry_request(url: str, *, max_retries: int = 5, backoff_delay: int = 1):
+	"""Return a Response object or exit after repeated failures.
 
-		if r.status_code == 200:
-			return r
-
-		elif r.status_code == 400 or r.status_code == 404:
-			raise Exception(r.status_code, url)
-			break
-
-		elif r.status_code == 429:
-			time.sleep(10)
-
-		else:
-			raise Exception(r.status_code, url)
-
-def getAtcoList():
-	try:
-		_data = retryRequest('https://github.com/xavier114fch/uk-bus-open-data/raw/gh-pages/data/nptg/nptg_atcoareas.json')
-		# with open(os.path.join(nptg_dir, 'nptg_atcoareas.json'), 'r') as f:
-		# 	_data = json.load(f)
-
-	except Exception:
-		print('Cannot fetch NPTG data to obtain ATCO list. Retrying ...')
-		time.sleep(10)
-		getAtcoList()
-
-	else:
-		_data = _data.json()
-		return sorted(_data.keys())
-
-def getNaptan(atco):
-	global _geodata_stops_all
-	global _geodata_areas_all
-
-	def fetchNaptanData(atco):
+	The function retries on HTTP status 429 (rate‑limited) or any
+	:class:`requests.RequestException`.  After the maximum number of
+	attempts the process exits with a message.
+	"""
+	for attempt in range(max_retries):
 		try:
-			_data = retryRequest(f'https://naptan.api.dft.gov.uk/v1/access-nodes?atcoAreaCodes={atco}&dataFormat=xml')
+			resp = session.get(url, timeout=request_timeout)
+			if resp.status_code == 200:
+				return resp
+			if resp.status_code == 429:
+				logger.warning(f'Rate limited (429). Waiting {backoff_delay}s before retry…')
+				time.sleep(backoff_delay)
+				backoff_delay *= 2
+				continue
+			resp.raise_for_status()
+		except requests.RequestException as exc:
+			logger.error(f'Request exception: {exc}. Retrying…')
+			time.sleep(backoff_delay)
+			backoff_delay *= 2
+	raise SystemExit(f'Failed to fetch {url} after {max_retries} attempts.')
 
-		except Exception as err:
-			print(f'Cannot fetch Naptan data of ATCO {atco}. {err}')
-			# time.sleep(10)
-			# fetchNaptanData(atco)
-			return None
+# -------------------------------------------------------------------------
+# Helper utilities
+# -------------------------------------------------------------------------
 
-		else:
-			os.makedirs(data_dir, exist_ok=True)
-			# with open(os.path.join(data_dir, f'naptan_{atco}.xml'), 'wb') as f:
-			# 	f.write(_data.content)
+def get_atco_list() -> list[str]:
+	"""Return a sorted list of ATCO area codes from the NPTG area file."""
+	resp = retry_request(atco_url)
+	data = resp.json()
+	return sorted(data.keys())
 
-			return _data.content
+def to_camel_case(value: str) -> str:
+	# Small helper to convert the first character to lower‑case.
+	return value[0].lower() + value[1:]
 
-	def flatten(json_obj, prefix=''):
-		_flattened_dict = {}
-
-		for _key, _value in json_obj.items():
-			_new_key = f'{prefix}.{_key}' if prefix else _key
-
-			if isinstance(_value, dict):
-				_flattened_dict.update(flatten(_value, _new_key))
-
-			else:
-				_flattened_dict[_new_key] = _value
-
-		return _flattened_dict
-
-	def toCamelCase(str):
-		return str[0].lower() + str[1:]
-
-	def convertKeytoCamelCase(data):
-		if isinstance(data, dict):
-			_new_data = {}
-
-			for _key, _value in data.items():
-				_new_key = toCamelCase(_key)
-				_new_data[_new_key] = convertKeytoCamelCase(_value)
-			return _new_data
-
-		if isinstance(data, list):
-			return [convertKeytoCamelCase(_item) for _item in data]
-
-		return data
-
-	def openNptgLocalities():
-		global _locality_list
-		try:
-			_response = retryRequest('https://raw.githubusercontent.com/xavier114fch/uk-bus-open-data/refs/heads/gh-pages/data/nptg/nptg_localities.json')
-			_locality_list = _response.json()
-			# with open(os.path.join(f'{nptg_dir}','nptg_localities.json'), 'r') as f:
-			# 	_locality_list = json.load(f)
-
-		except BaseException:
-			print('Cannot open NPTG locality list.')
-
-		else:
-			return True
-
-	try:
-		openNptgLocalities()
-
-	except BaseException:
-		pass
-
+def clean_obj(obj):
+	if isinstance(obj, dict):
+		# Special case: {"@xml:lang": "en", "#text": "Name"}
+		if set(obj.keys()) == {"@xml:lang", "#text"}:
+			return obj["#text"]
+		return {k.lstrip('@'): clean_obj(v) for k, v in obj.items()}
+	elif isinstance(obj, list):
+		return [clean_obj(v) for v in obj]
 	else:
-		print(f'Getting NaPTAN XML of ATCO {atco} from API ...')
-		_data = fetchNaptanData(atco)
+		return obj
 
-		if _data is not None:
-			print('Converting to JSON ...')
-			_data = json.dumps(xmltodict.parse(_data), ensure_ascii = False, separators=(',', ':'))
-			_pattern = r'{(?:\'|")@xml:lang(?:\'|"):(?:\'|")en(?:\'|"),(?:\'|")#text(?:\'|"):(?:\'|")(.*?)(?:\'|")}'
-			_data = re.sub(_pattern, r'"\1"', _data)
-			_data = _data.replace('@', '')
+# -------------------------------------------------------------------------
+# Core functionality – fetching and building the data structures
+# -------------------------------------------------------------------------
 
-			# with open(os.path.join(data_dir, f'naptan_{atco}.json'), 'w') as f:
-			# 	f.write(_data)
+def fetch_nptg_localities() -> dict:
+	"""Return the NPTG locality mapping from the public JSON resource."""
+	resp = retry_request(nptg_localities_url)
+	return resp.json()
 
-			print('Creating GeoJSON for StopPoints ...')
-			_data = json.loads(_data)
+def fetch_naptan_xml(atco: str) -> bytes:
+	if atco != '900':
+		url = f'https://naptan.api.dft.gov.uk/v1/access-nodes?atcoAreaCodes={atco}&dataFormat=xml'
+		resp = retry_request(url)
+		return resp.content
+	else:
+		logger.info('ATCO 900 is a special case representing all of Great Britain; Skipping fetch as it always returns HTTP 400.')
+		return None
 
-			_new_data = {}
+# Internal helpers that will mutate the global state.
+# They operate on a *single* ATCO's stop list and stop area list.
 
-			_geodata = {
-				'type': 'FeatureCollection',
-				'features': []
-			}
+def append_stop_point(point: dict, locality_list: dict):
+	"""Process a single stop point record and add it to the global structures."""
+	location = point.get('Place', {}).get('Location', {})
+	location = location.get('Translation', location)
 
-			def appendStopPoint(point):
-				global _stops_all
-				global _geodata_stops_all
+	if location.get('Longitude') not in [None, '0.000000000'] and location.get('Latitude') not in [None, '0.000000000']:
+		lon, lat = location['Longitude'], location['Latitude']
+	elif 'Easting' in location and 'Northing' in location:
+		lon, lat = transformer.transform(location['Easting'], location['Northing'])
+	else:
+		return
 
-				_location = point.get('Place', {}).get('Location', {})
-				_location = _location.get('Translation', _location)
+	atco_code = point.get('AtcoCode')
+	if not atco_code:
+		return
 
-				if _location.get('Longitude') not in [None, '0.000000000'] and _location.get('Latitude') not in [None, '0.000000000']:
-					_lon, _lat = _location.get('Longitude'), _location.get('Latitude')
+	naptan_code = point.get('NaptanCode', '')
+	name = point.get('Descriptor', {}).get('CommonName', '')
+	landmark = point.get('Landmark', '')
+	street = point.get('Street', '')
+	crossing = point.get('Crossing', '')
+	indicator = point.get('Descriptor', {}).get('Indicator', '')
+	locality_ref = point.get('Place', {}).get('NptgLocalityRef')
+	locality_name = ''
 
-				elif 'Easting' in _location and 'Northing' in _location:
-					_lon, _lat = _transformer.transform(_location.get('Easting'),_location.get('Northing'))
+	if locality_ref in locality_list:
+		locality_name = locality_list[locality_ref].get('name', {})
 
-				else:
-					return
+	town = point.get('Place', {}).get('Town', '')
+	suburb = point.get('Place', {}).get('Suburb', '')
+	created_at = point.get('CreationDateTime', '')
+	modified_at = point.get('ModificationDateTime', '')
+	status = point.get('Status', '')
+	stop_category = ''
+	stop_class = point.get('StopClassification', {})
+	stop_type = stop_class.get('StopType', '')
+	on_street = 'OnStreet' in stop_class
+	sub_properties = {}
+	admin_area_ref = point.get('AdministrativeAreaRef', '')
 
-				_atco_code = point.get('AtcoCode')
+	if stop_type in ['BCE', 'BST', 'BCS', 'BCQ'] and on_street:
+		stop_type = 'BCT'
 
-				if not _atco_code:
-					return
-
-				_new_data.setdefault(_atco_code, point)
-
-				_naptan_code = point.get('NaptanCode', '')
-				_name = point.get('Descriptor', {}).get('CommonName', '')
-				_landmark = point.get('Landmark', '')
-				_street = point.get('Street', '')
-				_crossing = point.get('Crossing', '')
-				_indicator = point.get('Descriptor', {}).get('Indicator', '')
-				_locality_ref = point.get('Place', {}).get('NptgLocalityRef')
-				_locality_name = ''
-
-				if _locality_ref in _locality_list:
-					# _locality_name = _locality_list[_locality_ref].get('Descriptor', {}).get('LocalityName', '')
-					_locality_name = _locality_list[_locality_ref].get('name', {})
-
-				_town = point.get('Place', {}).get('Town', '')
-				_suburb = point.get('Place', {}).get('Suburb', '')
-				_created_at = point.get('CreationDateTime', '')
-				_modified_at = point.get('ModificationDateTime', '')
-				_status = point.get('Status', '')
-				_stop_category = ''
-				_stop_class = point.get('StopClassification', {})
-				_stop_type = _stop_class.get('StopType', '')
-				_on_street = True if 'OnStreet' in _stop_class else False
-				_sub_properties = {}
-
-				# manual handling of irregular data
-				if _stop_type in ['BCE', 'BST', 'BCS', 'BCQ'] and _on_street:
-					_stop_type = 'BCT'
-
-				match _stop_type:
-					# Bus / Coach [Onstreet]
-					case 'BCT':
-						_stop_category = 'bus'
-						_bus = _stop_class.get('OnStreet', {}).get('Bus', {})
-						_timing_status = _bus.get('TimingStatus', '')
-						_bus_stop_type = _bus.get('BusStopType', '')
-						_bus_type = ''
-						_coach_ref = _bus.get('AnnotatedCoachRef', {}) # to-do
-						_bearing = ''
-						_section = []
-
-						match _bus_stop_type:
-							case 'MKD':
-								_bus_type = 'marked'
-								_bearing = _bus.get('MarkedPoint', {}).get('Bearing', {}).get('CompassPoint', '')
-
-							case 'CUS':
-								_bus_type = 'custom'
-								_bearing = _bus.get('UnmarkedPoint', {}).get('Bearing', {}).get('CompassPoint', '')
-
-							case 'HAR':
-								_bus_type = 'hailAndRide'
-
-								if 'HailAndRideSection' in _bus:
-									_start_point = _bus.get('HailAndRideSection', {}).get('StartPoint')
-									_end_point = _bus.get('HailAndRideSection', {}).get('EndPoint')
-
-									for _har_location in [_start_point, _end_point]:
-										_har_location = _har_location.get('Translation', _har_location)
-
-										if _har_location.get('Longitude') not in [None, '0.000000000'] and _har_location.get('Latitude') not in [None, '0.000000000']:
-											_har_lon, _har_lat = _har_location.get('Longitude'), _har_location.get('Latitude')
-
-										elif 'Easting' in _har_location and 'Northing' in _har_location:
-											_har_lon, _har_lat = _transformer.transform(_har_location.get('Easting'),_har_location.get('Northing'))
-
-										_section.append([float(_har_lon), float(_har_lat)])
-
-								else:
-									_bearing = _bus.get('MarkedPoint', {}).get('Bearing', {}).get('CompassPoint', '')
-
-							case 'FLX':
-								_bus_type = 'flexible'
-								_flx_locations = _bus.get('FlexibleZone', {}).get('Location', [])
-
-								for _flx_location in _flx_locations:
-									_flx_location = _flx_location.get('Translation', _flx_location)
-
-									if _flx_location.get('Longitude') not in [None, '0.000000000'] and _flx_location.get('Latitude') not in [None, '0.000000000']:
-										_flx_lon, _flx_lat = _flx_location.get('Longitude'), _flx_location.get('Latitude')
-
-									elif 'Easting' in _flx_location and 'Northing' in _flx_location:
-										_flx_lon, _flx_lat = _transformer.transform(_flx_location.get('Easting'),_flx_location.get('Northing'))
-
-									_section.append([float(_flx_lon), float(_flx_lat)])
-
-						# if _bearing == '':
-						# 	print(f"{_atco_code}: {_name} ({_stop_type}-{_bus_stop_type}) does not have compass point.")
-
-						_sub_properties = {
-							'type': _bus_type,
-							'stopSubType': _bus_stop_type,
-							'bearing': _bearing,
-							'section': _section,
-							'timingStatus': _timing_status,
-							'annotatedCoachRef': _coach_ref
-						}
-
-					# Taxi [OnStreet]
-					case 'TXR' | 'STR':
-						_stop_category = 'taxi'
-						_taxi = _stop_class.get('OnStreet', {}).get('Taxi', {})
-						_taxi_type = toCamelCase(list(_taxi.keys())[0])
-
-						_sub_properties = {
-							'type': _taxi_type
-						}
-
-					# Car [OnStreet]
-					case 'SDA':
-						_stop_category = 'car'
-						_car = _stop_class.get('OnStreet', {}).get('Car', {})
-						_car_type = toCamelCase(list(_car.keys())[0])
-
-						_sub_properties = {
-							'type': _car_type
-						}
-
-					# Air [OffStreet]
-					case 'AIR' | 'GAT':
-						_stop_category = 'air'
-						_air = _stop_class.get('OffStreet', {}).get('Air', {})
-						_air_type = toCamelCase(list(_air.keys())[0])
-						_air_ref = _air.get('AnnotatedAirRef', {}) # to-do
-
-						_sub_properties = {
-							'type': _air_type,
-							'annotatedAirRef': _air_ref
-						}
-
-					# Ferry [OffStreet]
-					case 'FTD' | 'FER' | 'FBT':
-						_stop_category = 'ferry'
-						_ferry = _stop_class.get('OffStreet', {}).get('Ferry', {})
-						_ferry_type = toCamelCase(list(_ferry.keys())[0])
-						_ferry_ref = _ferry.get('AnnotatedFerryRef', {}) # to-do
-
-						_sub_properties = {
-							'type': _ferry_type,
-							'annotatedFerryRef': _ferry_ref
-						}
-
-					# Rail [OffStreet]
-					case 'RSE' | 'RLY' | 'RPL':
-						_stop_category = 'rail'
-						_rail = _stop_class.get('OffStreet', {}).get('Rail', {})
-						_rail_type = toCamelCase(list(_rail.keys())[0])
-						_rail_ref = _rail.get('AnnotatedRailRef', {}) # to-do
-
-						_sub_properties = {
-							'type': _rail_type,
-							'annotatedRailRef': _rail_ref
-						}
-
-					# Metro [OffStreet]
-					case 'TMU' | 'MET' | 'PLT':
-						_metro = _stop_class.get('OffStreet', {}).get('Metro', {})
-						_rail = _stop_class.get('OffStreet', {}).get('Rail', {})
-
-						if _metro:
-							_stop_category = 'metro'
-							_metro_type = toCamelCase(list(_metro.keys())[0])
-							_metro_ref = _metro.get('AnnotatedMetroRef', {}) # to-do
-
-							_sub_properties = {
-								'type': _metro_type,
-								'annotatedMetroRef': _metro_ref
-							}
-
-						elif _rail:
-							_stop_category = 'rail'
-							_rail_type = toCamelCase(list(_rail.keys())[0])
-							_rail_ref = _rail.get('AnnotatedRailRef', {}) # to-do
-
-							_sub_properties = {
-								'type': _rail_type,
-								'annotatedRailRef': _rail_ref
-							}
-
+	# ----- Construct the ``sub_properties`` field based on the ``StopType`` ----
+	match stop_type:
+		case 'BCT':
+			stop_category = 'bus'
+			bus = stop_class.get('OnStreet', {}).get('Bus', {})
+			timing_status = bus.get('TimingStatus', '')
+			bus_stop_type = bus.get('BusStopType', '')
+			bus_type = ''
+			coach_ref = bus.get('AnnotatedCoachRef', {})
+			bearing = ''
+			section = []
+			match bus_stop_type:
+				case 'MKD':
+					bus_type = 'marked'
+					bearing = bus.get('MarkedPoint', {}).get('Bearing', {}).get('CompassPoint', '')
+				case 'CUS':
+					bus_type = 'custom'
+					bearing = bus.get('UnmarkedPoint', {}).get('Bearing', {}).get('CompassPoint', '')
+				case 'HAR':
+					bus_type = 'hailAndRide'
+					section_part = bus.get('HailAndRideSection', {})
+					for loc in [section_part.get('StartPoint'), section_part.get('EndPoint')]:
+						if not loc:
+							continue
+						loc = loc.get('Translation', loc)
+						if loc.get('Longitude') not in [None, '0.000000000'] and loc.get('Latitude') not in [None, '0.000000000']:
+							har_lon, har_lat = loc['Longitude'], loc['Latitude']
+						elif 'Easting' in loc and 'Northing' in loc:
+							har_lon, har_lat = transformer.transform(loc['Easting'], loc['Northing'])
 						else:
-							print(f"{_atco_code}: {_name} ({_stop_type}) is neither rail or metro.")
-
-					# Telecabine (Lift & Cable Car) [OffStreet]
-					case 'LCE' | 'LCB' | 'LPL':
-						_stop_category = 'telecabine'
-						_telecabine = _stop_class.get('OffStreet', {}).get('Telecabine', {})
-						_telecabine_type = toCamelCase(list(_telecabine.keys())[0])
-						_telecabine_ref = _telecabine.get('AnnotatedCablewayRef:', {}) # to-do
-
-						_sub_properties = {
-							'type': _telecabine_type,
-							'AnnotatedCablewayRef': _telecabine_ref
-						}
-
-					# Bus / Coach [OffStreet]
-					case 'BCE' | 'BST' | 'BCS' | 'BCQ':
-						_stop_category = 'busAndCoach'
-						_timing_status = ''
-						_bus_coach = _stop_class.get('OffStreet', {}).get('BusAndCoach', {})
-						_bus_coach_type = toCamelCase(list(_bus_coach.keys())[0])
-						_type = _bus_coach.get(list(_bus_coach.keys())[0], {})
-
-						if _type:
-							_timing_statuses = _type.get('TimingStatus', '')
-
-						_coach_ref = _bus_coach.get('AnnotatedCoachRef:', {}) # to-do
-
-						_sub_properties = {
-							'type': _bus_coach_type,
-							'timingStatus': _timing_status,
-							'annotatedCoachRef': _coach_ref
-						}
-				_stop_area_ref = point.get('StopAreas', {}).get('StopAreaRef', [])
-				_stop_areas = []
-
-				if isinstance(_stop_area_ref, str):
-					_stop_areas.append(_stop_area_ref)
-
-				elif not isinstance(_stop_area_ref, list):
-					_stop_area_ref = [_stop_area_ref]
-
-					for _a in _stop_area_ref:
-						_stop_areas.append(_a.get('#text', ''))
-
-				_admin_area_ref = point.get('AdministrativeAreaRef', '')
-				_plusbuszone_ref = point.get('PlusbusZones', {}).get('PlusbusZoneRef', [])
-				_plusbuszones = []
-
-				if isinstance(_plusbuszone_ref, str):
-					_plusbuszones.append(_plusbuszone_ref)
-
-				elif not isinstance(_plusbuszone_ref, list):
-					_plusbuszone_ref = [_plusbuszone_ref]
-
-					for _z in _plusbuszone_ref:
-						_plusbuszones.append(_z.get('#text', ''))
-
-				_is_public = point.get('Public', 'true')
-				_stop_validities = point.get('StopAvailability', {}).get('StopValidity', [])
-				_validities = []
-
-				if not isinstance(_stop_validities, list):
-					_stop_validities = [_stop_validities]
-
-				for _stop_validity in _stop_validities:
-					_date_range = _stop_validity.get('DateRange', {})
-					_validity_start_date = _date_range.get('StartDate', '')
-					_validity_end_date = _date_range.get('EndDate', '')
-					_validity_status = ''
-					_transfer_to = ''
-					_validity_note = _stop_validity.get('Note', '')
-
-					match _stop_validity:
-						case 'Active':
-							_validity_status = 'active'
-
-						case 'Suspended':
-							_validity_status = 'suspended'
-
-						case 'Transferred':
-							_validity_status = 'transferred'
-							_transfer_to = _stop_validity.get('Transferred', {}).get('StopPointRef', '')
-
-					_validities.append({
-						'validityStart': _validity_start_date,
-						'validityEnd': _validity_end_date,
-						'status': _validity_status,
-						'transferToStop': _transfer_to,
-						'remarks': _validity_note
-					})
-
-				_properties = {
-					'atcoCode': _atco_code,
-					'naptanCode': _naptan_code,
-					'category': _stop_category,
-					'stopType': _stop_type,
-					'onStreet': _on_street,
-					'name': _name,
-					'landmark': _landmark,
-					'street': _street,
-					'crossing': _crossing,
-					'locality': _locality_name,
-					'town': _town,
-					'suburb': _suburb,
-					'coordinates': [float(_lon), float(_lat)],
-					'indicator': _indicator,
-					'properties': _sub_properties,
-					'stopArea': _stop_areas,
-					'adminArea': _admin_area_ref,
-					'plusbusZone': _plusbuszones,
-					'created': _created_at,
-					'updated': _modified_at,
-					'status': _status,
-					'validity': _validities
+							continue
+						section.append([float(har_lon), float(har_lat)])
+				case 'FLX':
+					flx_locations = bus.get('FlexibleZone', {}).get('Location', [])
+					for loc in flx_locations:
+						if not loc:
+							continue
+						loc = loc.get('Translation', loc)
+						if loc.get('Longitude') not in [None, '0.000000000'] and loc.get('Latitude') not in [None, '0.000000000']:
+							flx_lon, flx_lat = loc['Longitude'], loc['Latitude']
+						elif 'Easting' in loc and 'Northing' in loc:
+							flx_lon, flx_lat = transformer.transform(loc['Easting'], loc['Northing'])
+						else:
+							continue
+						section.append([float(flx_lon), float(flx_lat)])
+			sub_properties = {
+				'type': bus_type,
+				'stopSubType': bus_stop_type,
+				'bearing': bearing,
+				'section': section,
+				'timingStatus': timing_status,
+				'annotatedCoachRef': coach_ref,
+			}
+		case 'TXR' | 'STR':
+			stop_category = 'taxi'
+			taxi = stop_class.get('OnStreet', {}).get('Taxi', {})
+			taxi_type = to_camel_case(list(taxi.keys())[0])
+			sub_properties = {'type': taxi_type}
+		case 'SDA':
+			stop_category = 'car'
+			car = stop_class.get('OnStreet', {}).get('Car', {})
+			car_type = to_camel_case(list(car.keys())[0])
+			sub_properties = {'type': car_type}
+		case 'AIR' | 'GAT':
+			stop_category = 'air'
+			air = stop_class.get('OffStreet', {}).get('Air', {})
+			air_type = to_camel_case(list(air.keys())[0])
+			air_ref = air.get('AnnotatedAirRef', {})
+			sub_properties = {
+				'type': air_type,
+				'annotatedAirRef': air_ref,
+			}
+		case 'FTD' | 'FER' | 'FBT':
+			stop_category = 'ferry'
+			ferry = stop_class.get('OffStreet', {}).get('Ferry', {})
+			ferry_type = to_camel_case(list(ferry.keys())[0])
+			ferry_ref = ferry.get('AnnotatedFerryRef', {})
+			sub_properties = {
+				'type': ferry_type,
+				'annotatedFerryRef': ferry_ref,
+			}
+		case 'RSE' | 'RLY' | 'RPL':
+			stop_category = 'rail'
+			rail = stop_class.get('OffStreet', {}).get('Rail', {})
+			rail_type = to_camel_case(list(rail.keys())[0])
+			rail_ref = rail.get('AnnotatedRailRef', {})
+			sub_properties = {
+				'type': rail_type,
+				'annotatedRailRef': rail_ref,
+			}
+		case 'TMU' | 'MET' | 'PLT':
+			metro = stop_class.get('OffStreet', {}).get('Metro', {})
+			rail = stop_class.get('OffStreet', {}).get('Rail', {})
+			if metro:
+				stop_category = 'metro'
+				metro_type = to_camel_case(list(metro.keys())[0])
+				metro_ref = metro.get('AnnotatedMetroRef', {})
+				sub_properties = {
+					'type': metro_type,
+					'annotatedMetroRef': metro_ref,
 				}
-
-				_geodata['features'].append({
-					'type': 'Feature',
-					'geometry': {
-						'type': 'Point',
-						'coordinates': [float(_lon), float(_lat)]
-					},
-					'properties': _properties
-				})
-
-				_geodata_stops_all['features'].append({
-					'type': 'Feature',
-					'geometry': {
-						'type': 'Point',
-						'coordinates': [float(_lon), float(_lat)]
-					},
-					'properties': _properties
-				})
-
-				_stops_all.setdefault(_atco_code, _properties)
-
-			_stop_points = _data.get('NaPTAN', {}).get('StopPoints', {}).get('StopPoint', [])
-
-			if not isinstance(_stop_points, list):
-				_stop_points = [_stop_points]
-
-			for _stop_point in _stop_points:
-				appendStopPoint(_stop_point)
-
-			# with open(os.path.join(data_dir, f'naptan_stop_points_{atco}.json'), 'w') as f:
-			# 	f.write(json.dumps(_new_data, ensure_ascii = False, separators=(',', ':')))
-			# 	_len = len(_new_data)
-			# 	print(f'Inserted {_len} stop points.')
-
-			# with open(os.path.join(data_dir, f'naptan_stop_points_{atco}.geojson'), 'w') as f:
-			# 	f.write(json.dumps(_geodata, ensure_ascii = False, separators=(',', ':')))
-			# 	_len = len(_geodata['features'])
-			# 	print(f'Inserted {_len} stop points in geo.')
-
-			print('Creating GeoJSON for StopAreas ...')
-			_new_data = {}
-
-			_geodata = {
-				'type': 'FeatureCollection',
-				'features': []
+			elif rail:
+				stop_category = 'rail'
+				rail_type = to_camel_case(list(rail.keys())[0])
+				rail_ref = rail.get('AnnotatedRailRef', {})
+				sub_properties = {
+					'type': rail_type,
+					'annotatedRailRef': rail_ref,
+				}
+			else:
+				logger.info(f"{atco_code}: {name} ({stop_type}) is neither rail or metro.")
+		case 'LCE' | 'LCB' | 'LPL':
+			stop_category = 'telecabine'
+			tele = stop_class.get('OffStreet', {}).get('Telecabine', {})
+			tele_type = to_camel_case(list(tele.keys())[0])
+			tele_ref = tele.get('AnnotatedCablewayRef:', {})
+			sub_properties = {
+				'type': tele_type,
+				'AnnotatedCablewayRef': tele_ref,
+			}
+		case 'BCE' | 'BST' | 'BCS' | 'BCQ':
+			stop_category = 'busAndCoach'
+			timing_status = ''
+			bus_coach = stop_class.get('OffStreet', {}).get('BusAndCoach', {})
+			bus_coach_type = to_camel_case(list(bus_coach.keys())[0])
+			type_obj = bus_coach.get(list(bus_coach.keys())[0], {})
+			if type_obj:
+				timing_statuses = type_obj.get('TimingStatus', '')
+			coach_ref = bus_coach.get('AnnotatedCoachRef:', {})
+			sub_properties = {
+				'type': bus_coach_type,
+				'timingStatus': timing_status,
+				'annotatedCoachRef': coach_ref,
 			}
 
-			def appendStopArea(point):
-				global _stop_areas_all
-				global _geodata_areas_all
+	# Collect area/zone references
+	stop_areas = point.get('StopAreas', {}).get('StopAreaRef', [])
+	if isinstance(stop_areas, str):
+		stop_areas = [stop_areas]
+	elif not isinstance(stop_areas, list):
+		stop_areas = [stop_areas]
+	stop_areas = [sa if isinstance(sa, str) else sa.get('#text', '') for sa in stop_areas]
 
-				_location = point.get('Location', {})
-				_location = _location.get('Translation', _location)
+	plusbuszones = point.get('PlusbusZones', {}).get('PlusbusZoneRef', [])
+	if isinstance(plusbuszones, str):
+		plusbuszones = [plusbuszones]
+	elif not isinstance(plusbuszones, list):
+		plusbuszones = [plusbuszones]
+	plusbuszones = [z if isinstance(z, str) else z.get('#text', '') for z in plusbuszones]
 
-				if _location.get('Longitude') not in [None, '0.000000000'] and _location.get('Latitude') not in [None, '0.000000000']:
-					_lon, _lat = _location.get('Longitude'), _location.get('Latitude')
+	is_public = point.get('Public', False)
+	stop_validities = point.get('StopAvailability', {}).get('StopValidity', [])
+	validities = []
 
-				elif 'Easting' in _location and 'Northing' in _location:
-					_lon, _lat = _transformer.transform(_location.get('Easting'),_location.get('Northing'))
+	if not isinstance(stop_validities, list):
+		stop_validities = [stop_validities]
 
-				else:
-					return
+	for stop_validity in stop_validities:
+		date_range = stop_validity.get('DateRange', {})
+		validity_start_date = date_range.get('StartDate', '')
+		validity_end_date = date_range.get('EndDate', '')
+		validity_status = ''
+		transfer_to = ''
+		validity_note = stop_validity.get('Note', '')
 
-				_stop_area_code = point.get('StopAreaCode')
+		match stop_validity:
+			case 'Active':
+				validity_status = 'active'
 
-				if not _stop_area_code:
-					return
+			case 'Suspended':
+				validity_status = 'suspended'
 
-				_new_data.setdefault(_stop_area_code, point)
+			case 'Transferred':
+				validity_status = 'transferred'
+				transfer_to = stop_validity.get('Transferred', {}).get('StopPointRef', '')
 
-				_parent_stop_area_ref = point.get('ParentStopAreaRef')
-				_parent_stop_area_code = ''
+		validities.append({
+			'validityStart': validity_start_date,
+			'validityEnd': validity_end_date,
+			'status': validity_status,
+			'transferToStop': transfer_to,
+			'remarks': validity_note
+		})
 
-				if isinstance(_parent_stop_area_ref, str):
-					_parent_stop_area_code = _parent_stop_area_ref
+	properties = {
+		'atcoCode': atco_code,
+		'naptanCode': naptan_code,
+		'category': stop_category,
+		'stopType': stop_type,
+		'onStreet': on_street,
+		'name': name,
+		'landmark': landmark,
+		'street': street,
+		'crossing': crossing,
+		'locality': locality_name,
+		'town': town,
+		'suburb': suburb,
+		'coordinates': [float(lon), float(lat)],
+		'indicator': indicator,
+		'properties': sub_properties,
+		'stopArea': stop_areas,
+		'adminArea': admin_area_ref,
+		'plusbusZone': plusbuszones,
+		'created': created_at,
+		'updated': modified_at,
+		'status': status,
+		'validity': validities,
+		'isPublic': is_public
+	}
+	point_geom = {
+		'type': 'Feature',
+		'geometry': {'type': 'Point', 'coordinates': [float(lon), float(lat)]},
+		'properties': properties,
+	}
 
-				elif _parent_stop_area_ref:
-					_parent_stop_area_code = _parent_stop_area_ref.get('#text', '')
+	stops_all.setdefault(atco_code, properties)
+	geodata_stops_all['features'].append(point_geom)
 
-				_name = point.get('Name', '')
-				_admin_area_ref = point.get('AdministrativeAreaRef', '')
-				_type = point.get('StopAreaType', '')
-				_created_at = point.get('CreationDateTime', '')
-				_modified_at = point.get('ModificationDateTime', '')
+def append_stop_area(point: dict):
+	location = point.get('Location', {})
+	location = location.get('Translation', location)
+	if location.get('Longitude') not in [None, '0.000000000'] and location.get('Latitude') not in [None, '0.000000000']:
+		lon, lat = location['Longitude'], location['Latitude']
+	elif 'Easting' in location and 'Northing' in location:
+		lon, lat = transformer.transform(location['Easting'], location['Northing'])
+	else:
+		return
+	area_code = point.get('StopAreaCode')
+	if not area_code:
+		return
+	parent_ref = point.get('ParentStopAreaRef')
+	parent_code = ''
+	if isinstance(parent_ref, str):
+		parent_code = parent_ref
+	elif parent_ref:
+		parent_code = parent_ref.get('#text', '')
+	name = point.get('Name', '')
+	admin_area = point.get('AdministrativeAreaRef', '')
+	stop_area_type = point.get('StopAreaType', '')
+	created_at = point.get('CreationDateTime', '')
+	modified_at = point.get('ModificationDateTime', '')
+	properties = {
+		'stopAreaCode': area_code,
+		'parent': parent_code,
+		'name': name,
+		'adminArea': admin_area,
+		'type': stop_area_type,
+		'coordinates': [float(lon), float(lat)],
+		'created': created_at,
+		'updated': modified_at,
+	}
+	point_geom = {
+		'type': 'Feature',
+		'geometry': {'type': 'Point', 'coordinates': [float(lon), float(lat)]},
+		'properties': properties,
+	}
 
-				_properties = {
-					'stopAreaCode': _stop_area_code,
-					'parent': _parent_stop_area_code,
-					'name': _name,
-					'adminArea': _admin_area_ref,
-					'type': _type,
-					'coordinates': [float(_lon), float(_lat)],
-					'created': _created_at,
-					'updated': _modified_at
-				}
+	stop_areas_all.setdefault(area_code, properties)
+	geodata_areas_all['features'].append(point_geom)
 
-				_geodata['features'].append({
-					'type': 'Feature',
-					'geometry': {
-						'type': 'Point',
-						'coordinates': [float(_lon), float(_lat)]
-					},
-					'properties': _properties
-				})
 
-				_geodata_areas_all['features'].append({
-					'type': 'Feature',
-					'geometry': {
-						'type': 'Point',
-						'coordinates': [float(_lon), float(_lat)]
-					},
-					'properties': _properties
-				})
+# -------------------------------------------------------------------------
 
-				_stop_areas_all.setdefault(_stop_area_code, _properties)
+def get_naptan(atco: str, locality_map: dict) -> None:
+	"""Populate the global containers with stop/area data for a single ATCO.
 
-			_stop_areas = _data.get('NaPTAN', {}).get('StopAreas', {}).get('StopArea', [])
+	The heavy lifting is performed in the helper functions defined
+	above; they write directly to the module‑level dictionaries.
+	"""
+	logger.info(f'Getting NaPTAN XML of ATCO {atco} from API…')
+	try:
+		xml_content = fetch_naptan_xml(atco)
+	except SystemExit:
+		logger.error(f'Failed to fetch ATCO {atco}. Skipping.')
+		return
+	if xml_content is None:
+		return
+	logger.info('Converting XML to JSON …')
+	xml_dict = xmltodict.parse(xml_content)
+	data = clean_obj(xml_dict)
 
-			if not isinstance(_stop_areas, list):
-				_stop_areas = [_stop_areas]
+	# ---- StopPoints ----------------------------------------------------------------
+	stop_points = data.get('NaPTAN', {}).get('StopPoints', {}).get('StopPoint', [])
+	if not isinstance(stop_points, list):
+		stop_points = [stop_points]
 
-			for _stop_area in _stop_areas:
-				appendStopArea(_stop_area)
+	for sp in stop_points:
+		append_stop_point(sp, locality_map)
 
-			# with open(os.path.join(data_dir, f'naptan_stop_areas_{atco}.json'), 'w') as f:
-			# 	f.write(json.dumps(_new_data, ensure_ascii = False, separators=(',', ':')))
-			# 	_len = len(_new_data)
-			# 	print(f'Inserted {_len} stop areas.')
+	logger.info(f'Inserted {len(stop_points)} stop points for ATCO {atco}.')
 
-			# with open(os.path.join(data_dir, f'naptan_stop_areas_{atco}.geojson'), 'w') as f:
-			# 	f.write(json.dumps(_geodata, ensure_ascii = False, separators=(',', ':')))
-			# 	_len = len(_geodata['features'])
-			# 	print(f'Inserted {_len} stop areas in geo.')
+	# ---- StopAreas -----------------------------------------------------------------
+	stop_areas = data.get('NaPTAN', {}).get('StopAreas', {}).get('StopArea', [])
+	if not isinstance(stop_areas, list):
+		stop_areas = [stop_areas]
+	for pa in stop_areas:
+		append_stop_area(pa)
 
-		print('===')
+	logger.info(f'Inserted {len(stop_areas)} stop areas for ATCO {atco}.')
 
+# Helper for appending a single stop area – similar to the point logic.
+
+
+# ``__main__`` section is intentionally lightweight
 def main():
-	global _stops_all
-	global _stop_areas_all
-	global _geodata_stops_all
-	global _geodata_areas_all
+	atco_list = get_atco_list()
+	locality_map = fetch_nptg_localities()
 
-	_atco_list = getAtcoList()
+	for _atco in atco_list:
+		get_naptan(_atco, locality_map)
 
-	for _atco in _atco_list:
-		getNaptan(_atco)
-
-	os.makedirs(data_dir, exist_ok=True)
-	# print('Creating aggregate JSON for StopPoints ...')
-	# with open(os.path.join(data_dir, f'naptan_stop_points_all.json'), 'w') as f:
-	# 	f.write(json.dumps(_stops_all, ensure_ascii = False, separators=(',', ':')))
-	# 	_len = len(_stops_all)
-	# 	print(f'Inserted {_len} stop points.')
-
-	# print('Creating aggregate JSON for StopAreas ...')
-	# with open(os.path.join(data_dir, f'naptan_stop_areas_all.json'), 'w') as f:
-	# 	f.write(json.dumps(_stop_areas_all, ensure_ascii = False, separators=(',', ':')))
-	# 	_len = len(_stop_areas_all)
-	# 	print(f'Inserted {_len} stop areas.')
-
-	# print('Creating aggregate GeoJSON for StopPoints ...')
-	# with open(os.path.join(data_dir, f'naptan_stop_points_all.geojson'), 'w') as f:
-	# 	f.write(json.dumps(_geodata_stops_all, ensure_ascii = False, separators=(',', ':')))
-	# 	_len = len(_geodata_stops_all['features'])
-	# 	print(f'Inserted {_len} stop points in geo.')
-
-	# print('Creating aggregate GeoJSON for StopAreas ...')
-	# with open(os.path.join(data_dir, f'naptan_stop_areas_all.geojson'), 'w') as f:
-	# 	f.write(json.dumps(_geodata_areas_all, ensure_ascii = False, separators=(',', ':')))
-	# 	_len = len(_geodata_areas_all['features'])
-	# 	print(f'Inserted {_len} stop areas in geo.')
+	os.makedirs(naptan_dir, exist_ok=True)
 
 	print('Splitting StopPoints ...')
-	os.makedirs(f'{data_dir}/stopPoints', exist_ok=True)
-	for _k, _v in _stops_all.items():
-		_d = {}
-		_d[_k] = _v
+	os.makedirs(f'{naptan_dir}/stopPoints', exist_ok=True)
+	for k, v in stops_all.items():
+		d = {}
+		d[k] = v
 
-		with open(os.path.join(f'{data_dir}/stopPoints', f'{_k}.json'), 'w') as f:
-			f.write(json.dumps(_d, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
+		with open(os.path.join(f'{naptan_dir}/stopPoints', f'{k}.json'), 'w') as f:
+			f.write(json.dumps(d, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 
-	with open(os.path.join(f'{data_dir}', 'naptan_stop_points_all.json'), 'w') as f:
-			f.write(json.dumps([_k for _k in _stops_all], ensure_ascii = False, separators=(',', ':'), sort_keys=True))
+	with open(os.path.join(f'{naptan_dir}', f'naptan_stop_points_all.json'), 'w') as f:
+			f.write(json.dumps([k for k in stops_all], ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 
 	print('Splitting StopAreas ...')
-	os.makedirs(f'{data_dir}/stopAreas', exist_ok=True)
-	for _k, _v in _stop_areas_all.items():
-		_d = {}
-		_d[_k] = _v
+	os.makedirs(f'{naptan_dir}/stopAreas', exist_ok=True)
+	for k, v in stop_areas_all.items():
+		d = {}
+		d[k] = v
 
-		with open(os.path.join(f'{data_dir}/stopAreas', f'{_k}.json'), 'w') as f:
-			f.write(json.dumps(_d, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 
-	with open(os.path.join(f'{data_dir}', 'naptan_stop_areas_all.json'), 'w') as f:
-			f.write(json.dumps([_k for _k in _stop_areas_all], ensure_ascii = False, separators=(',', ':'), sort_keys=True))
+		with open(os.path.join(f'{naptan_dir}/stopAreas', f'{k}.json'), 'w') as f:
+			f.write(json.dumps(d, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 
-if __name__ == "__main__":
+	with open(os.path.join(f'{naptan_dir}', f'naptan_stop_areas_all.json'), 'w') as f:
+			f.write(json.dumps([k for k in stop_areas_all], ensure_ascii = False, separators=(',', ':'), sort_keys=True))
+
+if __name__ == '__main__':
 	main()

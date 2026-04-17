@@ -1,234 +1,258 @@
 import time
 import os
 import requests
+import logging
 import json
 import xmltodict
-import re
 from pyproj import Transformer
 
+# Logger configuration
+logging.basicConfig(
+	level=logging.INFO,
+	format='%(asctime)s [%(levelname)s] %(message)s',
+	datefmt='%Y-%m-%d %H:%M:%S'
+)
+logger = logging.getLogger(__name__)
+
+# Data and URL configuration
 data_dir = 'data/nptg'
+nptg_url = 'https://naptan.api.dft.gov.uk/v1/nptg'
 
-def retryRequest(url):
-	while True:
-		r = requests.get(url)
+# Session configuration
+session = requests.Session()
+request_timeout = 30
 
-		if r.status_code == 200:
-			return r
+# Transfomer configuration
+transformer = Transformer.from_crs(27700, 4326, always_xy=True)
 
-		elif r.status_code == 400 or r.status_code == 404:
-			raise Exception(r.status_code, url)
-			break
-
-		elif r.status_code == 429:
-			time.sleep(10)
-
-		else:
-			raise Exception(r.status_code, url)
-
-def getNptg():
-	def fetchNptgData():
+# Retry logic with exponential backoff for handling rate limits and transient errors
+def retry_request(url, max_retries=5, backoff_delay=1):
+	for attempt in range(max_retries):
 		try:
-			_data = retryRequest('https://naptan.api.dft.gov.uk/v1/nptg')
+			resp = session.get(url, timeout=request_timeout)
+			if resp.status_code == 200:
+				return resp
+			if resp.status_code == 429:
+				logger.warning(f'Rate limited (429). Waiting {backoff_delay}s before retry...')
+				time.sleep(backoff_delay)
+				backoff_delay *= 2
+				continue
+			resp.raise_for_status()
+		except requests.RequestException as exc:
+			logger.error(f'Request exception: {exc}. Retrying...')
+			time.sleep(backoff_delay)
+			backoff_delay *= 2
+	raise SystemExit(f'Failed to fetch {url} after {max_retries} attempts.')
 
-		except Exception:
-			print('Cannot fetch NPTG data. Retrying after 10 sec ...')
-			time.sleep(10)
-			fetchNptgData()
+def get_nptg():
+	def fetch_nptg_data():
+		data = retry_request(nptg_url)
+		os.makedirs(data_dir, exist_ok=True)
+		with open(os.path.join(data_dir, 'nptg.xml'), 'wb') as f:
+			f.write(data.content)
 
+		return data.content
+
+	logger.info('Getting NPTG XML from API ...')
+	data = fetch_nptg_data()
+
+	logger.info('Converting to JSON ...')
+	# Parse XML to dict and clean attribute prefixes
+
+	def clean_obj(obj):
+		if isinstance(obj, dict):
+			# Special case: {"@xml:lang": "en", "#text": "Name"}
+			if set(obj.keys()) == {"@xml:lang", "#text"}:
+				return obj["#text"]
+			return {k.lstrip('@'): clean_obj(v) for k, v in obj.items()}
+		elif isinstance(obj, list):
+			return [clean_obj(v) for v in obj]
 		else:
-			os.makedirs(data_dir, exist_ok=True)
-			with open(os.path.join(data_dir, 'nptg.xml'), 'wb') as f:
-				f.write(_data.content)
+			return obj
 
-			return _data.content
-
-	print('Getting NPTG XML from API ...')
-	_data = fetchNptgData()
-
-	print('Converting to JSON ...')
-	_data = json.dumps(xmltodict.parse(_data), ensure_ascii = False, separators=(',', ':'))
-	_pattern = r'{(?:\'|")@xml:lang(?:\'|"):(?:\'|")([A-Za-z]{2})(?:\'|"),(?:\'|")#text(?:\'|"):(?:\'|")(.*?)(?:\'|")}'
-	_data = re.sub(_pattern, r'"\2"', _data)
-	_data = _data.replace('@', '')
+	parsed = xmltodict.parse(data)
+	cleaned = clean_obj(parsed)
+	data = json.dumps(cleaned, ensure_ascii=False, separators=(',', ':'), sort_keys=True)
 
 	with open(os.path.join(data_dir, 'nptg.json'), 'w') as f:
-		f.write(_data)
+		f.write(data)
 
-	_data = json.loads(_data)
+	data = json.loads(data)
 
-	print('Creating JSON for Regions ...')
-	_new_data, _atco_data = {}, {}
+	logger.info('Creating JSON for Regions ...')
+	new_data, atco_data = {}, {}
 
-	def appendRegions(point):
-		_new_data.setdefault(point['RegionCode'], point)
+	def append_regions(point):
+		new_data.setdefault(point['RegionCode'], point)
 
-		_admin_areas = point.get('AdministrativeAreas', {}).get('AdministrativeArea', [])
-		if not isinstance(_admin_areas, list):
-			_admin_areas = [_admin_areas]
+		admin_areas = point.get('AdministrativeAreas', {}).get('AdministrativeArea', [])
+		if not isinstance(admin_areas, list):
+			admin_areas = [admin_areas]
 
-		for _admin_area in _admin_areas:
-			_atco_data.setdefault(_admin_area['AtcoAreaCode'], _admin_area)
+		for admin_area in admin_areas:
+			atco_data.setdefault(admin_area['AtcoAreaCode'], admin_area)
 
-	for _point in _data.get('NationalPublicTransportGazetteer', {}).get('Regions', {}).get('Region', []):
-		appendRegions(_point)
+	for point in data.get('NationalPublicTransportGazetteer', {}).get('Regions', {}).get('Region', []):
+		append_regions(point)
 
 	with open(os.path.join(data_dir, 'nptg_regions.json'), 'w') as f:
-		f.write(json.dumps(_new_data, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
+		f.write(json.dumps(new_data, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 
 	with open(os.path.join(data_dir, 'nptg_atcoareas.json'), 'w') as f:
-		f.write(json.dumps(_atco_data, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
+		f.write(json.dumps(atco_data, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 
-	print('Creating JSON for Localities ...')
-	_new_data, _revised_data = {}, {}
+	logger.info('Creating JSON for Localities ...')
+	new_data, revised_data = {}, {}
 
-	_geodata = {
+	geodata = {
 		'type': 'FeatureCollection',
 		'features': []
 	}
 
-	def appendLocalities(point):
-		_location = point.get('Location', {})
-		_translation = _location.get('Translation', {})
-		_transformer = Transformer.from_crs(27700, 4326, always_xy=True)
+	def append_localities(point):
+		location = point.get('Location', {})
+		translation = location.get('Translation', {})
 
-		if _translation.get('Longitude') not in [None, '0.000000000'] and _translation.get('Latitude') not in [None, '0.000000000']:
-			_lon, _lat = _translation.get('Longitude'), _translation.get('Latitude')
-
-		elif 'Easting' in _location and 'Northing' in _location:
-			_lon, _lat = _transformer.transform(_location.get('Easting'),_location.get('Northing'))
-
+		if translation.get('Longitude') not in [None, '0.000000000'] and translation.get('Latitude') not in [None, '0.000000000']:
+			try:
+				lon = float(translation.get('Longitude'))
+				lat = float(translation.get('Latitude'))
+			except (TypeError, ValueError):
+				return
+		elif location.get('Easting') is not None and location.get('Northing') is not None:
+			lon, lat = transformer.transform(location.get('Easting'), location.get('Northing'))
 		else:
 			return
 
-		_nptg_locality_code = point.get('NptgLocalityCode')
+		nptg_locality_code = point.get('NptgLocalityCode')
 
-		if not _nptg_locality_code:
+		if not nptg_locality_code:
 			return
 
-		_new_data.setdefault(_nptg_locality_code, point)
+		new_data.setdefault(nptg_locality_code, point)
 
-		_name = point.get('Descriptor', {}).get('LocalityName', '')
-		_qualifier = point.get('Descriptor', {}).get('Qualify', {}).get('QualifierName')
+		name = point.get('Descriptor', {}).get('LocalityName', '')
+		qualifier = point.get('Descriptor', {}).get('Qualify', {}).get('QualifierName')
 
-		if _qualifier:
-			_name = f'{_name}, {_qualifier}'
+		if qualifier:
+			name = f'{name}, {qualifier}'
 
-		_alt_name = point.get('AlternativeDescriptors', {}).get('Descriptor', {}).get('LocalityName')
+		alt_name = point.get('AlternativeDescriptors', {}).get('Descriptor', {}).get('LocalityName')
 
-		_revised_data.setdefault(_nptg_locality_code, {
-			'name': _name,
-			'altName': _alt_name,
+		revised_data.setdefault(nptg_locality_code, {
+			'name': name,
+			'altName': alt_name,
 			'adminArea': point.get('AdministrativeAreaRef'),
 			'nptgDistrict': point.get('NptgDistrictRef'),
 			'sourceType': point.get('SourceLocalityType'),
 			'classification': point.get('LocalityClassification'),
 			'parent': point.get('ParentNptgLocalityRef', {}).get('#text'),
-			'coords': [float(_lon), float(_lat)]
+			'coords': [float(lon), float(lat)]
 		})
 
-		_geodata['features'].append({
+		geodata['features'].append({
 			'type': 'Feature',
 			'geometry': {
 				'type': 'Point',
-				'coordinates': [float(_lon), float(_lat)]
+				'coordinates': [float(lon), float(lat)]
 			},
 			'properties': {
-				'nptgLocalityCode': _nptg_locality_code,
-				'name': _name
+				'nptgLocalityCode': nptg_locality_code,
+				'name': name
 			}
 		})
 
-	for _point in _data.get('NationalPublicTransportGazetteer', {}).get('NptgLocalities', {}).get('NptgLocality', []):
-		appendLocalities(_point)
+	for point in data.get('NationalPublicTransportGazetteer', {}).get('NptgLocalities', {}).get('NptgLocality', []):
+		append_localities(point)
 
-	for _k, _v in _revised_data.items():
-		if 'parent' in _v and _v['parent'] in _revised_data.keys():
-			if 'children' not in _revised_data[_v['parent']]:
-				_revised_data[_v['parent']]['children'] = []
+	for k, v in revised_data.items():
+		if 'parent' in v and v['parent'] in revised_data.keys():
+			if 'children' not in revised_data[v['parent']]:
+				revised_data[v['parent']]['children'] = []
 
-			_revised_data[_v['parent']]['children'].append(_k)
+			revised_data[v['parent']]['children'].append(k)
 
 	# with open(os.path.join(data_dir, f'nptg_localities.json'), 'w') as f:
-	# 	f.write(json.dumps(_new_data, ensure_ascii = False, separators=(',', ':')))
+	# 	f.write(json.dumps(new_data, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 
 	with open(os.path.join(data_dir, 'nptg_localities.geojson'), 'w') as f:
-		f.write(json.dumps(_geodata, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
+		f.write(json.dumps(geodata, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 
 	with open(os.path.join(data_dir, 'nptg_localities.json'), 'w') as f:
-		f.write(json.dumps(_revised_data, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
+		f.write(json.dumps(revised_data, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 
-	for _k, _v in _revised_data.items():
-		_d = {}
-		_d[_k] = _v
+	for k, v in revised_data.items():
+		d = {}
+		d[k] = v
 
 		os.makedirs(f'{data_dir}/localities', exist_ok=True)
-		with open(os.path.join(f'{data_dir}/localities', f'{_k}.json'), 'w') as f:
-			f.write(json.dumps(_d, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
+		with open(os.path.join(f'{data_dir}/localities', f'{k}.json'), 'w') as f:
+			f.write(json.dumps(d, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 
-	print('Creating JSON for PlusbusZones ...')
-	_new_data, _revised_data = {}, {}
+	logger.info('Creating JSON for PlusbusZones ...')
+	new_data, revised_data = {}, {}
 
-	_geodata = {
+	geodata = {
 		'type': 'FeatureCollection',
 		'features': []
 	}
 
-	def appendPlusbusZones(point):
-		_locs = []
-		_locations = point.get('Mapping', {}).get('Location', [])
-		_transformer = Transformer.from_crs(27700, 4326, always_xy=True)
+	def append_plusbuszones(point):
+		locs = []
+		locations = point.get('Mapping', {}).get('Location', [])
 
-		for _location in _locations:
-			_lon, _lat = _transformer.transform(_location.get('Easting'), _location.get('Northing'))
-			_locs.append([float(_lon), float(_lat)])
+		for location in locations:
+			lon, lat = transformer.transform(location.get('Easting'), location.get('Northing'))
+			locs.append([float(lon), float(lat)])
 
-		_code = point.get('PlusbusZoneCode')
+		code = point.get('PlusbusZoneCode')
 
-		if not _code:
+		if not code:
 			return
 
-		_new_data.setdefault(_code, point)
+		new_data.setdefault(code, point)
 
-		_revised_data.setdefault(_code, {
+		revised_data.setdefault(code, {
 			'name': point.get('Name'),
 			'country': point.get('Country'),
-			'locations': [_locs]
+			'locations': [locs]
 		})
 
-		_geodata['features'].append({
+		geodata['features'].append({
 			'type': 'Feature',
 			'geometry': {
 				'type': 'Polygon',
-				'coordinates': [_locs]
+				'coordinates': [locs]
 			},
 			'properties': {
-				'plusbusZoneCode': _code,
+				'plusbusZoneCode': code,
 				'name': point.get('Name')
 			}
 		})
 
-	for _point in _data.get('NationalPublicTransportGazetteer', {}).get('PlusbusZones', {}).get('PlusbusZone', []):
-		appendPlusbusZones(_point)
+	for point in data.get('NationalPublicTransportGazetteer', {}).get('PlusbusZones', {}).get('PlusbusZone', []):
+		append_plusbuszones(point)
 
 	# with open(os.path.join(data_dir, f'nptg_plusbuszones.json'), 'w') as f:
-	# 	f.write(json.dumps(_new_data, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
+	# 	f.write(json.dumps(new_data, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 
 	with open(os.path.join(data_dir, 'nptg_plusbuszones.geojson'), 'w') as f:
-		f.write(json.dumps(_geodata, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
+		f.write(json.dumps(geodata, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 
 	with open(os.path.join(data_dir, 'nptg_plusbuszones.json'), 'w') as f:
-		f.write(json.dumps(_revised_data, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
+		f.write(json.dumps(revised_data, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 
-	for _k, _v in _revised_data.items():
-		_d = {}
-		_d[_k] = _v
+
+	for k, v in revised_data.items():
+		d = {}
+		d[k] = v
 
 		os.makedirs(f'{data_dir}/plusbuszones', exist_ok=True)
-		with open(os.path.join(f'{data_dir}/plusbuszones', f'{_k}.json'), 'w') as f:
-			f.write(json.dumps(_d, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
+		with open(os.path.join(f'{data_dir}/plusbuszones', f'{k}.json'), 'w') as f:
+			f.write(json.dumps(d, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 
 def main():
-	getNptg()
+	get_nptg()
 
 if __name__ == "__main__":
 	main()
