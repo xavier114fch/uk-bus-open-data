@@ -58,7 +58,7 @@ def ftp_alive_or_reconnect(ftp: FTP, host: str, user: str, pwd: str) -> FTP:
 		return ftp
 
 # Helper: download with retries
-def download_file(ftp: FTP, remote_path: str, local_path: str, max_retries: int = 5, backoff_delay: int = 1):
+def download_file(ftp: FTP, remote_path: str, local_path: str, max_retries: int = 10, backoff_delay: int = 2):
 	for attempt in range(max_retries):
 		try:
 			with open(local_path, "wb") as fh:
