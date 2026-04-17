@@ -806,7 +806,7 @@ def extract_routes(_directory: str, _file: str, _data: dict) -> None:
 		_single_service[_slug].append({
 			'filename': _file,
 			'mode': _mode,
-			'region': _directory,
+			'region': _directory.split('/')[2],
 			'lineId': _line_ids,
 			'name': _line_names,
 			'origin': _origin,
@@ -961,10 +961,11 @@ def extract_stops(_directory: str, _file: str, _data: dict) -> None:
 						_slugs.append(_slug)
 		
 		else:
-			logger.warn(f'{_directory}/{_file} does not have any stop points.')
+			logger.warning(f'{_directory}/{_file} does not have any stop points.')
 
 def split_all_stops(_data_dir: str, _all_stops: dict) -> None:
-	logger.info(f'Created {len(_all_stops)} stops.\nSplitting StopPoints ...')
+	logger.info(f'Created {len(_all_stops)} stops.')
+	logger.info('Splitting StopPoints ...')
 
 	os.makedirs(f'{_data_dir}/stopPoints', exist_ok=True)
 	for _k, _v in _all_stops.items():
