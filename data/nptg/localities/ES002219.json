@@ -1,1 +1,1 @@
-{"ES002219":{"name":{"#text":"Kirkwall","xml:lang":"EN"},"altName":null,"adminArea":"134","nptgDistrict":"310","sourceType":"Lo","classification":"city","parent":null,"coords":[-2.961694,58.98266],"children":["ES002222","ES002223","N0078254","N0078255"]}}
+{"ES002219":{"adminArea":"134","altName":null,"children":["ES002222","ES002223","N0078254","N0078255"],"classification":"city","coords":[-2.961694,58.98266],"name":"Kirkwall","nptgDistrict":"310","parent":null,"sourceType":"Lo"}}

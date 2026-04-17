@@ -1,1 +1,1 @@
-{"E0057194":{"name":"{'#text': 'Strood', 'xml:lang': 'EN'}, {'#text': 'Medway', 'xml:lang': 'en'}","altName":null,"adminArea":"029","nptgDistrict":"310","sourceType":"US","classification":null,"parent":null,"coords":[0.4985012,51.39383],"children":["E0039144","E0039150","E0039153","N0072101"]}}
+{"E0057194":{"adminArea":"029","altName":null,"children":["E0039144","E0039150","E0039153","N0072101"],"classification":null,"coords":[0.4985012,51.39383],"name":"Strood, Medway","nptgDistrict":"310","parent":null,"sourceType":"US"}}

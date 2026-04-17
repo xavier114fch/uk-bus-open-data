@@ -1,1 +1,1 @@
-{"N0074884":{"name":"{'#text': 'Astley', 'xml:lang': 'EN'}, {'#text': 'Wigan', 'xml:lang': 'en'}","altName":null,"adminArea":"083","nptgDistrict":"273","sourceType":"Add","classification":null,"parent":"E0028950","coords":[-2.45074,53.5044],"children":["E0028559","E0028805","E0029044","E0029465"]}}
+{"N0074884":{"adminArea":"083","altName":null,"children":["E0028559","E0028805","E0029044","E0029465"],"classification":null,"coords":[-2.45074,53.5044],"name":"Astley, Wigan","nptgDistrict":"273","parent":"E0028950","sourceType":"Add"}}

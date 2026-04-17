@@ -1,1 +1,1 @@
-{"E0024804":{"name":"{'#text': 'Halifax', 'xml:lang': 'EN'}, {'#text': 'Ipswich', 'xml:lang': 'en'}","altName":null,"adminArea":"101","nptgDistrict":"105","sourceType":"Lo","classification":null,"parent":"E0057632","coords":[1.1432,52.04185]}}
+{"E0024804":{"adminArea":"101","altName":null,"classification":null,"coords":[1.1432,52.04185],"name":"Halifax, Ipswich","nptgDistrict":"105","parent":"E0057632","sourceType":"Lo"}}

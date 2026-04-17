@@ -1,1 +1,1 @@
-{"N0078801":{"name":{"#text":"Port Talbot","xml:lang":"EN"},"altName":null,"adminArea":"034","nptgDistrict":"310","sourceType":"Add","classification":"town","parent":null,"coords":[-3.780186,51.59241],"children":["E0039707","E0039736","E0039737","E0054409","E0054432","N0061195"]}}
+{"N0078801":{"adminArea":"034","altName":null,"children":["E0039707","E0039736","E0039737","E0054409","E0054432","N0061195"],"classification":"town","coords":[-3.780186,51.59241],"name":"Port Talbot","nptgDistrict":"310","parent":null,"sourceType":"Add"}}

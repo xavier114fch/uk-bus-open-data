@@ -1,1 +1,1 @@
-{"E0048862":{"name":"{'#text': 'Wymondham', 'xml:lang': 'EN'}, {'#text': 'Norfolk', 'xml:lang': 'en'}","altName":null,"adminArea":"091","nptgDistrict":"180","sourceType":"Pa","classification":null,"parent":null,"coords":[1.113441,52.57008],"children":["E0018343","E0018366","E0018371","N0060647","N0081200"]}}
+{"E0048862":{"adminArea":"091","altName":null,"children":["E0018343","E0018366","E0018371","N0060647","N0081200"],"classification":null,"coords":[1.113441,52.57008],"name":"Wymondham, Norfolk","nptgDistrict":"180","parent":null,"sourceType":"Pa"}}

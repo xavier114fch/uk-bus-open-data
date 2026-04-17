@@ -1,1 +1,1 @@
-{"N0075250":{"name":"{'#text': 'Stonebridge', 'xml:lang': 'EN'}, {'#text': 'London', 'xml:lang': 'en'}","altName":null,"adminArea":"082","nptgDistrict":"279","sourceType":"Add","classification":null,"parent":"N0060403","coords":[-0.2589165,51.54134],"children":["N0077721"]}}
+{"N0075250":{"adminArea":"082","altName":null,"children":["N0077721"],"classification":null,"coords":[-0.2589165,51.54134],"name":"Stonebridge, London","nptgDistrict":"279","parent":"N0060403","sourceType":"Add"}}

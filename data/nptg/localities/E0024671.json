@@ -1,1 +1,1 @@
-{"E0024671":{"name":"{'#text': 'Chantry', 'xml:lang': 'EN'}, {'#text': 'Ipswich', 'xml:lang': 'en'}","altName":null,"adminArea":"101","nptgDistrict":"9","sourceType":"Lo","classification":null,"parent":"E0057632","coords":[1.122221,52.04597],"children":["N0077970"]}}
+{"E0024671":{"adminArea":"101","altName":null,"children":["N0077970"],"classification":null,"coords":[1.122221,52.04597],"name":"Chantry, Ipswich","nptgDistrict":"9","parent":"E0057632","sourceType":"Lo"}}

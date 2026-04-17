@@ -1,1 +1,1 @@
-{"E0029949":{"name":"{'#text': 'Woodchurch', 'xml:lang': 'EN'}, {'#text': 'Birkenhead', 'xml:lang': 'en'}","altName":null,"adminArea":"090","nptgDistrict":"274","sourceType":"Lo","classification":null,"parent":"E0029614","coords":[-3.084938,53.37597],"children":["E0029601","E0029602"]}}
+{"E0029949":{"adminArea":"090","altName":null,"children":["E0029601","E0029602"],"classification":null,"coords":[-3.084938,53.37597],"name":"Woodchurch, Birkenhead","nptgDistrict":"274","parent":"E0029614","sourceType":"Lo"}}

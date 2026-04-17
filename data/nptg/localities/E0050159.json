@@ -1,1 +1,1 @@
-{"E0050159":{"name":"{'#text': 'Newark', 'xml:lang': 'EN'}, {'#text': 'Notts', 'xml:lang': 'en'}","altName":null,"adminArea":"095","nptgDistrict":"128","sourceType":"Pa","classification":"town","parent":null,"coords":[-0.8091901,53.07618],"children":["E0020590","E0020644","E0050110","N0077900","N0078412","N0078458"]}}
+{"E0050159":{"adminArea":"095","altName":null,"children":["E0020590","E0020644","E0050110","N0077900","N0078412","N0078458"],"classification":"town","coords":[-0.8091901,53.07618],"name":"Newark, Notts","nptgDistrict":"128","parent":null,"sourceType":"Pa"}}

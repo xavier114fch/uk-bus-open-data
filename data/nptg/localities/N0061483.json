@@ -1,1 +1,1 @@
-{"N0061483":{"name":"{'#text': 'Pen-yr-heol', 'xml:lang': 'EN'}, {'#text': 'Caerphilly', 'xml:lang': 'en'}","altName":null,"adminArea":"010","nptgDistrict":"310","sourceType":"Add","classification":"suburb","parent":"E0053976","coords":[-3.240183,51.58904],"children":["N0061398"]}}
+{"N0061483":{"adminArea":"010","altName":null,"children":["N0061398"],"classification":"suburb","coords":[-3.240183,51.58904],"name":"Pen-yr-heol, Caerphilly","nptgDistrict":"310","parent":"E0053976","sourceType":"Add"}}

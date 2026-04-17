@@ -1,1 +1,1 @@
-{"E0028865":{"name":"{'#text': 'Hulme', 'xml:lang': 'EN'}, {'#text': 'Manchester', 'xml:lang': 'en'}","altName":null,"adminArea":"083","nptgDistrict":"254","sourceType":"Lo","classification":null,"parent":"N0076111","coords":[-2.2499,53.46801],"children":["E0029361"]}}
+{"E0028865":{"adminArea":"083","altName":null,"children":["E0029361"],"classification":null,"coords":[-2.2499,53.46801],"name":"Hulme, Manchester","nptgDistrict":"254","parent":"N0076111","sourceType":"Lo"}}

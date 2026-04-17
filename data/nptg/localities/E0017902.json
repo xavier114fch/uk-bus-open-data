@@ -1,1 +1,1 @@
-{"E0017902":{"name":{"#text":"Kings Lynn","xml:lang":"EN"},"altName":null,"adminArea":"091","nptgDistrict":"110","sourceType":"Lo","classification":null,"parent":null,"coords":[0.3998984,52.75434],"children":["E0017881","E0017948","E0017996","N0060642","N0060643","N0060644","N0080596","N0081213"]}}
+{"E0017902":{"adminArea":"091","altName":null,"children":["E0017881","E0017948","E0017996","N0060642","N0060643","N0060644","N0080596","N0081213"],"classification":null,"coords":[0.3998984,52.75434],"name":"Kings Lynn","nptgDistrict":"110","parent":null,"sourceType":"Lo"}}

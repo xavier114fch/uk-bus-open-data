@@ -1,1 +1,1 @@
-{"E0040120":{"name":"{'#text': 'Bilborough', 'xml:lang': 'EN'}, {'#text': 'Nottingham', 'xml:lang': 'en'}","altName":null,"adminArea":"039","nptgDistrict":"310","sourceType":"Lo","classification":null,"parent":"E0057221","coords":[-1.228683,52.96464],"children":["N0060186","N0060195"]}}
+{"E0040120":{"adminArea":"039","altName":null,"children":["N0060186","N0060195"],"classification":null,"coords":[-1.228683,52.96464],"name":"Bilborough, Nottingham","nptgDistrict":"310","parent":"E0057221","sourceType":"Lo"}}

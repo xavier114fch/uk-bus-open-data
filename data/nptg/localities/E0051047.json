@@ -1,1 +1,1 @@
-{"E0051047":{"name":"{'#text': 'Wellington', 'xml:lang': 'EN'}, {'#text': 'Somerset', 'xml:lang': 'en'}","altName":null,"adminArea":"098","nptgDistrict":"200","sourceType":"Pa","classification":null,"parent":null,"coords":[-3.226831,50.9789],"children":["E0023134","E0023170","E0023207"]}}
+{"E0051047":{"adminArea":"098","altName":null,"children":["E0023134","E0023170","E0023207"],"classification":null,"coords":[-3.226831,50.9789],"name":"Wellington, Somerset","nptgDistrict":"200","parent":null,"sourceType":"Pa"}}

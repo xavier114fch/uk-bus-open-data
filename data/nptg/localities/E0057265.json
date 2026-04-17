@@ -1,1 +1,1 @@
-{"E0057265":{"name":"{'#text': 'Wellington', 'xml:lang': 'EN'}, {'#text': 'Telford', 'xml:lang': 'en'}","altName":null,"adminArea":"058","nptgDistrict":"310","sourceType":"US","classification":null,"parent":"E0055178","coords":[-2.519529,52.70094],"children":["E0042495","E0042498","N0073088","N0077203","N0080898"]}}
+{"E0057265":{"adminArea":"058","altName":null,"children":["E0042495","E0042498","N0073088","N0077203","N0080898"],"classification":null,"coords":[-2.519529,52.70094],"name":"Wellington, Telford","nptgDistrict":"310","parent":"E0055178","sourceType":"US"}}

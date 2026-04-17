@@ -1,1 +1,1 @@
-{"E0024806":{"name":"{'#text': 'Priory Heath', 'xml:lang': 'EN'}, {'#text': 'Ipswich', 'xml:lang': 'en'}","altName":null,"adminArea":"101","nptgDistrict":"105","sourceType":"Lo","classification":null,"parent":"E0057632","coords":[1.195103,52.03709],"children":["N0077975"]}}
+{"E0024806":{"adminArea":"101","altName":null,"children":["N0077975"],"classification":null,"coords":[1.195103,52.03709],"name":"Priory Heath, Ipswich","nptgDistrict":"105","parent":"E0057632","sourceType":"Lo"}}

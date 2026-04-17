@@ -1,1 +1,1 @@
-{"E0051721":{"name":"{'#text': 'Oulton', 'xml:lang': 'EN'}, {'#text': 'Suffolk', 'xml:lang': 'en'}","altName":null,"adminArea":"101","nptgDistrict":"218","sourceType":"Pa","classification":null,"parent":"E0025243","coords":[1.720428,52.49524],"children":["E0025220","N0077940"]}}
+{"E0051721":{"adminArea":"101","altName":null,"children":["E0025220","N0077940"],"classification":null,"coords":[1.720428,52.49524],"name":"Oulton, Suffolk","nptgDistrict":"218","parent":"E0025243","sourceType":"Pa"}}

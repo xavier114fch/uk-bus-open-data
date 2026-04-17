@@ -1,1 +1,1 @@
-{"E0051703":{"name":"{'#text': 'Brampton', 'xml:lang': 'EN'}, {'#text': 'Suffolk', 'xml:lang': 'en'}","altName":null,"adminArea":"101","nptgDistrict":"218","sourceType":"Pa","classification":null,"parent":null,"coords":[1.578698,52.38323],"children":["E0025218"]}}
+{"E0051703":{"adminArea":"101","altName":null,"children":["E0025218"],"classification":null,"coords":[1.578698,52.38323],"name":"Brampton, Suffolk","nptgDistrict":"218","parent":null,"sourceType":"Pa"}}

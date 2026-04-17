@@ -1,1 +1,1 @@
-{"E0054659":{"name":"{'#text': 'Ystradgynlais', 'xml:lang': 'CY'}, {'#text': 'Powys', 'xml:lang': 'cy'}","altName":null,"adminArea":"045","nptgDistrict":"310","sourceType":"Co","classification":null,"parent":null,"coords":[-3.758623,51.77766],"children":["E0041048","E0041049","E0041299","E0041474","N0078545"]}}
+{"E0054659":{"adminArea":"045","altName":null,"children":["E0041048","E0041049","E0041299","E0041474","N0078545"],"classification":null,"coords":[-3.758623,51.77766],"name":"Ystradgynlais, Powys","nptgDistrict":"310","parent":null,"sourceType":"Co"}}

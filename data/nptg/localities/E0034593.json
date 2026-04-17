@@ -1,1 +1,1 @@
-{"E0034593":{"name":"{'#text': 'Kensington', 'xml:lang': 'EN'}, {'#text': 'London', 'xml:lang': 'en'}","altName":null,"adminArea":"082","nptgDistrict":"295","sourceType":"Lo","classification":null,"parent":"N0060403","coords":[-0.1918212,51.50229],"children":["N0077680"]}}
+{"E0034593":{"adminArea":"082","altName":null,"children":["N0077680"],"classification":null,"coords":[-0.1918212,51.50229],"name":"Kensington, London","nptgDistrict":"295","parent":"N0060403","sourceType":"Lo"}}

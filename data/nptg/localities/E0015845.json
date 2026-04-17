@@ -1,1 +1,1 @@
-{"E0015845":{"name":"{'#text': 'St Annes', 'xml:lang': 'EN'}, {'#text': 'nr Lytham', 'xml:lang': 'en'}","altName":null,"adminArea":"087","nptgDistrict":"85","sourceType":"Lo","classification":null,"parent":null,"coords":[-3.03165,53.75129],"children":["E0015838","E0015839"]}}
+{"E0015845":{"adminArea":"087","altName":null,"children":["E0015838","E0015839"],"classification":null,"coords":[-3.03165,53.75129],"name":"St Annes, nr Lytham","nptgDistrict":"85","parent":null,"sourceType":"Lo"}}

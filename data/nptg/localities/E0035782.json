@@ -1,1 +1,1 @@
-{"E0035782":{"name":"{'#text': 'Springfield', 'xml:lang': 'EN'}, {'#text': 'Caerphilly', 'xml:lang': 'en'}","altName":null,"adminArea":"010","nptgDistrict":"310","sourceType":"Lo","classification":"suburb","parent":"E0053990","coords":[-3.181231,51.65411]}}
+{"E0035782":{"adminArea":"010","altName":null,"classification":"suburb","coords":[-3.181231,51.65411],"name":"Springfield, Caerphilly","nptgDistrict":"310","parent":"E0053990","sourceType":"Lo"}}

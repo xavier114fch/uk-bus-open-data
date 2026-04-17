@@ -1,1 +1,1 @@
-{"E0057601":{"name":"{'#text': 'Kimberley', 'xml:lang': 'EN'}, {'#text': 'Notts', 'xml:lang': 'en'}","altName":null,"adminArea":"095","nptgDistrict":"27","sourceType":"US","classification":"town","parent":null,"coords":[-1.254358,52.99709],"children":["E0020535"]}}
+{"E0057601":{"adminArea":"095","altName":null,"children":["E0020535"],"classification":"town","coords":[-1.254358,52.99709],"name":"Kimberley, Notts","nptgDistrict":"27","parent":null,"sourceType":"US"}}

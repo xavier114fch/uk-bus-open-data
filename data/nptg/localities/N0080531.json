@@ -1,1 +1,1 @@
-{"N0080531":{"name":"{'#text': 'Leeman Road', 'xml:lang': 'EN'}, {'#text': 'York', 'xml:lang': 'en'}","altName":null,"adminArea":"068","nptgDistrict":"310","sourceType":"Add","classification":"suburb","parent":"E0055251","coords":[-1.105442,53.96264],"children":["N0078010"]}}
+{"N0080531":{"adminArea":"068","altName":null,"children":["N0078010"],"classification":"suburb","coords":[-1.105442,53.96264],"name":"Leeman Road, York","nptgDistrict":"310","parent":"E0055251","sourceType":"Add"}}

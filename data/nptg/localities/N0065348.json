@@ -1,1 +1,1 @@
-{"N0065348":{"name":"{'#text': 'Upton', 'xml:lang': 'EN'}, {'#text': 'Chester', 'xml:lang': 'en'}","altName":null,"adminArea":"152","nptgDistrict":"310","sourceType":"Add","classification":"suburb","parent":"E0057329","coords":[-2.879639,53.21938],"children":["E0001461"]}}
+{"N0065348":{"adminArea":"152","altName":null,"children":["E0001461"],"classification":"suburb","coords":[-2.879639,53.21938],"name":"Upton, Chester","nptgDistrict":"310","parent":"E0057329","sourceType":"Add"}}

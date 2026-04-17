@@ -1,1 +1,1 @@
-{"E0034474":{"name":"{'#text': 'Upminster', 'xml:lang': 'EN'}, {'#text': 'London', 'xml:lang': 'en'}","altName":null,"adminArea":"082","nptgDistrict":"291","sourceType":"Lo","classification":null,"parent":null,"coords":[0.2504205,51.55849],"children":["E0034452","E0034453","E0034465","N0060441"]}}
+{"E0034474":{"adminArea":"082","altName":null,"children":["E0034452","E0034453","E0034465","N0060441"],"classification":null,"coords":[0.2504205,51.55849],"name":"Upminster, London","nptgDistrict":"291","parent":null,"sourceType":"Lo"}}

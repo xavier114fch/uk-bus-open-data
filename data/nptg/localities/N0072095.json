@@ -1,1 +1,1 @@
-{"N0072095":{"name":"{'#text': 'Rochester', 'xml:lang': 'EN'}, {'#text': 'Medway', 'xml:lang': 'en'}","altName":null,"adminArea":"029","nptgDistrict":"310","sourceType":"Add","classification":null,"parent":null,"coords":[0.5048872,51.3881],"children":["E0039098","E0039154","N0072104"]}}
+{"N0072095":{"adminArea":"029","altName":null,"children":["E0039098","E0039154","N0072104"],"classification":null,"coords":[0.5048872,51.3881],"name":"Rochester, Medway","nptgDistrict":"310","parent":null,"sourceType":"Add"}}

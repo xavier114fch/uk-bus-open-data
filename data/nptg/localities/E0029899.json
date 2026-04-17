@@ -1,1 +1,1 @@
-{"E0029899":{"name":"{'#text': 'Sutton', 'xml:lang': 'EN'}, {'#text': 'St Helens', 'xml:lang': 'en'}","altName":null,"adminArea":"090","nptgDistrict":"266","sourceType":"Lo","classification":null,"parent":"E0057858","coords":[-2.722635,53.43686],"children":["E0029848","E0029901","E0029903"]}}
+{"E0029899":{"adminArea":"090","altName":null,"children":["E0029848","E0029901","E0029903"],"classification":null,"coords":[-2.722635,53.43686],"name":"Sutton, St Helens","nptgDistrict":"266","parent":"E0057858","sourceType":"Lo"}}

@@ -1,1 +1,1 @@
-{"E0044303":{"name":"{'#text': 'Chorley', 'xml:lang': 'EN'}, {'#text': 'nr Nantwich', 'xml:lang': 'en'}","altName":null,"adminArea":"072","nptgDistrict":"310","sourceType":"Pa","classification":"hamlet","parent":null,"coords":[-2.635648,53.05508],"children":["N0076678","N0078269"]}}
+{"E0044303":{"adminArea":"072","altName":null,"children":["N0076678","N0078269"],"classification":"hamlet","coords":[-2.635648,53.05508],"name":"Chorley, nr Nantwich","nptgDistrict":"310","parent":null,"sourceType":"Pa"}}

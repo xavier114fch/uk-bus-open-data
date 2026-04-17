@@ -1,1 +1,1 @@
-{"E0034470":{"name":"{'#text': 'Romford', 'xml:lang': 'EN'}, {'#text': 'London', 'xml:lang': 'en'}","altName":null,"adminArea":"082","nptgDistrict":"291","sourceType":"Lo","classification":null,"parent":"N0060403","coords":[0.1821796,51.57956],"children":["E0034448","E0034455","E0034461","E0034471"]}}
+{"E0034470":{"adminArea":"082","altName":null,"children":["E0034448","E0034455","E0034461","E0034471"],"classification":null,"coords":[0.1821796,51.57956],"name":"Romford, London","nptgDistrict":"291","parent":"N0060403","sourceType":"Lo"}}

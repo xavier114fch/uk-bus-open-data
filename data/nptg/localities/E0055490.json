@@ -1,1 +1,1 @@
-{"E0055490":{"name":"{'#text': 'Keswick', 'xml:lang': 'EN'}, {'#text': 'Cumbria', 'xml:lang': 'en'}","altName":null,"adminArea":"074","nptgDistrict":"2","sourceType":"U","classification":null,"parent":null,"coords":[-3.137147,54.60067],"children":["E0004831","E0004857","E0004932","E0005116"]}}
+{"E0055490":{"adminArea":"074","altName":null,"children":["E0004831","E0004857","E0004932","E0005116"],"classification":null,"coords":[-3.137147,54.60067],"name":"Keswick, Cumbria","nptgDistrict":"2","parent":null,"sourceType":"U"}}

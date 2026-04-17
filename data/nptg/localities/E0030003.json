@@ -1,1 +1,1 @@
-{"E0030003":{"name":"{'#text': 'Bentley', 'xml:lang': 'EN'}, {'#text': 'Doncaster', 'xml:lang': 'en'}","altName":null,"adminArea":"099","nptgDistrict":"247","sourceType":"Lo","classification":null,"parent":"N0077771","coords":[-1.146208,53.54705],"children":["E0030515"]}}
+{"E0030003":{"adminArea":"099","altName":null,"children":["E0030515"],"classification":null,"coords":[-1.146208,53.54705],"name":"Bentley, Doncaster","nptgDistrict":"247","parent":"N0077771","sourceType":"Lo"}}

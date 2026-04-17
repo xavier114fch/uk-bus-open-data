@@ -1,1 +1,1 @@
-{"E0037819":{"name":"{'#text': 'Ditton', 'xml:lang': 'EN'}, {'#text': 'Widnes', 'xml:lang': 'en'}","altName":null,"adminArea":"021","nptgDistrict":"310","sourceType":"Lo","classification":null,"parent":"E0037860","coords":[-2.763574,53.36267],"children":["E0037807","E0037830"]}}
+{"E0037819":{"adminArea":"021","altName":null,"children":["E0037807","E0037830"],"classification":null,"coords":[-2.763574,53.36267],"name":"Ditton, Widnes","nptgDistrict":"310","parent":"E0037860","sourceType":"Lo"}}

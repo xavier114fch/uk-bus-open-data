@@ -1,1 +1,1 @@
-{"E0059376":{"name":"{'#text': 'Blenheim Palace', 'xml:lang': 'EN'}, {'#text': 'Woodstock', 'xml:lang': 'en'}","altName":null,"adminArea":"096","nptgDistrict":"228","sourceType":"Add","classification":"placeOfInterest","parent":"E0050564","coords":[-1.3611202,51.841525]}}
+{"E0059376":{"adminArea":"096","altName":null,"classification":"placeOfInterest","coords":[-1.3611202,51.841525],"name":"Blenheim Palace, Woodstock","nptgDistrict":"228","parent":"E0050564","sourceType":"Add"}}

@@ -1,1 +1,1 @@
-{"E0030214":{"name":"{'#text': 'Handsworth', 'xml:lang': 'EN'}, {'#text': 'Sheffield', 'xml:lang': 'en'}","altName":null,"adminArea":"099","nptgDistrict":"263","sourceType":"Lo","classification":null,"parent":"N0077767","coords":[-1.384489,53.37162],"children":["E0029979","E0029997","E0052777"]}}
+{"E0030214":{"adminArea":"099","altName":null,"children":["E0029979","E0029997","E0052777"],"classification":null,"coords":[-1.384489,53.37162],"name":"Handsworth, Sheffield","nptgDistrict":"263","parent":"N0077767","sourceType":"Lo"}}

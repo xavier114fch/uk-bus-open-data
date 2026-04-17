@@ -1,1 +1,1 @@
-{"E0054003":{"name":"{'#text': 'Trelai', 'xml:lang': 'CY'}, {'#text': 'Caerdydd', 'xml:lang': 'cy'}","altName":{"#text":"Trelai","xml:lang":"CY"},"adminArea":"011","nptgDistrict":"310","sourceType":"Co","classification":"suburb","parent":"E0035815","coords":[-3.250359,51.48063]}}
+{"E0054003":{"adminArea":"011","altName":"Trelai","classification":"suburb","coords":[-3.250359,51.48063],"name":"Trelai, Caerdydd","nptgDistrict":"310","parent":"E0035815","sourceType":"Co"}}

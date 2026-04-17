@@ -1,1 +1,1 @@
-{"E0030562":{"name":"{'#text': 'Stannington', 'xml:lang': 'EN'}, {'#text': 'Sheffield', 'xml:lang': 'en'}","altName":null,"adminArea":"099","nptgDistrict":"263","sourceType":"Lo","classification":null,"parent":"N0077767","coords":[-1.542216,53.39381],"children":["E0030335"]}}
+{"E0030562":{"adminArea":"099","altName":null,"children":["E0030335"],"classification":null,"coords":[-1.542216,53.39381],"name":"Stannington, Sheffield","nptgDistrict":"263","parent":"N0077767","sourceType":"Lo"}}

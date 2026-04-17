@@ -1,1 +1,1 @@
-{"E0029814":{"name":"{'#text': 'Newton', 'xml:lang': 'EN'}, {'#text': 'Hoylake', 'xml:lang': 'en'}","altName":null,"adminArea":"090","nptgDistrict":"274","sourceType":"Lo","classification":null,"parent":"E0029751","coords":[-3.15328,53.38068],"children":["E0029714","E0029774"]}}
+{"E0029814":{"adminArea":"090","altName":null,"children":["E0029714","E0029774"],"classification":null,"coords":[-3.15328,53.38068],"name":"Newton, Hoylake","nptgDistrict":"274","parent":"E0029751","sourceType":"Lo"}}

@@ -1,1 +1,1 @@
-{"E0043573":{"name":"{'#text': 'Acomb', 'xml:lang': 'EN'}, {'#text': 'York', 'xml:lang': 'en'}","altName":null,"adminArea":"068","nptgDistrict":"310","sourceType":"Lo","classification":"town","parent":"E0055251","coords":[-1.129226,53.95428],"children":["E0043574","E0043581","N0080468","N0080530"]}}
+{"E0043573":{"adminArea":"068","altName":null,"children":["E0043574","E0043581","N0080468","N0080530"],"classification":"town","coords":[-1.129226,53.95428],"name":"Acomb, York","nptgDistrict":"310","parent":"E0055251","sourceType":"Lo"}}

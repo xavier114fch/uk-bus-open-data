@@ -1,1 +1,1 @@
-{"E0045336":{"name":"{'#text': 'Tiverton', 'xml:lang': 'EN'}, {'#text': 'Devon', 'xml:lang': 'en'}","altName":null,"adminArea":"076","nptgDistrict":"123","sourceType":"Pa","classification":null,"parent":null,"coords":[-3.48648,50.9018],"children":["E0007784","E0007786","E0007901"]}}
+{"E0045336":{"adminArea":"076","altName":null,"children":["E0007784","E0007786","E0007901"],"classification":null,"coords":[-3.48648,50.9018],"name":"Tiverton, Devon","nptgDistrict":"123","parent":null,"sourceType":"Pa"}}

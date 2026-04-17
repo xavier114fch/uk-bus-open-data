@@ -1,1 +1,1 @@
-{"E0034956":{"name":"{'#text': 'Victoria', 'xml:lang': 'EN'}, {'#text': 'London', 'xml:lang': 'en'}","altName":null,"adminArea":"082","nptgDistrict":"308","sourceType":"Lo","classification":null,"parent":"N0060403","coords":[-0.1439857,51.4966],"children":["E0034917"]}}
+{"E0034956":{"adminArea":"082","altName":null,"children":["E0034917"],"classification":null,"coords":[-0.1439857,51.4966],"name":"Victoria, London","nptgDistrict":"308","parent":"N0060403","sourceType":"Lo"}}

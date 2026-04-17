@@ -1,1 +1,1 @@
-{"E0029598":{"name":"{'#text': 'Allerton', 'xml:lang': 'EN'}, {'#text': 'Liverpool', 'xml:lang': 'en'}","altName":null,"adminArea":"090","nptgDistrict":"253","sourceType":"Lo","classification":null,"parent":"E0057850","coords":[-2.893026,53.3667],"children":["E0029642","E0029885"]}}
+{"E0029598":{"adminArea":"090","altName":null,"children":["E0029642","E0029885"],"classification":null,"coords":[-2.893026,53.3667],"name":"Allerton, Liverpool","nptgDistrict":"253","parent":"E0057850","sourceType":"Lo"}}

@@ -1,1 +1,1 @@
-{"E0028713":{"name":"{'#text': 'Chorlton', 'xml:lang': 'EN'}, {'#text': 'Manchester', 'xml:lang': 'en'}","altName":null,"adminArea":"083","nptgDistrict":"254","sourceType":"Lo","classification":null,"parent":"N0076111","coords":[-2.274695,53.43774],"children":["E0028716","N0074941","N0075078","N0076717"]}}
+{"E0028713":{"adminArea":"083","altName":null,"children":["E0028716","N0074941","N0075078","N0076717"],"classification":null,"coords":[-2.274695,53.43774],"name":"Chorlton, Manchester","nptgDistrict":"254","parent":"N0076111","sourceType":"Lo"}}

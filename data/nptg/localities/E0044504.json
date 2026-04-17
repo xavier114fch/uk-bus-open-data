@@ -1,1 +1,1 @@
-{"E0044504":{"name":"{'#text': 'St Agnes', 'xml:lang': 'EN'}, {'#text': 'Nr Newquay', 'xml:lang': 'en'}","altName":null,"adminArea":"073","nptgDistrict":"310","sourceType":"Pa","classification":null,"parent":null,"coords":[-5.203551,50.3117],"children":["E0002756","E0002809","E0002825","E0002828","E0002848"]}}
+{"E0044504":{"adminArea":"073","altName":null,"children":["E0002756","E0002809","E0002825","E0002828","E0002848"],"classification":null,"coords":[-5.203551,50.3117],"name":"St Agnes, Nr Newquay","nptgDistrict":"310","parent":null,"sourceType":"Pa"}}

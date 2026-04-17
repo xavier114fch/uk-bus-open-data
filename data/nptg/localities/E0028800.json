@@ -1,1 +1,1 @@
-{"E0028800":{"name":"{'#text': 'Higher Broughton', 'xml:lang': 'EN'}, {'#text': 'Salford', 'xml:lang': 'en'}","altName":null,"adminArea":"083","nptgDistrict":"260","sourceType":"Lo","classification":null,"parent":"N0076110","coords":[-2.258722,53.50176],"children":["E0028630","E0029429"]}}
+{"E0028800":{"adminArea":"083","altName":null,"children":["E0028630","E0029429"],"classification":null,"coords":[-2.258722,53.50176],"name":"Higher Broughton, Salford","nptgDistrict":"260","parent":"N0076110","sourceType":"Lo"}}

@@ -1,1 +1,1 @@
-{"E0004362":{"name":"{'#text': 'St Ives', 'xml:lang': 'EN'}, {'#text': 'Cornwall', 'xml:lang': 'en'}","altName":null,"adminArea":"073","nptgDistrict":"310","sourceType":"Lo","classification":null,"parent":null,"coords":[-5.480565,50.21274],"children":["E0004177","E0004245","E0004314"]}}
+{"E0004362":{"adminArea":"073","altName":null,"children":["E0004177","E0004245","E0004314"],"classification":null,"coords":[-5.480565,50.21274],"name":"St Ives, Cornwall","nptgDistrict":"310","parent":null,"sourceType":"Lo"}}

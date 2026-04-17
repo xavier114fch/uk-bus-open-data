@@ -1,1 +1,1 @@
-{"E0029690":{"name":"{'#text': 'Egremont', 'xml:lang': 'EN'}, {'#text': 'Wallasey', 'xml:lang': 'en'}","altName":null,"adminArea":"090","nptgDistrict":"274","sourceType":"Lo","classification":null,"parent":"E0029931","coords":[-3.029853,53.42175],"children":["E0029822","E0029881"]}}
+{"E0029690":{"adminArea":"090","altName":null,"children":["E0029822","E0029881"],"classification":null,"coords":[-3.029853,53.42175],"name":"Egremont, Wallasey","nptgDistrict":"274","parent":"E0029931","sourceType":"Lo"}}

@@ -1,1 +1,1 @@
-{"N0078485":{"name":"{'#text': 'Richmond upon Thames', 'xml:lang': 'EN'}, {'#text': 'London', 'xml:lang': 'en'}","altName":{"#text":"Richmond upon Thames","xml:lang":"EN"},"adminArea":"082","nptgDistrict":"302","sourceType":"Add","classification":null,"parent":"N0060403","coords":[-0.3058104,51.45903]}}
+{"N0078485":{"adminArea":"082","altName":"Richmond upon Thames","classification":null,"coords":[-0.3058104,51.45903],"name":"Richmond upon Thames, London","nptgDistrict":"302","parent":"N0060403","sourceType":"Add"}}

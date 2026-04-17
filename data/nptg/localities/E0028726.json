@@ -1,1 +1,1 @@
-{"E0028726":{"name":"{'#text': 'Clifton', 'xml:lang': 'EN'}, {'#text': 'Swinton', 'xml:lang': 'en'}","altName":null,"adminArea":"083","nptgDistrict":"260","sourceType":"Lo","classification":null,"parent":"N0076110","coords":[-2.335241,53.52208],"children":["N0074945","N0074946"]}}
+{"E0028726":{"adminArea":"083","altName":null,"children":["N0074945","N0074946"],"classification":null,"coords":[-2.335241,53.52208],"name":"Clifton, Swinton","nptgDistrict":"260","parent":"N0076110","sourceType":"Lo"}}

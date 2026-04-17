@@ -1,1 +1,1 @@
-{"E0042841":{"name":"{'#text': 'Cowbridge', 'xml:lang': 'CY'}, {'#text': 'Glamorgan', 'xml:lang': 'cy'}","altName":null,"adminArea":"062","nptgDistrict":"310","sourceType":"Lo","classification":null,"parent":null,"coords":[-3.448903,51.46195],"children":["E0042887","E0042933","E0042971","N0071544"]}}
+{"E0042841":{"adminArea":"062","altName":null,"children":["E0042887","E0042933","E0042971","N0071544"],"classification":null,"coords":[-3.448903,51.46195],"name":"Cowbridge, Glamorgan","nptgDistrict":"310","parent":null,"sourceType":"Lo"}}

@@ -1,1 +1,1 @@
-{"N0065337":{"name":"{'#text': 'Hampton', 'xml:lang': 'EN'}, {'#text': 'Peterborough', 'xml:lang': 'en'}","altName":null,"adminArea":"041","nptgDistrict":"310","sourceType":"Add","classification":null,"parent":"E0055098","coords":[-0.2559235,52.53985],"children":["N0065263","N0065336","N0065338"]}}
+{"N0065337":{"adminArea":"041","altName":null,"children":["N0065263","N0065336","N0065338"],"classification":null,"coords":[-0.2559235,52.53985],"name":"Hampton, Peterborough","nptgDistrict":"310","parent":"E0055098","sourceType":"Add"}}

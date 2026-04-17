@@ -1,1 +1,1 @@
-{"E0034961":{"name":"{'#text': 'Westminster', 'xml:lang': 'EN'}, {'#text': 'London', 'xml:lang': 'en'}","altName":null,"adminArea":"082","nptgDistrict":"308","sourceType":"Lo","classification":null,"parent":"N0060403","coords":[-0.1276638,51.50009],"children":["N0077715"]}}
+{"E0034961":{"adminArea":"082","altName":null,"children":["N0077715"],"classification":null,"coords":[-0.1276638,51.50009],"name":"Westminster, London","nptgDistrict":"308","parent":"N0060403","sourceType":"Lo"}}

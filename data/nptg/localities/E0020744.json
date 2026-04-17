@@ -1,1 +1,1 @@
-{"E0020744":{"name":{"#text":"Headington","xml:lang":"EN"},"altName":null,"adminArea":"096","nptgDistrict":"146","sourceType":"Lo","classification":"suburb","parent":"E0056504","coords":[-1.211032,51.76017],"children":["E0020745","N0080901"]}}
+{"E0020744":{"adminArea":"096","altName":null,"children":["E0020745","N0080901"],"classification":"suburb","coords":[-1.211032,51.76017],"name":"Headington","nptgDistrict":"146","parent":"E0056504","sourceType":"Lo"}}

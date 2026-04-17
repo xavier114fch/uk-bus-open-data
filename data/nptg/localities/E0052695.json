@@ -1,1 +1,1 @@
-{"E0052695":{"name":"{'#text': 'Eccleston', 'xml:lang': 'EN'}, {'#text': 'St Helens', 'xml:lang': 'en'}","altName":null,"adminArea":"090","nptgDistrict":"266","sourceType":"Pa","classification":null,"parent":"E0057858","coords":[-2.778875,53.45261],"children":["E0029649","E0029687","E0029711","N0071046"]}}
+{"E0052695":{"adminArea":"090","altName":null,"children":["E0029649","E0029687","E0029711","N0071046"],"classification":null,"coords":[-2.778875,53.45261],"name":"Eccleston, St Helens","nptgDistrict":"266","parent":"E0057858","sourceType":"Pa"}}

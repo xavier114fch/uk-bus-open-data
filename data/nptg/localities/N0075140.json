@@ -1,1 +1,1 @@
-{"N0075140":{"name":{"#text":"Salford Quays","xml:lang":"EN"},"altName":null,"adminArea":"083","nptgDistrict":"260","sourceType":"Add","classification":null,"parent":"N0076110","coords":[-2.284153,53.46992],"children":["N0074915","N0076733","N0079088"]}}
+{"N0075140":{"adminArea":"083","altName":null,"children":["N0074915","N0076733","N0079088"],"classification":null,"coords":[-2.284153,53.46992],"name":"Salford Quays","nptgDistrict":"260","parent":"N0076110","sourceType":"Add"}}

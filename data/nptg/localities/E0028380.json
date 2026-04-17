@@ -1,1 +1,1 @@
-{"E0028380":{"name":"{'#text': 'Elton', 'xml:lang': 'EN'}, {'#text': 'Bury', 'xml:lang': 'en'}","altName":null,"adminArea":"083","nptgDistrict":"244","sourceType":"Lo","classification":null,"parent":"E0028659","coords":[-2.314816,53.59277],"children":["E0028311"]}}
+{"E0028380":{"adminArea":"083","altName":null,"children":["E0028311"],"classification":null,"coords":[-2.314816,53.59277],"name":"Elton, Bury","nptgDistrict":"244","parent":"E0028659","sourceType":"Lo"}}

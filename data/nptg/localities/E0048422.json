@@ -1,1 +1,1 @@
-{"E0048422":{"name":"{'#text': 'Thetford', 'xml:lang': 'EN'}, {'#text': 'Norfolk', 'xml:lang': 'en'}","altName":null,"adminArea":"091","nptgDistrict":"21","sourceType":"Pa","classification":null,"parent":null,"coords":[0.750875,52.41357],"children":["E0017647","E0048336","E0048346","E0048375","E0048382"]}}
+{"E0048422":{"adminArea":"091","altName":null,"children":["E0017647","E0048336","E0048346","E0048375","E0048382"],"classification":null,"coords":[0.750875,52.41357],"name":"Thetford, Norfolk","nptgDistrict":"21","parent":null,"sourceType":"Pa"}}

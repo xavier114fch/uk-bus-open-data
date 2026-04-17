@@ -1,1 +1,1 @@
-{"N0060683":{"name":"{'#text': 'Great Yarmouth', 'xml:lang': 'EN'}, {'#text': 'Norfolk', 'xml:lang': 'en'}","altName":null,"adminArea":"091","nptgDistrict":"90","sourceType":"Add","classification":null,"parent":null,"coords":[1.729284,52.60752],"children":["E0017813","N0060629"]}}
+{"N0060683":{"adminArea":"091","altName":null,"children":["E0017813","N0060629"],"classification":null,"coords":[1.729284,52.60752],"name":"Great Yarmouth, Norfolk","nptgDistrict":"90","parent":null,"sourceType":"Add"}}

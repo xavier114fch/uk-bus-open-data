@@ -1,1 +1,1 @@
-{"ES003245":{"name":"{'#text': 'Sandwick', 'xml:lang': 'EN'}, {'#text': 'Shetland Mainland', 'xml:lang': 'en'}","altName":null,"adminArea":"137","nptgDistrict":"310","sourceType":"Lo","classification":"village","parent":null,"coords":[-1.235368,60.00251],"children":["ES003900","N0080073"]}}
+{"ES003245":{"adminArea":"137","altName":null,"children":["ES003900","N0080073"],"classification":"village","coords":[-1.235368,60.00251],"name":"Sandwick, Shetland Mainland","nptgDistrict":"310","parent":null,"sourceType":"Lo"}}

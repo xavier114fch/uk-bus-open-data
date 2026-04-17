@@ -1,1 +1,1 @@
-{"E0034061":{"name":"{'#text': 'Sudbury', 'xml:lang': 'EN'}, {'#text': 'London', 'xml:lang': 'en'}","altName":null,"adminArea":"082","nptgDistrict":"279","sourceType":"Lo","classification":null,"parent":"N0060403","coords":[-0.3167898,51.55181],"children":["N0077722"]}}
+{"E0034061":{"adminArea":"082","altName":null,"children":["N0077722"],"classification":null,"coords":[-0.3167898,51.55181],"name":"Sudbury, London","nptgDistrict":"279","parent":"N0060403","sourceType":"Lo"}}

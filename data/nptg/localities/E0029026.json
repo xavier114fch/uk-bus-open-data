@@ -1,1 +1,1 @@
-{"E0029026":{"name":"{'#text': 'Lowton', 'xml:lang': 'EN'}, {'#text': 'Golborne', 'xml:lang': 'en'}","altName":null,"adminArea":"083","nptgDistrict":"273","sourceType":"Lo","classification":null,"parent":"E0028950","coords":[-2.577146,53.47231],"children":["E0028429","E0028936","E0029027"]}}
+{"E0029026":{"adminArea":"083","altName":null,"children":["E0028429","E0028936","E0029027"],"classification":null,"coords":[-2.577146,53.47231],"name":"Lowton, Golborne","nptgDistrict":"273","parent":"E0028950","sourceType":"Lo"}}
