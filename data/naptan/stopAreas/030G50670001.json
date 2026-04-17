@@ -1,1 +1,1 @@
-{"030G50670001":{"stopAreaCode":"030G50670001","parent":"","name":"Bottom Lane Turn","adminArea":"064","type":"GPBS","coordinates":[-1.09546,51.41665],"created":"2004-07-25T00:00:00","updated":"2004-07-25T00:00:00"}}
+{"030G50670001":{"adminArea":"064","coordinates":[-1.09546,51.41665],"created":"2004-07-25T00:00:00","name":"Bottom Lane Turn","parent":"","stopAreaCode":"030G50670001","type":"GPBS","updated":"2004-07-25T00:00:00"}}

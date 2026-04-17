@@ -1,1 +1,1 @@
-{"150G00002655":{"stopAreaCode":"150G00002655","parent":"910GWEELEY","name":"Railway Station","adminArea":"080","type":"GPBS","coordinates":[1.1180519326,51.8501509608],"created":"2006-12-20T11:26:33","updated":"2022-02-04T07:17:23"}}
+{"150G00002655":{"adminArea":"080","coordinates":[1.1180519326,51.8501509608],"created":"2006-12-20T11:26:33","name":"Railway Station","parent":"910GWEELEY","stopAreaCode":"150G00002655","type":"GPBS","updated":"2022-02-04T07:17:23"}}

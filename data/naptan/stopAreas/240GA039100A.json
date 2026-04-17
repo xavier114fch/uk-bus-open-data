@@ -1,1 +1,1 @@
-{"240GA039100A":{"stopAreaCode":"240GA039100A","parent":"910GCHARTHM","name":"Railway Station","adminArea":"086","type":"GPBS","coordinates":[1.0175958,51.2572773],"created":"2007-06-14T10:18:00.000","updated":"2009-11-13T11:11:00.000"}}
+{"240GA039100A":{"adminArea":"086","coordinates":[1.0175958,51.2572773],"created":"2007-06-14T10:18:00.000","name":"Railway Station","parent":"910GCHARTHM","stopAreaCode":"240GA039100A","type":"GPBS","updated":"2009-11-13T11:11:00.000"}}

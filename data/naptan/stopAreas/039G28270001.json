@@ -1,1 +1,1 @@
-{"039G28270001":{"stopAreaCode":"039G28270001","parent":"039G28320001","name":"Greyfriars Road","adminArea":"046","type":"GPBS","coordinates":[-0.97567,51.45763],"created":"2012-03-29T00:00:00","updated":"2012-11-15T16:27:00"}}
+{"039G28270001":{"adminArea":"046","coordinates":[-0.97567,51.45763],"created":"2012-03-29T00:00:00","name":"Greyfriars Road","parent":"039G28320001","stopAreaCode":"039G28270001","type":"GPBS","updated":"2012-11-15T16:27:00"}}

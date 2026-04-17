@@ -1,1 +1,1 @@
-{"100G00015760":{"stopAreaCode":"100G00015760","parent":"910GEDALE","name":"Railway Station","adminArea":"075","type":"GPBS","coordinates":[-1.816538,53.364602],"created":"2006-06-26T00:00:00.000","updated":"2012-05-14T00:00:00.000"}}
+{"100G00015760":{"adminArea":"075","coordinates":[-1.816538,53.364602],"created":"2006-06-26T00:00:00.000","name":"Railway Station","parent":"910GEDALE","stopAreaCode":"100G00015760","type":"GPBS","updated":"2012-05-14T00:00:00.000"}}

@@ -1,1 +1,1 @@
-{"050GBA001002":{"stopAreaCode":"050GBA001002","parent":"","name":"Station Road","adminArea":"071","type":"GPBS","coordinates":[0.3087474074785609,52.081176468125825],"created":"2006-05-19T00:00:00","updated":"2009-01-20T00:00:00"}}
+{"050GBA001002":{"adminArea":"071","coordinates":[0.3087474074785609,52.081176468125825],"created":"2006-05-19T00:00:00","name":"Station Road","parent":"","stopAreaCode":"050GBA001002","type":"GPBS","updated":"2009-01-20T00:00:00"}}

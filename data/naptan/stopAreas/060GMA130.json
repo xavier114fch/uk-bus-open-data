@@ -1,1 +1,1 @@
-{"060GMA130":{"stopAreaCode":"060GMA130","parent":"910GPOYNTON","name":"Railway Station","adminArea":"072","type":"GPBS","coordinates":[-2.136377,53.350058],"created":"2006-04-19T00:00:00.000","updated":"2011-02-07T00:00:00.000"}}
+{"060GMA130":{"adminArea":"072","coordinates":[-2.136377,53.350058],"created":"2006-04-19T00:00:00.000","name":"Railway Station","parent":"910GPOYNTON","stopAreaCode":"060GMA130","type":"GPBS","updated":"2011-02-07T00:00:00.000"}}

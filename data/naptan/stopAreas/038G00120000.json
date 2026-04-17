@@ -1,1 +1,1 @@
-{"038G00120000":{"stopAreaCode":"038G00120000","parent":"910GSNDHRST","name":"Sandhurst Station","adminArea":"006","type":"GPBS","coordinates":[-0.80274,51.34627],"created":"2003-06-18T00:00:00","updated":"2024-07-29T17:27:25"}}
+{"038G00120000":{"adminArea":"006","coordinates":[-0.80274,51.34627],"created":"2003-06-18T00:00:00","name":"Sandhurst Station","parent":"910GSNDHRST","stopAreaCode":"038G00120000","type":"GPBS","updated":"2024-07-29T17:27:25"}}

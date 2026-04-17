@@ -1,1 +1,1 @@
-{"150G00002032":{"stopAreaCode":"150G00002032","parent":"910GBASILDN","name":"Bus Station","adminArea":"080","type":"GBCS","coordinates":[0.4592389579,51.5683142563],"created":"2006-12-20T11:26:33","updated":"2022-01-18T10:56:38"}}
+{"150G00002032":{"adminArea":"080","coordinates":[0.4592389579,51.5683142563],"created":"2006-12-20T11:26:33","name":"Bus Station","parent":"910GBASILDN","stopAreaCode":"150G00002032","type":"GBCS","updated":"2022-01-18T10:56:38"}}

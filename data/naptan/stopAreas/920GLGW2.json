@@ -1,1 +1,1 @@
-{"920GLGW2":{"stopAreaCode":"920GLGW2","parent":"920GLGW0","name":"London Gatwick Airport South Terminal","adminArea":"145","type":"GAIR","coordinates":[-0.16397049254,51.15619501684],"created":"2005-04-21T00:00:00","updated":"2008-10-10T15:11:00"}}
+{"920GLGW2":{"adminArea":"145","coordinates":[-0.16397049254,51.15619501684],"created":"2005-04-21T00:00:00","name":"London Gatwick Airport South Terminal","parent":"920GLGW0","stopAreaCode":"920GLGW2","type":"GAIR","updated":"2008-10-10T15:11:00"}}

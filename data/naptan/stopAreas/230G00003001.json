@@ -1,1 +1,1 @@
-{"230G00003001":{"stopAreaCode":"230G00003001","parent":"930GRYH","name":"Transport Interchange","adminArea":"025","type":"GBCS","coordinates":[-1.15948,50.73272],"created":"2015-02-20T00:00:00","updated":"2023-03-01T13:31:25"}}
+{"230G00003001":{"adminArea":"025","coordinates":[-1.15948,50.73272],"created":"2015-02-20T00:00:00","name":"Transport Interchange","parent":"930GRYH","stopAreaCode":"230G00003001","type":"GBCS","updated":"2023-03-01T13:31:25"}}

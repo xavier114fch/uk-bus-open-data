@@ -1,1 +1,1 @@
-{"050GLI027031":{"stopAreaCode":"050GLI027031","parent":"910GLTLPORT","name":"Railway Station","adminArea":"071","type":"GPBS","coordinates":[0.31584948356894793,52.46119684405489],"created":"2006-05-19T00:00:00","updated":"2008-12-17T00:00:00"}}
+{"050GLI027031":{"adminArea":"071","coordinates":[0.31584948356894793,52.46119684405489],"created":"2006-05-19T00:00:00","name":"Railway Station","parent":"910GLTLPORT","stopAreaCode":"050GLI027031","type":"GPBS","updated":"2008-12-17T00:00:00"}}

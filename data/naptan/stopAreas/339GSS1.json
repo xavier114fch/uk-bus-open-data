@@ -1,1 +1,1 @@
-{"339GSS1":{"stopAreaCode":"339GSS1","parent":"","name":"Train Station Blockade","adminArea":"039","type":"GCCH","coordinates":[-1.1456032,52.9489412],"created":"2013-06-20T17:24:00.000","updated":"2013-07-15T17:26:00.000"}}
+{"339GSS1":{"adminArea":"039","coordinates":[-1.1456032,52.9489412],"created":"2013-06-20T17:24:00.000","name":"Train Station Blockade","parent":"","stopAreaCode":"339GSS1","type":"GCCH","updated":"2013-07-15T17:26:00.000"}}

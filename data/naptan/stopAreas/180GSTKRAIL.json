@@ -1,1 +1,1 @@
-{"180GSTKRAIL":{"stopAreaCode":"180GSTKRAIL","parent":"","name":"Stockport train station","adminArea":"083","type":"GRLS","coordinates":[-2.1616553,53.4072539],"created":"2025-05-14T09:55:31.244","updated":"2025-05-14T09:55:31.244"}}
+{"180GSTKRAIL":{"adminArea":"083","coordinates":[-2.1616553,53.4072539],"created":"2025-05-14T09:55:31.244","name":"Stockport train station","parent":"","stopAreaCode":"180GSTKRAIL","type":"GRLS","updated":"2025-05-14T09:55:31.244"}}

@@ -1,1 +1,1 @@
-{"050GCC000004":{"stopAreaCode":"050GCC000004","parent":"050GCC000005","name":"Addenbrooke's Hospital Bus Station","adminArea":"071","type":"GBCS","coordinates":[0.14489479500114497,52.17593765000916],"created":"2006-05-19T00:00:00","updated":"2015-03-02T00:00:00"}}
+{"050GCC000004":{"adminArea":"071","coordinates":[0.14489479500114497,52.17593765000916],"created":"2006-05-19T00:00:00","name":"Addenbrooke's Hospital Bus Station","parent":"050GCC000005","stopAreaCode":"050GCC000004","type":"GBCS","updated":"2015-03-02T00:00:00"}}

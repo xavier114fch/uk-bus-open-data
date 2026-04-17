@@ -1,1 +1,1 @@
-{"290G10101":{"stopAreaCode":"290G10101","parent":"290G10","name":"James Paget Hospital","adminArea":"091","type":"GPBS","coordinates":[1.7215804362558638,52.56288095998389],"created":"2009-03-31T14:45:23","updated":"2009-06-26T15:37:13"}}
+{"290G10101":{"adminArea":"091","coordinates":[1.7215804362558638,52.56288095998389],"created":"2009-03-31T14:45:23","name":"James Paget Hospital","parent":"290G10","stopAreaCode":"290G10101","type":"GPBS","updated":"2009-06-26T15:37:13"}}

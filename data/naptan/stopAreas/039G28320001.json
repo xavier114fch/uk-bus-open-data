@@ -1,1 +1,1 @@
-{"039G28320001":{"stopAreaCode":"039G28320001","parent":"039G26100002","name":"Station North Interchange","adminArea":"046","type":"GCLS","coordinates":[-0.97137,51.46019],"created":"2013-05-31T00:00:00","updated":"2019-04-02T12:49:00"}}
+{"039G28320001":{"adminArea":"046","coordinates":[-0.97137,51.46019],"created":"2013-05-31T00:00:00","name":"Station North Interchange","parent":"039G26100002","stopAreaCode":"039G28320001","type":"GCLS","updated":"2019-04-02T12:49:00"}}

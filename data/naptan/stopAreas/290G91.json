@@ -1,1 +1,1 @@
-{"290G91":{"stopAreaCode":"290G91","parent":"290G15","name":"Railway Station","adminArea":"091","type":"GPBS","coordinates":[0.4031002186082512,52.753821473336686],"created":"2006-04-27T10:33:24","updated":"2009-10-06T11:49:09"}}
+{"290G91":{"adminArea":"091","coordinates":[0.4031002186082512,52.753821473336686],"created":"2006-04-27T10:33:24","name":"Railway Station","parent":"290G15","stopAreaCode":"290G91","type":"GPBS","updated":"2009-10-06T11:49:09"}}

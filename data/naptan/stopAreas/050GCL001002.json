@@ -1,1 +1,1 @@
-{"050GCL001002":{"stopAreaCode":"050GCL001002","parent":"","name":"East Street","adminArea":"071","type":"GPBS","coordinates":[0.012320400316276636,52.363835011485904],"created":"2006-05-19T00:00:00","updated":"2007-03-12T00:00:00"}}
+{"050GCL001002":{"adminArea":"071","coordinates":[0.012320400316276636,52.363835011485904],"created":"2006-05-19T00:00:00","name":"East Street","parent":"","stopAreaCode":"050GCL001002","type":"GPBS","updated":"2007-03-12T00:00:00"}}

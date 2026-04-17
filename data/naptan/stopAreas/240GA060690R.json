@@ -1,1 +1,1 @@
-{"240GA060690R":{"stopAreaCode":"240GA060690R","parent":"910GSOLEST","name":"Railway Station","adminArea":"086","type":"GCLS","coordinates":[0.3780803,51.3831009],"created":"2007-06-18T11:42:00.000","updated":"2009-11-13T10:46:00.000"}}
+{"240GA060690R":{"adminArea":"086","coordinates":[0.3780803,51.3831009],"created":"2007-06-18T11:42:00.000","name":"Railway Station","parent":"910GSOLEST","stopAreaCode":"240GA060690R","type":"GCLS","updated":"2009-11-13T10:46:00.000"}}

@@ -1,1 +1,1 @@
-{"021G20086":{"stopAreaCode":"021G20086","parent":"910GRIDGMNT","name":"Ridgmont Railway Station","adminArea":"151","type":"GPBS","coordinates":[-0.59419,52.02653],"created":"2009-02-13T00:00:00","updated":"2023-08-02T16:02:20"}}
+{"021G20086":{"adminArea":"151","coordinates":[-0.59419,52.02653],"created":"2009-02-13T00:00:00","name":"Ridgmont Railway Station","parent":"910GRIDGMNT","stopAreaCode":"021G20086","type":"GPBS","updated":"2023-08-02T16:02:20"}}

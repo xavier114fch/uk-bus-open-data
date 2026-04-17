@@ -1,1 +1,1 @@
-{"601G8001":{"stopAreaCode":"601G8001","parent":"","name":"Bus Station","adminArea":"142","type":"GBCS","coordinates":[-6.386539,58.207749],"created":"2014-07-09T00:00:00.000","updated":"2018-05-18T00:00:00.000"}}
+{"601G8001":{"adminArea":"142","coordinates":[-6.386539,58.207749],"created":"2014-07-09T00:00:00.000","name":"Bus Station","parent":"","stopAreaCode":"601G8001","type":"GBCS","updated":"2018-05-18T00:00:00.000"}}

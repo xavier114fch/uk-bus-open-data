@@ -1,1 +1,1 @@
-{"150G00003660":{"stopAreaCode":"150G00003660","parent":"910GMANNGTR","name":"Railway Station","adminArea":"080","type":"GPBS","coordinates":[1.0488448098,51.9487675714],"created":"2012-05-13T07:27:54","updated":"2022-01-18T10:56:38"}}
+{"150G00003660":{"adminArea":"080","coordinates":[1.0488448098,51.9487675714],"created":"2012-05-13T07:27:54","name":"Railway Station","parent":"910GMANNGTR","stopAreaCode":"150G00003660","type":"GPBS","updated":"2022-01-18T10:56:38"}}

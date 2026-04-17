@@ -1,1 +1,1 @@
-{"050GRA001002":{"stopAreaCode":"050GRA001002","parent":"","name":"King Street","adminArea":"071","type":"GPBS","coordinates":[0.09038692824669776,52.291634003802116],"created":"2006-05-19T00:00:00","updated":"2007-03-12T00:00:00"}}
+{"050GRA001002":{"adminArea":"071","coordinates":[0.09038692824669776,52.291634003802116],"created":"2006-05-19T00:00:00","name":"King Street","parent":"","stopAreaCode":"050GRA001002","type":"GPBS","updated":"2007-03-12T00:00:00"}}

@@ -1,1 +1,1 @@
-{"080G001":{"stopAreaCode":"080G001","parent":"930GPEN","name":"Penzance Bus Station","adminArea":"073","type":"GBCS","coordinates":[-5.53173,50.12129],"created":"2016-05-05T00:00:00","updated":"2016-05-05T09:35:14"}}
+{"080G001":{"adminArea":"073","coordinates":[-5.53173,50.12129],"created":"2016-05-05T00:00:00","name":"Penzance Bus Station","parent":"930GPEN","stopAreaCode":"080G001","type":"GBCS","updated":"2016-05-05T09:35:14"}}

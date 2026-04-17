@@ -1,1 +1,1 @@
-{"050GST008012":{"stopAreaCode":"050GST008012","parent":"","name":"Bar Lane","adminArea":"071","type":"GPBS","coordinates":[0.15348532858579383,52.14787889857805],"created":"2006-05-19T00:00:00","updated":"2007-03-12T00:00:00"}}
+{"050GST008012":{"adminArea":"071","coordinates":[0.15348532858579383,52.14787889857805],"created":"2006-05-19T00:00:00","name":"Bar Lane","parent":"","stopAreaCode":"050GST008012","type":"GPBS","updated":"2007-03-12T00:00:00"}}

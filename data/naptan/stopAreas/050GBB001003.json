@@ -1,1 +1,1 @@
-{"050GBB001003":{"stopAreaCode":"050GBB001003","parent":"","name":"High Street","adminArea":"071","type":"GPBS","coordinates":[0.21396264300724546,52.13358538456122],"created":"2006-05-19T00:00:00","updated":"2007-03-12T00:00:00"}}
+{"050GBB001003":{"adminArea":"071","coordinates":[0.21396264300724546,52.13358538456122],"created":"2006-05-19T00:00:00","name":"High Street","parent":"","stopAreaCode":"050GBB001003","type":"GPBS","updated":"2007-03-12T00:00:00"}}

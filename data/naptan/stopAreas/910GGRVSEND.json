@@ -1,1 +1,1 @@
-{"910GGRVSEND":{"stopAreaCode":"910GGRVSEND","parent":"930GGVS","name":"Gravesend Rail Station","adminArea":"110","type":"GRLS","coordinates":[0.36664309001,51.44134832512],"created":"2006-09-11T15:42:00","updated":"2009-01-02T11:49:00"}}
+{"910GGRVSEND":{"adminArea":"110","coordinates":[0.36664309001,51.44134832512],"created":"2006-09-11T15:42:00","name":"Gravesend Rail Station","parent":"930GGVS","stopAreaCode":"910GGRVSEND","type":"GRLS","updated":"2009-01-02T11:49:00"}}

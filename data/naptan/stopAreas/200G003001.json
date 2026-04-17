@@ -1,1 +1,1 @@
-{"200G003001":{"stopAreaCode":"200G003001","parent":"910GRDIT","name":"Redditch Bus Station","adminArea":"109","type":"GBCS","coordinates":[-1.9448389,52.3056552],"created":"2011-08-16T00:00:00.000","updated":"2011-08-16T00:00:00.000"}}
+{"200G003001":{"adminArea":"109","coordinates":[-1.9448389,52.3056552],"created":"2011-08-16T00:00:00.000","name":"Redditch Bus Station","parent":"910GRDIT","stopAreaCode":"200G003001","type":"GBCS","updated":"2011-08-16T00:00:00.000"}}

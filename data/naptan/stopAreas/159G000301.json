@@ -1,1 +1,1 @@
-{"159G000301":{"stopAreaCode":"159G000301","parent":"910GPURFLET","name":"Railway Station","adminArea":"059","type":"GPBS","coordinates":[0.237909,51.480506],"created":"2007-05-23T11:06:00.000","updated":"2008-12-19T11:10:00.000"}}
+{"159G000301":{"adminArea":"059","coordinates":[0.237909,51.480506],"created":"2007-05-23T11:06:00.000","name":"Railway Station","parent":"910GPURFLET","stopAreaCode":"159G000301","type":"GPBS","updated":"2008-12-19T11:10:00.000"}}

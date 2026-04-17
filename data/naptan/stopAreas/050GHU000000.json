@@ -1,1 +1,1 @@
-{"050GHU000000":{"stopAreaCode":"050GHU000000","parent":"","name":"Bus Station","adminArea":"071","type":"GBCS","coordinates":[-0.18434574064650427,52.3287176658541],"created":"2006-05-19T00:00:00","updated":"2009-06-19T00:00:00"}}
+{"050GHU000000":{"adminArea":"071","coordinates":[-0.18434574064650427,52.3287176658541],"created":"2006-05-19T00:00:00","name":"Bus Station","parent":"","stopAreaCode":"050GHU000000","type":"GBCS","updated":"2009-06-19T00:00:00"}}

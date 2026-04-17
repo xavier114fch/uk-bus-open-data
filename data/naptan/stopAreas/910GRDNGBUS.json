@@ -1,1 +1,1 @@
-{"910GRDNGBUS":{"stopAreaCode":"910GRDNGBUS","parent":"910GRDNGSTN","name":"Reading Rail Station - buses","adminArea":"110","type":"GRLS","coordinates":[-0.97166166045,51.45814595469],"created":"2012-10-05T13:52:00","updated":"2013-04-04T14:57:00"}}
+{"910GRDNGBUS":{"adminArea":"110","coordinates":[-0.97166166045,51.45814595469],"created":"2012-10-05T13:52:00","name":"Reading Rail Station - buses","parent":"910GRDNGSTN","stopAreaCode":"910GRDNGBUS","type":"GRLS","updated":"2013-04-04T14:57:00"}}

@@ -1,1 +1,1 @@
-{"650GD1406":{"stopAreaCode":"650GD1406","parent":"650GDB001","name":"Dunfermline Bus Station","adminArea":"126","type":"GBCS","coordinates":[-3.4576361,56.0724249],"created":"2006-05-11T00:00:00.000","updated":"2007-02-15T00:00:00.000"}}
+{"650GD1406":{"adminArea":"126","coordinates":[-3.4576361,56.0724249],"created":"2006-05-11T00:00:00.000","name":"Dunfermline Bus Station","parent":"650GDB001","stopAreaCode":"650GD1406","type":"GBCS","updated":"2007-02-15T00:00:00.000"}}

@@ -1,1 +1,1 @@
-{"290G001":{"stopAreaCode":"290G001","parent":"910GNRCH","name":"Railway Station","adminArea":"091","type":"GPBS","coordinates":[1.3069933289061593,52.62748876042921],"created":"2009-02-09T10:49:19","updated":"2009-06-23T11:18:57"}}
+{"290G001":{"adminArea":"091","coordinates":[1.3069933289061593,52.62748876042921],"created":"2009-02-09T10:49:19","name":"Railway Station","parent":"910GNRCH","stopAreaCode":"290G001","type":"GPBS","updated":"2009-06-23T11:18:57"}}

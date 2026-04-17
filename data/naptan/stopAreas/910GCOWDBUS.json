@@ -1,1 +1,1 @@
-{"910GCOWDBUS":{"stopAreaCode":"910GCOWDBUS","parent":"910GCOWDEN","name":"Cowden - Crossroads","adminArea":"110","type":"GRLS","coordinates":[0.10096952051,51.15067425269],"created":"2008-07-07T17:00:00","updated":"2008-07-31T15:36:00"}}
+{"910GCOWDBUS":{"adminArea":"110","coordinates":[0.10096952051,51.15067425269],"created":"2008-07-07T17:00:00","name":"Cowden - Crossroads","parent":"910GCOWDEN","stopAreaCode":"910GCOWDBUS","type":"GRLS","updated":"2008-07-31T15:36:00"}}

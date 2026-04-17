@@ -1,1 +1,1 @@
-{"030G50070001":{"stopAreaCode":"030G50070001","parent":"910GALDMSTN","name":"Aldermaston Station","adminArea":"064","type":"GPBS","coordinates":[-1.13954,51.40239],"created":"2003-03-20T00:00:00","updated":"2009-03-20T11:38:00"}}
+{"030G50070001":{"adminArea":"064","coordinates":[-1.13954,51.40239],"created":"2003-03-20T00:00:00","name":"Aldermaston Station","parent":"910GALDMSTN","stopAreaCode":"030G50070001","type":"GPBS","updated":"2009-03-20T11:38:00"}}

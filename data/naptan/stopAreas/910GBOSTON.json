@@ -1,1 +1,1 @@
-{"910GBOSTON":{"stopAreaCode":"910GBOSTON","parent":"","name":"Boston Rail Station","adminArea":"110","type":"GRLS","coordinates":[-0.03100315227,52.9780899418],"created":"2006-09-11T15:42:00","updated":"2006-09-11T00:00:00"}}
+{"910GBOSTON":{"adminArea":"110","coordinates":[-0.03100315227,52.9780899418],"created":"2006-09-11T15:42:00","name":"Boston Rail Station","parent":"","stopAreaCode":"910GBOSTON","type":"GRLS","updated":"2006-09-11T00:00:00"}}

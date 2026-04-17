@@ -1,1 +1,1 @@
-{"050GFN004011":{"stopAreaCode":"050GFN004011","parent":"920GCBG1","name":"Cambridge Airport","adminArea":"071","type":"GPBS","coordinates":[0.17634611865995428,52.21078998331383],"created":"2006-05-19T00:00:00","updated":"2007-03-12T00:00:00"}}
+{"050GFN004011":{"adminArea":"071","coordinates":[0.17634611865995428,52.21078998331383],"created":"2006-05-19T00:00:00","name":"Cambridge Airport","parent":"920GCBG1","stopAreaCode":"050GFN004011","type":"GPBS","updated":"2007-03-12T00:00:00"}}

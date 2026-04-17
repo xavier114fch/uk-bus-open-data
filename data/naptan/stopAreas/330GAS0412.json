@@ -1,1 +1,1 @@
-{"330GAS0412":{"stopAreaCode":"330GAS0412","parent":"330GAS0053","name":"Bus Link","adminArea":"095","type":"GPBS","coordinates":[-1.2021841,53.0383666],"created":"2016-09-14T12:27:57.169","updated":"2016-09-14T12:31:46.307"}}
+{"330GAS0412":{"adminArea":"095","coordinates":[-1.2021841,53.0383666],"created":"2016-09-14T12:27:57.169","name":"Bus Link","parent":"330GAS0053","stopAreaCode":"330GAS0412","type":"GPBS","updated":"2016-09-14T12:31:46.307"}}

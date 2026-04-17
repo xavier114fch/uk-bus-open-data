@@ -1,1 +1,1 @@
-{"150G00002672":{"stopAreaCode":"150G00002672","parent":"910GGTBNTLY","name":"Railway Station","adminArea":"080","type":"GPBS","coordinates":[1.0643684413,51.8521743605],"created":"2006-12-20T11:26:33","updated":"2022-01-18T10:56:38"}}
+{"150G00002672":{"adminArea":"080","coordinates":[1.0643684413,51.8521743605],"created":"2006-12-20T11:26:33","name":"Railway Station","parent":"910GGTBNTLY","stopAreaCode":"150G00002672","type":"GPBS","updated":"2022-01-18T10:56:38"}}

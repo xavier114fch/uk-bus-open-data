@@ -1,1 +1,1 @@
-{"050GEL900":{"stopAreaCode":"050GEL900","parent":"910GELYY","name":"Railway Station Ely","adminArea":"071","type":"GCCH","coordinates":[0.26670253517960885,52.39222863761042],"created":"2008-11-18T00:00:00","updated":"2009-01-26T00:00:00"}}
+{"050GEL900":{"adminArea":"071","coordinates":[0.26670253517960885,52.39222863761042],"created":"2008-11-18T00:00:00","name":"Railway Station Ely","parent":"910GELYY","stopAreaCode":"050GEL900","type":"GCCH","updated":"2009-01-26T00:00:00"}}

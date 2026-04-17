@@ -1,1 +1,1 @@
-{"380G601400":{"stopAreaCode":"380G601400","parent":"910GCODSALL","name":"Railway Station","adminArea":"100","type":"GPBS","coordinates":[-2.2022522453181272,52.62770807799983],"created":"2012-03-28T16:34:00","updated":"2012-03-28T16:57:00"}}
+{"380G601400":{"adminArea":"100","coordinates":[-2.2022522453181272,52.62770807799983],"created":"2012-03-28T16:34:00","name":"Railway Station","parent":"910GCODSALL","stopAreaCode":"380G601400","type":"GPBS","updated":"2012-03-28T16:57:00"}}

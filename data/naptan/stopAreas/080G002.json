@@ -1,1 +1,1 @@
-{"080G002":{"stopAreaCode":"080G002","parent":"910GCBORNE","name":"Bus Station","adminArea":"073","type":"GBCS","coordinates":[-5.29763,50.21338],"created":"2017-08-10T00:00:00","updated":"2017-08-10T10:19:57"}}
+{"080G002":{"adminArea":"073","coordinates":[-5.29763,50.21338],"created":"2017-08-10T00:00:00","name":"Bus Station","parent":"910GCBORNE","stopAreaCode":"080G002","type":"GBCS","updated":"2017-08-10T10:19:57"}}

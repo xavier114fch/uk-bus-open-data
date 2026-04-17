@@ -1,1 +1,1 @@
-{"159G0010101":{"stopAreaCode":"159G0010101","parent":"910GOCKENDN","name":"West Road","adminArea":"059","type":"GPBS","coordinates":[0.296867,51.523081],"created":"2005-02-07T00:00:00.000","updated":"2005-02-07T00:00:00.000"}}
+{"159G0010101":{"adminArea":"059","coordinates":[0.296867,51.523081],"created":"2005-02-07T00:00:00.000","name":"West Road","parent":"910GOCKENDN","stopAreaCode":"159G0010101","type":"GPBS","updated":"2005-02-07T00:00:00.000"}}

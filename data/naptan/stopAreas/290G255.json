@@ -1,1 +1,1 @@
-{"290G255":{"stopAreaCode":"290G255","parent":"290G8003","name":"King Street","adminArea":"091","type":"GPBS","coordinates":[1.3065277169982865,52.617986460160964],"created":"2006-04-27T10:33:16","updated":"2009-07-20T15:36:25"}}
+{"290G255":{"adminArea":"091","coordinates":[1.3065277169982865,52.617986460160964],"created":"2006-04-27T10:33:16","name":"King Street","parent":"290G8003","stopAreaCode":"290G255","type":"GPBS","updated":"2009-07-20T15:36:25"}}

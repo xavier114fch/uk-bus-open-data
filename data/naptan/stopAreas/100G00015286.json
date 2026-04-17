@@ -1,1 +1,1 @@
-{"100G00015286":{"stopAreaCode":"100G00015286","parent":"910GALFRETN","name":"Railway Station","adminArea":"075","type":"GPBS","coordinates":[-1.371038,53.099594],"created":"2006-06-26T00:00:00.000","updated":"2010-08-03T00:00:00.000"}}
+{"100G00015286":{"adminArea":"075","coordinates":[-1.371038,53.099594],"created":"2006-06-26T00:00:00.000","name":"Railway Station","parent":"910GALFRETN","stopAreaCode":"100G00015286","type":"GPBS","updated":"2010-08-03T00:00:00.000"}}

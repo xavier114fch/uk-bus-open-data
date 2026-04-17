@@ -1,1 +1,1 @@
-{"390G20000":{"stopAreaCode":"390G20000","parent":"910GLAKNHTH","name":"Railway Station","adminArea":"101","type":"GPBS","coordinates":[0.53555,52.44769],"created":"1970-01-01T00:00:00","updated":"2014-03-07T14:57:06"}}
+{"390G20000":{"adminArea":"101","coordinates":[0.53555,52.44769],"created":"1970-01-01T00:00:00","name":"Railway Station","parent":"910GLAKNHTH","stopAreaCode":"390G20000","type":"GPBS","updated":"2014-03-07T14:57:06"}}

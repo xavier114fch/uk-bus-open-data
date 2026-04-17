@@ -1,1 +1,1 @@
-{"270G00011007":{"stopAreaCode":"270G00011007","parent":"","name":"Market Close","adminArea":"089","type":"GPBS","coordinates":[0.246360075,53.161181598],"created":"2003-04-15T00:00:00","updated":"2006-08-31T11:53:59"}}
+{"270G00011007":{"adminArea":"089","coordinates":[0.246360075,53.161181598],"created":"2003-04-15T00:00:00","name":"Market Close","parent":"","stopAreaCode":"270G00011007","type":"GPBS","updated":"2006-08-31T11:53:59"}}

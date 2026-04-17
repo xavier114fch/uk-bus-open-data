@@ -1,1 +1,1 @@
-{"080G005":{"stopAreaCode":"080G005","parent":"910GSTAUSTL","name":"St Austell Bus Station","adminArea":"073","type":"GBCS","coordinates":[-4.78948,50.33922],"created":"2018-06-11T00:00:00","updated":"2018-06-11T16:02:53"}}
+{"080G005":{"adminArea":"073","coordinates":[-4.78948,50.33922],"created":"2018-06-11T00:00:00","name":"St Austell Bus Station","parent":"910GSTAUSTL","stopAreaCode":"080G005","type":"GBCS","updated":"2018-06-11T16:02:53"}}

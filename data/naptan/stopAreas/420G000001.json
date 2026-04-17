@@ -1,1 +1,1 @@
-{"420G000001":{"stopAreaCode":"420G000001","parent":"910GNNTN","name":"Nuneaton Bus Station","adminArea":"104","type":"GBCS","coordinates":[-1.466491863341006,52.52451081407941],"created":"2011-10-14T00:00:00","updated":"2011-10-14T00:00:00"}}
+{"420G000001":{"adminArea":"104","coordinates":[-1.466491863341006,52.52451081407941],"created":"2011-10-14T00:00:00","name":"Nuneaton Bus Station","parent":"910GNNTN","stopAreaCode":"420G000001","type":"GBCS","updated":"2011-10-14T00:00:00"}}

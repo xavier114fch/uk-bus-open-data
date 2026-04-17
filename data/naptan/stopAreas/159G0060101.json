@@ -1,1 +1,1 @@
-{"159G0060101":{"stopAreaCode":"159G0060101","parent":"910GCHADHDD","name":"Bus Station","adminArea":"059","type":"GBCS","coordinates":[0.282973,51.490294],"created":"2005-02-01T00:00:00.000","updated":"2008-12-19T10:51:00.000"}}
+{"159G0060101":{"adminArea":"059","coordinates":[0.282973,51.490294],"created":"2005-02-01T00:00:00.000","name":"Bus Station","parent":"910GCHADHDD","stopAreaCode":"159G0060101","type":"GBCS","updated":"2008-12-19T10:51:00.000"}}

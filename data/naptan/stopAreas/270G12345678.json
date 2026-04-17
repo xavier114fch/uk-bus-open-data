@@ -1,1 +1,1 @@
-{"270G12345678":{"stopAreaCode":"270G12345678","parent":"","name":"test","adminArea":"089","type":"GPBS","coordinates":[-0.56166811,53.180171705],"created":"2014-07-04T11:41:44","updated":"2014-07-17T09:02:36"}}
+{"270G12345678":{"adminArea":"089","coordinates":[-0.56166811,53.180171705],"created":"2014-07-04T11:41:44","name":"test","parent":"","stopAreaCode":"270G12345678","type":"GPBS","updated":"2014-07-17T09:02:36"}}

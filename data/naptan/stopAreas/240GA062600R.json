@@ -1,1 +1,1 @@
-{"240GA062600R":{"stopAreaCode":"240GA062600R","parent":"910GSWALE","name":"Railway Station","adminArea":"086","type":"GPBS","coordinates":[0.747119,51.389462],"created":"2007-06-18T12:03:00.000","updated":"2009-11-13T12:28:00.000"}}
+{"240GA062600R":{"adminArea":"086","coordinates":[0.747119,51.389462],"created":"2007-06-18T12:03:00.000","name":"Railway Station","parent":"910GSWALE","stopAreaCode":"240GA062600R","type":"GPBS","updated":"2009-11-13T12:28:00.000"}}

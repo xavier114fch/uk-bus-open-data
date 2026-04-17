@@ -1,1 +1,1 @@
-{"280G00000002":{"stopAreaCode":"280G00000002","parent":"910GHAMTSQ","name":"Woodside Interchange","adminArea":"090","type":"GBCS","coordinates":[-3.01068,53.39499],"created":"1969-12-31T00:00:00","updated":"2018-11-20T09:28:11"}}
+{"280G00000002":{"adminArea":"090","coordinates":[-3.01068,53.39499],"created":"1969-12-31T00:00:00","name":"Woodside Interchange","parent":"910GHAMTSQ","stopAreaCode":"280G00000002","type":"GBCS","updated":"2018-11-20T09:28:11"}}

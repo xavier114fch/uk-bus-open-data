@@ -1,1 +1,1 @@
-{"200G000001":{"stopAreaCode":"200G000001","parent":"910GWORCSFS","name":"Worcester Bus Station","adminArea":"109","type":"GBCS","coordinates":[-2.2248273,52.1931887],"created":"2011-07-25T00:00:00.000","updated":"2011-10-17T00:00:00.000"}}
+{"200G000001":{"adminArea":"109","coordinates":[-2.2248273,52.1931887],"created":"2011-07-25T00:00:00.000","name":"Worcester Bus Station","parent":"910GWORCSFS","stopAreaCode":"200G000001","type":"GBCS","updated":"2011-10-17T00:00:00.000"}}

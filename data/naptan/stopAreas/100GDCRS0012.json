@@ -1,1 +1,1 @@
-{"100GDCRS0012":{"stopAreaCode":"100GDCRS0012","parent":"910GCHFD","name":"Railway Station","adminArea":"075","type":"GPBS","coordinates":[-1.420338,53.238446],"created":"2006-06-26T00:00:00.000","updated":"2012-01-30T00:00:00.000"}}
+{"100GDCRS0012":{"adminArea":"075","coordinates":[-1.420338,53.238446],"created":"2006-06-26T00:00:00.000","name":"Railway Station","parent":"910GCHFD","stopAreaCode":"100GDCRS0012","type":"GPBS","updated":"2012-01-30T00:00:00.000"}}

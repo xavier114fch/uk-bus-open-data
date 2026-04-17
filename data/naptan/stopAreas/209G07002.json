@@ -1,1 +1,1 @@
-{"209G07002":{"stopAreaCode":"209G07002","parent":"910GCLWALL","name":"Colwall Station Turn","adminArea":"023","type":"GPBS","coordinates":[-2.358411041,52.080401908],"created":"2011-11-11T16:44:00","updated":"2012-01-27T10:07:00"}}
+{"209G07002":{"adminArea":"023","coordinates":[-2.358411041,52.080401908],"created":"2011-11-11T16:44:00","name":"Colwall Station Turn","parent":"910GCLWALL","stopAreaCode":"209G07002","type":"GPBS","updated":"2012-01-27T10:07:00"}}

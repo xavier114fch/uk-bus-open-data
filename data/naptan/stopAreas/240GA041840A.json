@@ -1,1 +1,1 @@
-{"240GA041840A":{"stopAreaCode":"240GA041840A","parent":"910GBCNGNOS","name":"Railway Station","adminArea":"086","type":"GPBS","coordinates":[1.3017382,51.3768806],"created":"2007-06-14T09:51:00.000","updated":"2009-11-13T11:28:00.000"}}
+{"240GA041840A":{"adminArea":"086","coordinates":[1.3017382,51.3768806],"created":"2007-06-14T09:51:00.000","name":"Railway Station","parent":"910GBCNGNOS","stopAreaCode":"240GA041840A","type":"GPBS","updated":"2009-11-13T11:28:00.000"}}

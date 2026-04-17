@@ -1,1 +1,1 @@
-{"100GDA002072":{"stopAreaCode":"100GDA002072","parent":"910GAMBERGT","name":"Railway Station","adminArea":"075","type":"GPBS","coordinates":[-1.480227,53.061144],"created":"2006-06-26T00:00:00.000","updated":"2008-12-02T00:00:00.000"}}
+{"100GDA002072":{"adminArea":"075","coordinates":[-1.480227,53.061144],"created":"2006-06-26T00:00:00.000","name":"Railway Station","parent":"910GAMBERGT","stopAreaCode":"100GDA002072","type":"GPBS","updated":"2008-12-02T00:00:00.000"}}

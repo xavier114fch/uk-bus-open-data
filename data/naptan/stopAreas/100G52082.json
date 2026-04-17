@@ -1,1 +1,1 @@
-{"100G52082":{"stopAreaCode":"100G52082","parent":"100G00016110","name":"Hospital Entrance","adminArea":"075","type":"GPBS","coordinates":[-1.278926,53.232111],"created":"2010-08-03T00:00:00.000","updated":"2010-08-03T00:00:00.000"}}
+{"100G52082":{"adminArea":"075","coordinates":[-1.278926,53.232111],"created":"2010-08-03T00:00:00.000","name":"Hospital Entrance","parent":"100G00016110","stopAreaCode":"100G52082","type":"GPBS","updated":"2010-08-03T00:00:00.000"}}

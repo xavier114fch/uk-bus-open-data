@@ -1,1 +1,1 @@
-{"330GBA0400":{"stopAreaCode":"330GBA0400","parent":"","name":"Hospital","adminArea":"095","type":"GPBS","coordinates":[-0.952437,53.326345],"created":"2006-12-18T11:55:00.000","updated":"2009-02-03T12:55:00.000"}}
+{"330GBA0400":{"adminArea":"095","coordinates":[-0.952437,53.326345],"created":"2006-12-18T11:55:00.000","name":"Hospital","parent":"","stopAreaCode":"330GBA0400","type":"GPBS","updated":"2009-02-03T12:55:00.000"}}

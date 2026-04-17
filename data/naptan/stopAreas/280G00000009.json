@@ -1,1 +1,1 @@
-{"280G00000009":{"stopAreaCode":"280G00000009","parent":"910GBOOTLNS","name":"Bootle Bus Station","adminArea":"090","type":"GBCS","coordinates":[-2.9933,53.45255],"created":"1969-12-31T00:00:00","updated":"2025-02-10T15:30:10"}}
+{"280G00000009":{"adminArea":"090","coordinates":[-2.9933,53.45255],"created":"1969-12-31T00:00:00","name":"Bootle Bus Station","parent":"910GBOOTLNS","stopAreaCode":"280G00000009","type":"GBCS","updated":"2025-02-10T15:30:10"}}

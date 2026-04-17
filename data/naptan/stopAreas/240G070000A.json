@@ -1,1 +1,1 @@
-{"240G070000A":{"stopAreaCode":"240G070000A","parent":"","name":"Bus Station","adminArea":"086","type":"GBCS","coordinates":[0.2755218,51.4378381],"created":"2009-05-21T09:06:00.000","updated":"2009-11-13T10:10:00.000"}}
+{"240G070000A":{"adminArea":"086","coordinates":[0.2755218,51.4378381],"created":"2009-05-21T09:06:00.000","name":"Bus Station","parent":"","stopAreaCode":"240G070000A","type":"GBCS","updated":"2009-11-13T10:10:00.000"}}

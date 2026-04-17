@@ -1,1 +1,1 @@
-{"100GDATC1151":{"stopAreaCode":"100GDATC1151","parent":"100GALFRETON","name":"Bus Station","adminArea":"075","type":"GBCS","coordinates":[-1.387731,53.09569],"created":"2006-06-26T00:00:00.000","updated":"2008-09-30T00:00:00.000"}}
+{"100GDATC1151":{"adminArea":"075","coordinates":[-1.387731,53.09569],"created":"2006-06-26T00:00:00.000","name":"Bus Station","parent":"100GALFRETON","stopAreaCode":"100GDATC1151","type":"GBCS","updated":"2008-09-30T00:00:00.000"}}

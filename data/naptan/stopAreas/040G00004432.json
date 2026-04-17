@@ -1,1 +1,1 @@
-{"040G00004432":{"stopAreaCode":"040G00004432","parent":"910GHADMATP","name":"Railway Station","adminArea":"070","type":"GPBS","coordinates":[-0.942574,51.770737],"created":"2007-01-29T00:00:00.000","updated":"2013-04-03T00:00:00.000"}}
+{"040G00004432":{"adminArea":"070","coordinates":[-0.942574,51.770737],"created":"2007-01-29T00:00:00.000","name":"Railway Station","parent":"910GHADMATP","stopAreaCode":"040G00004432","type":"GPBS","updated":"2013-04-03T00:00:00.000"}}

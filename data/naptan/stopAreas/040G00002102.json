@@ -1,1 +1,1 @@
-{"040G00002102":{"stopAreaCode":"040G00002102","parent":"910GCHLFNAL","name":"Station Forecourt","adminArea":"070","type":"GPBS","coordinates":[-0.560634,51.667816],"created":"2007-05-09T00:00:00.000","updated":"2009-07-02T00:00:00.000"}}
+{"040G00002102":{"adminArea":"070","coordinates":[-0.560634,51.667816],"created":"2007-05-09T00:00:00.000","name":"Station Forecourt","parent":"910GCHLFNAL","stopAreaCode":"040G00002102","type":"GPBS","updated":"2009-07-02T00:00:00.000"}}

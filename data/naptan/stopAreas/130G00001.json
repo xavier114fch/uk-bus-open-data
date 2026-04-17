@@ -1,1 +1,1 @@
-{"130G00001":{"stopAreaCode":"130G00001","parent":"","name":"Durham Bus Station","adminArea":"078","type":"GBCS","coordinates":[-1.582054,54.777235],"created":"2021-02-08T13:27:14.000","updated":"2021-03-15T15:59:02.000"}}
+{"130G00001":{"adminArea":"078","coordinates":[-1.582054,54.777235],"created":"2021-02-08T13:27:14.000","name":"Durham Bus Station","parent":"","stopAreaCode":"130G00001","type":"GBCS","updated":"2021-03-15T15:59:02.000"}}

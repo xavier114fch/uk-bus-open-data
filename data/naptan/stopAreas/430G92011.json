@@ -1,1 +1,1 @@
-{"430G92011":{"stopAreaCode":"430G92011","parent":"","name":"Second Stop","adminArea":"105","type":"GPBS","coordinates":[-1.5130790711180049,52.45274635412359],"created":"2004-08-05T00:00:00","updated":"2026-03-13T00:00:00"}}
+{"430G92011":{"adminArea":"105","coordinates":[-1.5130790711180049,52.45274635412359],"created":"2004-08-05T00:00:00","name":"Second Stop","parent":"","stopAreaCode":"430G92011","type":"GPBS","updated":"2026-03-13T00:00:00"}}

@@ -1,1 +1,1 @@
-{"180GNWTNRAIL":{"stopAreaCode":"180GNWTNRAIL","parent":"","name":"Newton train station","adminArea":"083","type":"GRLS","coordinates":[-2.0711272,53.4573233],"created":"2025-05-14T16:11:54.106","updated":"2025-05-14T16:11:54.106"}}
+{"180GNWTNRAIL":{"adminArea":"083","coordinates":[-2.0711272,53.4573233],"created":"2025-05-14T16:11:54.106","name":"Newton train station","parent":"","stopAreaCode":"180GNWTNRAIL","type":"GRLS","updated":"2025-05-14T16:11:54.106"}}

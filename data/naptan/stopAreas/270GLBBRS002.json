@@ -1,1 +1,1 @@
-{"270GLBBRS002":{"stopAreaCode":"270GLBBRS002","parent":"910GBOSTON","name":"Bus Station","adminArea":"089","type":"GBCS","coordinates":[-0.028893875,52.97665244],"created":"2005-05-17T00:00:00","updated":"2009-05-14T10:24:00"}}
+{"270GLBBRS002":{"adminArea":"089","coordinates":[-0.028893875,52.97665244],"created":"2005-05-17T00:00:00","name":"Bus Station","parent":"910GBOSTON","stopAreaCode":"270GLBBRS002","type":"GBCS","updated":"2009-05-14T10:24:00"}}

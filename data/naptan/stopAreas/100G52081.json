@@ -1,1 +1,1 @@
-{"100G52081":{"stopAreaCode":"100G52081","parent":"910GALFRETN","name":"Station Forecourt","adminArea":"075","type":"GPBS","coordinates":[-1.369992,53.100595],"created":"2010-08-03T00:00:00.000","updated":"2010-08-03T00:00:00.000"}}
+{"100G52081":{"adminArea":"075","coordinates":[-1.369992,53.100595],"created":"2010-08-03T00:00:00.000","name":"Station Forecourt","parent":"910GALFRETN","stopAreaCode":"100G52081","type":"GPBS","updated":"2010-08-03T00:00:00.000"}}

@@ -1,1 +1,1 @@
-{"040G00002971":{"stopAreaCode":"040G00002971","parent":"910GHWYCOMB","name":"Station Interchange","adminArea":"070","type":"GBCS","coordinates":[-0.745981,51.629747],"created":"2010-10-26T00:00:00.000","updated":"2014-11-06T00:00:00.000"}}
+{"040G00002971":{"adminArea":"070","coordinates":[-0.745981,51.629747],"created":"2010-10-26T00:00:00.000","name":"Station Interchange","parent":"910GHWYCOMB","stopAreaCode":"040G00002971","type":"GBCS","updated":"2014-11-06T00:00:00.000"}}

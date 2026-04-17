@@ -1,1 +1,1 @@
-{"290G65":{"stopAreaCode":"290G65","parent":"290G4444","name":"Bus Station","adminArea":"091","type":"GBCS","coordinates":[1.2929506382764415,52.62431879578518],"created":"2006-04-27T10:33:28","updated":"2022-02-21T14:29:16"}}
+{"290G65":{"adminArea":"091","coordinates":[1.2929506382764415,52.62431879578518],"created":"2006-04-27T10:33:28","name":"Bus Station","parent":"290G4444","stopAreaCode":"290G65","type":"GBCS","updated":"2022-02-21T14:29:16"}}

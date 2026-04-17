@@ -1,1 +1,1 @@
-{"040G00002326":{"stopAreaCode":"040G00002326","parent":"040G00004658","name":"Great Western Street","adminArea":"070","type":"GPBS","coordinates":[-0.813403,51.815308],"created":"2010-12-15T00:00:00.000","updated":"2010-12-15T00:00:00.000"}}
+{"040G00002326":{"adminArea":"070","coordinates":[-0.813403,51.815308],"created":"2010-12-15T00:00:00.000","name":"Great Western Street","parent":"040G00004658","stopAreaCode":"040G00002326","type":"GPBS","updated":"2010-12-15T00:00:00.000"}}

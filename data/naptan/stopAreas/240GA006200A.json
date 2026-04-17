@@ -1,1 +1,1 @@
-{"240GA006200A":{"stopAreaCode":"240GA006200A","parent":"910GBATABAL","name":"Sevenoaks Hospital","adminArea":"086","type":"GCLS","coordinates":[0.1954771,51.2885952],"created":"2007-06-12T15:55:00.000","updated":"2015-02-03T11:27:00.000"}}
+{"240GA006200A":{"adminArea":"086","coordinates":[0.1954771,51.2885952],"created":"2007-06-12T15:55:00.000","name":"Sevenoaks Hospital","parent":"910GBATABAL","stopAreaCode":"240GA006200A","type":"GCLS","updated":"2015-02-03T11:27:00.000"}}

@@ -1,1 +1,1 @@
-{"050GCC104402":{"stopAreaCode":"050GCC104402","parent":"050GCC000006","name":"Fair Street","adminArea":"071","type":"GCLS","coordinates":[0.12869081131772866,52.207514162573055],"created":"2006-05-19T00:00:00","updated":"2009-06-01T00:00:00"}}
+{"050GCC104402":{"adminArea":"071","coordinates":[0.12869081131772866,52.207514162573055],"created":"2006-05-19T00:00:00","name":"Fair Street","parent":"050GCC000006","stopAreaCode":"050GCC104402","type":"GCLS","updated":"2009-06-01T00:00:00"}}

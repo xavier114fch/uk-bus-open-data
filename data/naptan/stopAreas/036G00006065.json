@@ -1,1 +1,1 @@
-{"036G00006065":{"stopAreaCode":"036G00006065","parent":"036G00001043","name":"St Marks Hospital Gate 1","adminArea":"065","type":"GPBS","coordinates":[-0.744779,51.524573],"created":"2010-06-29T00:00:00","updated":"2013-01-22T00:00:00"}}
+{"036G00006065":{"adminArea":"065","coordinates":[-0.744779,51.524573],"created":"2010-06-29T00:00:00","name":"St Marks Hospital Gate 1","parent":"036G00001043","stopAreaCode":"036G00006065","type":"GPBS","updated":"2013-01-22T00:00:00"}}

@@ -1,1 +1,1 @@
-{"410G000BTNON":{"stopAreaCode":"410G000BTNON","parent":"","name":"Benton Metro onward travel cluster","adminArea":"103","type":"GCLS","coordinates":[-1.5690948,55.014073],"created":"2017-10-13T09:27:38.426","updated":"2021-06-18T10:47:39.704"}}
+{"410G000BTNON":{"adminArea":"103","coordinates":[-1.5690948,55.014073],"created":"2017-10-13T09:27:38.426","name":"Benton Metro onward travel cluster","parent":"","stopAreaCode":"410G000BTNON","type":"GCLS","updated":"2021-06-18T10:47:39.704"}}

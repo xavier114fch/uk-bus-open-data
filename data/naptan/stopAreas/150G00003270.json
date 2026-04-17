@@ -1,1 +1,1 @@
-{"150G00003270":{"stopAreaCode":"150G00003270","parent":"910GROCHFD","name":"Railway Station","adminArea":"080","type":"GPBS","coordinates":[0.7020837331,51.5824065702],"created":"2007-06-04T12:18:02","updated":"2022-01-18T10:56:38"}}
+{"150G00003270":{"adminArea":"080","coordinates":[0.7020837331,51.5824065702],"created":"2007-06-04T12:18:02","name":"Railway Station","parent":"910GROCHFD","stopAreaCode":"150G00003270","type":"GPBS","updated":"2022-01-18T10:56:38"}}

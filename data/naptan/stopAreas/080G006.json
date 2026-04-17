@@ -1,1 +1,1 @@
-{"080G006":{"stopAreaCode":"080G006","parent":"910GREDRUTH","name":"Railway Station","adminArea":"073","type":"GBCS","coordinates":[-5.22627,50.23315],"created":"2017-01-04T00:00:00","updated":"2022-08-18T13:47:34"}}
+{"080G006":{"adminArea":"073","coordinates":[-5.22627,50.23315],"created":"2017-01-04T00:00:00","name":"Railway Station","parent":"910GREDRUTH","stopAreaCode":"080G006","type":"GBCS","updated":"2022-08-18T13:47:34"}}

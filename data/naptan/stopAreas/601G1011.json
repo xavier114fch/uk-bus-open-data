@@ -1,1 +1,1 @@
-{"601G1011":{"stopAreaCode":"601G1011","parent":"601G1005","name":"Junction","adminArea":"142","type":"GCLS","coordinates":[-7.43066,57.002107],"created":"2013-12-28T00:00:00.000","updated":"2013-12-28T00:00:00.000"}}
+{"601G1011":{"adminArea":"142","coordinates":[-7.43066,57.002107],"created":"2013-12-28T00:00:00.000","name":"Junction","parent":"601G1005","stopAreaCode":"601G1011","type":"GCLS","updated":"2013-12-28T00:00:00.000"}}

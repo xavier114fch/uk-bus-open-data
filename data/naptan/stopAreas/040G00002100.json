@@ -1,1 +1,1 @@
-{"040G00002100":{"stopAreaCode":"040G00002100","parent":"940GZZLUCSM","name":"Underground Station","adminArea":"070","type":"GPBS","coordinates":[-0.61115,51.705453],"created":"2007-05-15T00:00:00.000","updated":"2007-05-15T00:00:00.000"}}
+{"040G00002100":{"adminArea":"070","coordinates":[-0.61115,51.705453],"created":"2007-05-15T00:00:00.000","name":"Underground Station","parent":"940GZZLUCSM","stopAreaCode":"040G00002100","type":"GPBS","updated":"2007-05-15T00:00:00.000"}}

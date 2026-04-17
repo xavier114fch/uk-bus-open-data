@@ -1,1 +1,1 @@
-{"036G00000086":{"stopAreaCode":"036G00000086","parent":"910GMDNHEAD","name":"Maidenhead Railway Station","adminArea":"065","type":"GPBS","coordinates":[-0.722312,51.518162],"created":"2010-06-29T00:00:00","updated":"2010-06-29T00:00:00"}}
+{"036G00000086":{"adminArea":"065","coordinates":[-0.722312,51.518162],"created":"2010-06-29T00:00:00","name":"Maidenhead Railway Station","parent":"910GMDNHEAD","stopAreaCode":"036G00000086","type":"GPBS","updated":"2010-06-29T00:00:00"}}

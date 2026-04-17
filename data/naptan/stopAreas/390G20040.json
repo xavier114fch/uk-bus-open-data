@@ -1,1 +1,1 @@
-{"390G20040":{"stopAreaCode":"390G20040","parent":"390G20038","name":"Railway Station","adminArea":"101","type":"GPBS","coordinates":[0.62415,52.45413],"created":"1970-01-01T00:00:00","updated":"2015-06-08T11:25:37"}}
+{"390G20040":{"adminArea":"101","coordinates":[0.62415,52.45413],"created":"1970-01-01T00:00:00","name":"Railway Station","parent":"390G20038","stopAreaCode":"390G20040","type":"GPBS","updated":"2015-06-08T11:25:37"}}

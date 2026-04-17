@@ -1,1 +1,1 @@
-{"380G200800":{"stopAreaCode":"380G200800","parent":"910GCNCK","name":"Bus Station","adminArea":"100","type":"GBCS","coordinates":[-2.031041272242636,52.690714908572254],"created":"2012-03-28T16:41:00","updated":"2012-03-28T17:03:00"}}
+{"380G200800":{"adminArea":"100","coordinates":[-2.031041272242636,52.690714908572254],"created":"2012-03-28T16:41:00","name":"Bus Station","parent":"910GCNCK","stopAreaCode":"380G200800","type":"GBCS","updated":"2012-03-28T17:03:00"}}

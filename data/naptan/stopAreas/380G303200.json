@@ -1,1 +1,1 @@
-{"380G303200":{"stopAreaCode":"380G303200","parent":"910GBURTNOT","name":"Railway Station","adminArea":"100","type":"GPBS","coordinates":[-1.6422909231828118,52.80650553971464],"created":"2012-03-28T10:19:00","updated":"2012-03-28T10:40:00"}}
+{"380G303200":{"adminArea":"100","coordinates":[-1.6422909231828118,52.80650553971464],"created":"2012-03-28T10:19:00","name":"Railway Station","parent":"910GBURTNOT","stopAreaCode":"380G303200","type":"GPBS","updated":"2012-03-28T10:40:00"}}

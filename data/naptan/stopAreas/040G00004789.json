@@ -1,1 +1,1 @@
-{"040G00004789":{"stopAreaCode":"040G00004789","parent":"910GWENDOVR","name":"High Street","adminArea":"070","type":"GPBS","coordinates":[-0.744174,51.762051],"created":"2007-01-29T00:00:00.000","updated":"2007-02-28T00:00:00.000"}}
+{"040G00004789":{"adminArea":"070","coordinates":[-0.744174,51.762051],"created":"2007-01-29T00:00:00.000","name":"High Street","parent":"910GWENDOVR","stopAreaCode":"040G00004789","type":"GPBS","updated":"2007-02-28T00:00:00.000"}}

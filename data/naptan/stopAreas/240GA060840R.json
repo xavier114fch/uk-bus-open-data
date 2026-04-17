@@ -1,1 +1,1 @@
-{"240GA060840R":{"stopAreaCode":"240GA060840R","parent":"910GNRTHFLT","name":"Railway Station","adminArea":"086","type":"GCLS","coordinates":[0.3242959,51.445955],"created":"2007-06-18T10:05:00.000","updated":"2009-11-13T12:08:00.000"}}
+{"240GA060840R":{"adminArea":"086","coordinates":[0.3242959,51.445955],"created":"2007-06-18T10:05:00.000","name":"Railway Station","parent":"910GNRTHFLT","stopAreaCode":"240GA060840R","type":"GCLS","updated":"2009-11-13T12:08:00.000"}}

@@ -1,1 +1,1 @@
-{"601G1017":{"stopAreaCode":"601G1017","parent":"920GBRR1","name":"Airport Terminal","adminArea":"142","type":"GPBS","coordinates":[-7.449743,57.025736],"created":"2013-12-28T00:00:00.000","updated":"2013-12-28T00:00:00.000"}}
+{"601G1017":{"adminArea":"142","coordinates":[-7.449743,57.025736],"created":"2013-12-28T00:00:00.000","name":"Airport Terminal","parent":"920GBRR1","stopAreaCode":"601G1017","type":"GPBS","updated":"2013-12-28T00:00:00.000"}}

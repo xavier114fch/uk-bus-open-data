@@ -1,1 +1,1 @@
-{"340G000512E":{"stopAreaCode":"340G000512E","parent":"340G000512W","name":"High Street East","adminArea":"096","type":"GPBS","coordinates":[-1.59497,51.88196],"created":"2010-08-13T00:00:00","updated":"2010-08-13T12:23:00"}}
+{"340G000512E":{"adminArea":"096","coordinates":[-1.59497,51.88196],"created":"2010-08-13T00:00:00","name":"High Street East","parent":"340G000512W","stopAreaCode":"340G000512E","type":"GPBS","updated":"2010-08-13T12:23:00"}}

@@ -1,1 +1,1 @@
-{"389GD0001":{"stopAreaCode":"389GD0001","parent":"","name":"Bus Station","adminArea":"055","type":"GBCS","coordinates":[-2.173182551,53.023965433],"created":"2002-11-23T00:00:00","updated":"2011-08-05T10:26:29"}}
+{"389GD0001":{"adminArea":"055","coordinates":[-2.173182551,53.023965433],"created":"2002-11-23T00:00:00","name":"Bus Station","parent":"","stopAreaCode":"389GD0001","type":"GBCS","updated":"2011-08-05T10:26:29"}}

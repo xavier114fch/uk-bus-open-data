@@ -1,1 +1,1 @@
-{"050GCC000517":{"stopAreaCode":"050GCC000517","parent":"050GCC000005","name":"Addenbrooke's Hospital Outpatients","adminArea":"071","type":"GBCS","coordinates":[0.1427362820936698,52.175761076850804],"created":"2011-10-10T00:00:00","updated":"2015-03-02T00:00:00"}}
+{"050GCC000517":{"adminArea":"071","coordinates":[0.1427362820936698,52.175761076850804],"created":"2011-10-10T00:00:00","name":"Addenbrooke's Hospital Outpatients","parent":"050GCC000005","stopAreaCode":"050GCC000517","type":"GBCS","updated":"2015-03-02T00:00:00"}}

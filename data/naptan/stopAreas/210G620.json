@@ -1,1 +1,1 @@
-{"210G620":{"stopAreaCode":"210G620","parent":"910GBAYFORD","name":"Bayford Railway Station","adminArea":"085","type":"GPBS","coordinates":[-0.095398449453278,51.75757642928905],"created":"2004-06-17T12:43:00","updated":"2007-12-05T15:31:44"}}
+{"210G620":{"adminArea":"085","coordinates":[-0.095398449453278,51.75757642928905],"created":"2004-06-17T12:43:00","name":"Bayford Railway Station","parent":"910GBAYFORD","stopAreaCode":"210G620","type":"GPBS","updated":"2007-12-05T15:31:44"}}

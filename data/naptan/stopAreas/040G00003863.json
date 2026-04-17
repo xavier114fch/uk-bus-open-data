@@ -1,1 +1,1 @@
-{"040G00003863":{"stopAreaCode":"040G00003863","parent":"910GBORNEND","name":"Railway Station","adminArea":"070","type":"GPBS","coordinates":[-0.710348,51.577414],"created":"2007-01-29T00:00:00.000","updated":"2007-02-28T00:00:00.000"}}
+{"040G00003863":{"adminArea":"070","coordinates":[-0.710348,51.577414],"created":"2007-01-29T00:00:00.000","name":"Railway Station","parent":"910GBORNEND","stopAreaCode":"040G00003863","type":"GPBS","updated":"2007-02-28T00:00:00.000"}}

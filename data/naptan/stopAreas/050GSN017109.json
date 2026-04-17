@@ -1,1 +1,1 @@
-{"050GSN017109":{"stopAreaCode":"050GSN017109","parent":"910GSTNEOTS","name":"Railway Station","adminArea":"071","type":"GPBS","coordinates":[-0.24810466624642755,52.23187290200763],"created":"2006-05-19T00:00:00","updated":"2008-12-17T00:00:00"}}
+{"050GSN017109":{"adminArea":"071","coordinates":[-0.24810466624642755,52.23187290200763],"created":"2006-05-19T00:00:00","name":"Railway Station","parent":"910GSTNEOTS","stopAreaCode":"050GSN017109","type":"GPBS","updated":"2008-12-17T00:00:00"}}

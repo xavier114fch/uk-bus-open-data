@@ -1,1 +1,1 @@
-{"240G98104":{"stopAreaCode":"240G98104","parent":"240G070120A","name":"Bus Station Arrivals","adminArea":"086","type":"GCLS","coordinates":[1.1771889,51.0790622],"created":"2011-02-09T10:46:00.000","updated":"2011-02-09T10:46:00.000"}}
+{"240G98104":{"adminArea":"086","coordinates":[1.1771889,51.0790622],"created":"2011-02-09T10:46:00.000","name":"Bus Station Arrivals","parent":"240G070120A","stopAreaCode":"240G98104","type":"GCLS","updated":"2011-02-09T10:46:00.000"}}

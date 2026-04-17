@@ -1,1 +1,1 @@
-{"240GA023700A":{"stopAreaCode":"240GA023700A","parent":"920GLYX1","name":"Airport Turning","adminArea":"086","type":"GPBS","coordinates":[0.919246,50.960354],"created":"2008-04-09T13:08:00.000","updated":"2009-04-08T17:21:00.000"}}
+{"240GA023700A":{"adminArea":"086","coordinates":[0.919246,50.960354],"created":"2008-04-09T13:08:00.000","name":"Airport Turning","parent":"920GLYX1","stopAreaCode":"240GA023700A","type":"GPBS","updated":"2009-04-08T17:21:00.000"}}

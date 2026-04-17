@@ -1,1 +1,1 @@
-{"158G00000274":{"stopAreaCode":"158G00000274","parent":"910GSTHVIC","name":"Victoria Station Interchange","adminArea":"053","type":"GCLS","coordinates":[0.7116960024,51.5416413846],"created":"2007-08-09T17:45:37","updated":"2021-08-18T08:04:22"}}
+{"158G00000274":{"adminArea":"053","coordinates":[0.7116960024,51.5416413846],"created":"2007-08-09T17:45:37","name":"Victoria Station Interchange","parent":"910GSTHVIC","stopAreaCode":"158G00000274","type":"GCLS","updated":"2021-08-18T08:04:22"}}

@@ -1,1 +1,1 @@
-{"109GDDCCBS01":{"stopAreaCode":"109GDDCCBS01","parent":"109GDERBY","name":"Bus Station","adminArea":"017","type":"GBCS","coordinates":[-1.471348,52.92204],"created":"2006-06-26T00:00:00.000","updated":"2009-11-16T00:00:00.000"}}
+{"109GDDCCBS01":{"adminArea":"017","coordinates":[-1.471348,52.92204],"created":"2006-06-26T00:00:00.000","name":"Bus Station","parent":"109GDERBY","stopAreaCode":"109GDDCCBS01","type":"GBCS","updated":"2009-11-16T00:00:00.000"}}

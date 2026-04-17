@@ -1,1 +1,1 @@
-{"150G00003695":{"stopAreaCode":"150G00003695","parent":"910GCLACTON","name":"Railway Station Coach Stop","adminArea":"080","type":"GPBS","coordinates":[1.1542220484,51.7937907194],"created":"2012-08-13T10:16:47","updated":"2022-01-18T10:56:38"}}
+{"150G00003695":{"adminArea":"080","coordinates":[1.1542220484,51.7937907194],"created":"2012-08-13T10:16:47","name":"Railway Station Coach Stop","parent":"910GCLACTON","stopAreaCode":"150G00003695","type":"GPBS","updated":"2022-01-18T10:56:38"}}

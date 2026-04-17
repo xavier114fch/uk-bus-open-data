@@ -1,1 +1,1 @@
-{"270GLSC02723":{"stopAreaCode":"270GLSC02723","parent":"910GSPALDNG","name":"Bus Station","adminArea":"089","type":"GBCS","coordinates":[-0.153762982,52.790016645],"created":"2005-05-17T00:00:00","updated":"2010-07-22T08:19:38"}}
+{"270GLSC02723":{"adminArea":"089","coordinates":[-0.153762982,52.790016645],"created":"2005-05-17T00:00:00","name":"Bus Station","parent":"910GSPALDNG","stopAreaCode":"270GLSC02723","type":"GBCS","updated":"2010-07-22T08:19:38"}}

@@ -1,1 +1,1 @@
-{"601G1001":{"stopAreaCode":"601G1001","parent":"601G1000","name":"Township","adminArea":"142","type":"GPBS","coordinates":[-7.418097,56.978263],"created":"2013-12-27T00:00:00.000","updated":"2013-12-27T00:00:00.000"}}
+{"601G1001":{"adminArea":"142","coordinates":[-7.418097,56.978263],"created":"2013-12-27T00:00:00.000","name":"Township","parent":"601G1000","stopAreaCode":"601G1001","type":"GPBS","updated":"2013-12-27T00:00:00.000"}}

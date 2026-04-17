@@ -1,1 +1,1 @@
-{"100G52078":{"stopAreaCode":"100G52078","parent":"100GDB001381","name":"Elm Street","adminArea":"075","type":"GPBS","coordinates":[-1.381723,52.907144],"created":"2010-07-30T00:00:00.000","updated":"2010-07-30T00:00:00.000"}}
+{"100G52078":{"adminArea":"075","coordinates":[-1.381723,52.907144],"created":"2010-07-30T00:00:00.000","name":"Elm Street","parent":"100GDB001381","stopAreaCode":"100G52078","type":"GPBS","updated":"2010-07-30T00:00:00.000"}}

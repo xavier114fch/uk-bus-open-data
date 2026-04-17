@@ -1,1 +1,1 @@
-{"050GWT020028":{"stopAreaCode":"050GWT020028","parent":"910GWATBECH","name":"Railway Station","adminArea":"071","type":"GPBS","coordinates":[0.19700350287230625,52.26216493730283],"created":"2006-05-19T00:00:00","updated":"2020-11-29T09:47:29"}}
+{"050GWT020028":{"adminArea":"071","coordinates":[0.19700350287230625,52.26216493730283],"created":"2006-05-19T00:00:00","name":"Railway Station","parent":"910GWATBECH","stopAreaCode":"050GWT020028","type":"GPBS","updated":"2020-11-29T09:47:29"}}

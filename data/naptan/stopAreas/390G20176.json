@@ -1,1 +1,1 @@
-{"390G20176":{"stopAreaCode":"390G20176","parent":"910GNWMKET","name":"Railway Station","adminArea":"101","type":"GPBS","coordinates":[0.4068,52.23878],"created":"1970-01-01T00:00:00","updated":"2021-06-08T15:22:24"}}
+{"390G20176":{"adminArea":"101","coordinates":[0.4068,52.23878],"created":"1970-01-01T00:00:00","name":"Railway Station","parent":"910GNWMKET","stopAreaCode":"390G20176","type":"GPBS","updated":"2021-06-08T15:22:24"}}

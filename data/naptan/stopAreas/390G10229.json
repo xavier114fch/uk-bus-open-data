@@ -1,1 +1,1 @@
-{"390G10229":{"stopAreaCode":"390G10229","parent":"910GSUDBURY","name":"Bus Station","adminArea":"101","type":"GBCS","coordinates":[0.73202,52.03777],"created":"1970-01-01T00:00:00","updated":"2021-11-18T12:41:13"}}
+{"390G10229":{"adminArea":"101","coordinates":[0.73202,52.03777],"created":"1970-01-01T00:00:00","name":"Bus Station","parent":"910GSUDBURY","stopAreaCode":"390G10229","type":"GBCS","updated":"2021-11-18T12:41:13"}}

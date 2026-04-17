@@ -1,1 +1,1 @@
-{"410G000CSTON":{"stopAreaCode":"410G000CSTON","parent":"","name":"Central Station Metro onward travel cluster","adminArea":"103","type":"GCLS","coordinates":[-1.6183048,54.9692749],"created":"2017-10-18T10:14:35.963","updated":"2021-06-18T10:48:28.496"}}
+{"410G000CSTON":{"adminArea":"103","coordinates":[-1.6183048,54.9692749],"created":"2017-10-18T10:14:35.963","name":"Central Station Metro onward travel cluster","parent":"","stopAreaCode":"410G000CSTON","type":"GCLS","updated":"2021-06-18T10:48:28.496"}}

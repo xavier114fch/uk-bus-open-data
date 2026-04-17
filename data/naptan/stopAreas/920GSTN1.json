@@ -1,1 +1,1 @@
-{"920GSTN1":{"stopAreaCode":"920GSTN1","parent":"","name":"London Stansted Airport","adminArea":"145","type":"GAIR","coordinates":[0.26043566646,51.8905767089],"created":"2005-04-21T00:00:00","updated":"2009-01-02T11:45:00"}}
+{"920GSTN1":{"adminArea":"145","coordinates":[0.26043566646,51.8905767089],"created":"2005-04-21T00:00:00","name":"London Stansted Airport","parent":"","stopAreaCode":"920GSTN1","type":"GAIR","updated":"2009-01-02T11:45:00"}}

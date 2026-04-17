@@ -1,1 +1,1 @@
-{"340G01543OPP":{"stopAreaCode":"340G01543OPP","parent":"910GBCSTN","name":"Bicester North Station","adminArea":"096","type":"GPBS","coordinates":[-1.15347,51.90298],"created":"2007-09-11T00:00:00","updated":"2009-10-06T14:58:00"}}
+{"340G01543OPP":{"adminArea":"096","coordinates":[-1.15347,51.90298],"created":"2007-09-11T00:00:00","name":"Bicester North Station","parent":"910GBCSTN","stopAreaCode":"340G01543OPP","type":"GPBS","updated":"2009-10-06T14:58:00"}}

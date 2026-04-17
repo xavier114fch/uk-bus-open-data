@@ -1,1 +1,1 @@
-{"340G001786":{"stopAreaCode":"340G001786","parent":"340G000201T","name":"New Street","adminArea":"096","type":"GPBS","coordinates":[-1.54752,51.94152],"created":"2010-07-30T00:00:00","updated":"2010-07-30T12:41:00"}}
+{"340G001786":{"adminArea":"096","coordinates":[-1.54752,51.94152],"created":"2010-07-30T00:00:00","name":"New Street","parent":"340G000201T","stopAreaCode":"340G001786","type":"GPBS","updated":"2010-07-30T12:41:00"}}

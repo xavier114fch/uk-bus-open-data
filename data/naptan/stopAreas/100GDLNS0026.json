@@ -1,1 +1,1 @@
-{"100GDLNS0026":{"stopAreaCode":"100GDLNS0026","parent":"910GLGWITH","name":"Rail Station","adminArea":"075","type":"GPBS","coordinates":[-1.207321,53.231845],"created":"2006-06-26T00:00:00.000","updated":"2008-12-01T00:00:00.000"}}
+{"100GDLNS0026":{"adminArea":"075","coordinates":[-1.207321,53.231845],"created":"2006-06-26T00:00:00.000","name":"Rail Station","parent":"910GLGWITH","stopAreaCode":"100GDLNS0026","type":"GPBS","updated":"2008-12-01T00:00:00.000"}}

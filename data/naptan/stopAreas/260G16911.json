@@ -1,1 +1,1 @@
-{"260G16911":{"stopAreaCode":"260G16911","parent":"910GWGSTS","name":"Station Approach","adminArea":"088","type":"GPBS","coordinates":[-1.133996,52.582563],"created":"2009-02-24T00:00:00.000","updated":"2009-02-24T00:00:00.000"}}
+{"260G16911":{"adminArea":"088","coordinates":[-1.133996,52.582563],"created":"2009-02-24T00:00:00.000","name":"Station Approach","parent":"910GWGSTS","stopAreaCode":"260G16911","type":"GPBS","updated":"2009-02-24T00:00:00.000"}}

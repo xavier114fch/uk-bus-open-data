@@ -1,1 +1,1 @@
-{"150G00003858":{"stopAreaCode":"150G00003858","parent":"","name":"Hospital (Northbound)","adminArea":"080","type":"GPBS","coordinates":[0.4520679679,51.5589495329],"created":"2019-02-04T14:19:30","updated":"2019-11-18T10:18:58"}}
+{"150G00003858":{"adminArea":"080","coordinates":[0.4520679679,51.5589495329],"created":"2019-02-04T14:19:30","name":"Hospital (Northbound)","parent":"","stopAreaCode":"150G00003858","type":"GPBS","updated":"2019-11-18T10:18:58"}}

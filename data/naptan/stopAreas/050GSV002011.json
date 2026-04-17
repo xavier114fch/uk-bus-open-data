@@ -1,1 +1,1 @@
-{"050GSV002011":{"stopAreaCode":"050GSV002011","parent":"050GSV020021","name":"Swavesey Station","adminArea":"071","type":"GPBS","coordinates":[1.4800125941379064e-05,52.30696551223422],"created":"2006-05-19T00:00:00","updated":"2007-03-12T00:00:00"}}
+{"050GSV002011":{"adminArea":"071","coordinates":[1.4800125941379064e-05,52.30696551223422],"created":"2006-05-19T00:00:00","name":"Swavesey Station","parent":"050GSV020021","stopAreaCode":"050GSV002011","type":"GPBS","updated":"2007-03-12T00:00:00"}}

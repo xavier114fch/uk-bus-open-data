@@ -1,1 +1,1 @@
-{"040G00003620":{"stopAreaCode":"040G00003620","parent":"","name":"Roundabout","adminArea":"070","type":"GPBS","coordinates":[-0.815639,51.738829],"created":"2010-11-10T00:00:00.000","updated":"2010-11-10T00:00:00.000"}}
+{"040G00003620":{"adminArea":"070","coordinates":[-0.815639,51.738829],"created":"2010-11-10T00:00:00.000","name":"Roundabout","parent":"","stopAreaCode":"040G00003620","type":"GPBS","updated":"2010-11-10T00:00:00.000"}}

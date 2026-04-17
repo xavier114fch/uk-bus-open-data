@@ -1,1 +1,1 @@
-{"410G000STPON":{"stopAreaCode":"410G000STPON","parent":"","name":"St Peters Metro onward travel cluster","adminArea":"103","type":"GCLS","coordinates":[-1.3840744,54.9101373],"created":"2017-10-19T14:24:48.280","updated":"2021-06-18T11:02:22.138"}}
+{"410G000STPON":{"adminArea":"103","coordinates":[-1.3840744,54.9101373],"created":"2017-10-19T14:24:48.280","name":"St Peters Metro onward travel cluster","parent":"","stopAreaCode":"410G000STPON","type":"GCLS","updated":"2021-06-18T11:02:22.138"}}

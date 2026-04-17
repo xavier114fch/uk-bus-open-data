@@ -1,1 +1,1 @@
-{"017G0002":{"stopAreaCode":"017G0002","parent":"","name":"Bus Station","adminArea":"051","type":"GBCS","coordinates":[-2.5962,51.52702],"created":"2019-11-19T00:00:00","updated":"2024-05-02T08:51:54"}}
+{"017G0002":{"adminArea":"051","coordinates":[-2.5962,51.52702],"created":"2019-11-19T00:00:00","name":"Bus Station","parent":"","stopAreaCode":"017G0002","type":"GBCS","updated":"2024-05-02T08:51:54"}}

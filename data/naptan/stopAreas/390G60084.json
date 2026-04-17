@@ -1,1 +1,1 @@
-{"390G60084":{"stopAreaCode":"390G60084","parent":"910GBRAMPTN","name":"Railway Station","adminArea":"101","type":"GPBS","coordinates":[1.54376,52.39515],"created":"1970-01-01T00:00:00","updated":"2019-11-13T11:43:27"}}
+{"390G60084":{"adminArea":"101","coordinates":[1.54376,52.39515],"created":"1970-01-01T00:00:00","name":"Railway Station","parent":"910GBRAMPTN","stopAreaCode":"390G60084","type":"GPBS","updated":"2019-11-13T11:43:27"}}

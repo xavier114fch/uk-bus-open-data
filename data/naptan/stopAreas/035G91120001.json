@@ -1,1 +1,1 @@
-{"035G91120001":{"stopAreaCode":"035G91120001","parent":"910GTWYFORD","name":"Twyford Station","adminArea":"066","type":"GPBS","coordinates":[-0.86236,51.47535],"created":"2002-12-31T00:00:00","updated":"2008-11-20T15:43:00"}}
+{"035G91120001":{"adminArea":"066","coordinates":[-0.86236,51.47535],"created":"2002-12-31T00:00:00","name":"Twyford Station","parent":"910GTWYFORD","stopAreaCode":"035G91120001","type":"GPBS","updated":"2008-11-20T15:43:00"}}

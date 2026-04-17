@@ -1,1 +1,1 @@
-{"050GCC018910":{"stopAreaCode":"050GCC018910","parent":"910GCAMBDGE","name":"Railway Station","adminArea":"071","type":"GCLS","coordinates":[0.13640259734103743,52.19375198333627],"created":"2006-05-19T00:00:00","updated":"2012-04-18T00:00:00"}}
+{"050GCC018910":{"adminArea":"071","coordinates":[0.13640259734103743,52.19375198333627],"created":"2006-05-19T00:00:00","name":"Railway Station","parent":"910GCAMBDGE","stopAreaCode":"050GCC018910","type":"GCLS","updated":"2012-04-18T00:00:00"}}

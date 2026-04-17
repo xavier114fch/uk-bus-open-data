@@ -1,1 +1,1 @@
-{"280G00000001":{"stopAreaCode":"280G00000001","parent":"910GSTHLNSC","name":"St Helens Bus Station","adminArea":"090","type":"GBCS","coordinates":[-2.73296,53.45328],"created":"1969-12-31T00:00:00","updated":"2025-06-19T12:11:39"}}
+{"280G00000001":{"adminArea":"090","coordinates":[-2.73296,53.45328],"created":"1969-12-31T00:00:00","name":"St Helens Bus Station","parent":"910GSTHLNSC","stopAreaCode":"280G00000001","type":"GBCS","updated":"2025-06-19T12:11:39"}}

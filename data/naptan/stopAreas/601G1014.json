@@ -1,1 +1,1 @@
-{"601G1014":{"stopAreaCode":"601G1014","parent":"601G1013","name":"Road End","adminArea":"142","type":"GCLS","coordinates":[-7.430345,57.013496],"created":"2013-12-28T00:00:00.000","updated":"2013-12-28T00:00:00.000"}}
+{"601G1014":{"adminArea":"142","coordinates":[-7.430345,57.013496],"created":"2013-12-28T00:00:00.000","name":"Road End","parent":"601G1013","stopAreaCode":"601G1014","type":"GCLS","updated":"2013-12-28T00:00:00.000"}}

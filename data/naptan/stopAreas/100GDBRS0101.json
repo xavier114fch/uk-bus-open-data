@@ -1,1 +1,1 @@
-{"100GDBRS0101":{"stopAreaCode":"100GDBRS0101","parent":"910GBUXTON","name":"Railway Station","adminArea":"075","type":"GPBS","coordinates":[-1.912129,53.260388],"created":"2006-06-26T00:00:00.000","updated":"2008-12-02T00:00:00.000"}}
+{"100GDBRS0101":{"adminArea":"075","coordinates":[-1.912129,53.260388],"created":"2006-06-26T00:00:00.000","name":"Railway Station","parent":"910GBUXTON","stopAreaCode":"100GDBRS0101","type":"GPBS","updated":"2008-12-02T00:00:00.000"}}

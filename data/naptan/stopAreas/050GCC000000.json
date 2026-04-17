@@ -1,1 +1,1 @@
-{"050GCC000000":{"stopAreaCode":"050GCC000000","parent":"050GCC","name":"Drummer St Bus Station","adminArea":"071","type":"GBCS","coordinates":[0.12423825806683472,52.20530147872908],"created":"2006-05-19T00:00:00","updated":"2009-01-16T00:00:00"}}
+{"050GCC000000":{"adminArea":"071","coordinates":[0.12423825806683472,52.20530147872908],"created":"2006-05-19T00:00:00","name":"Drummer St Bus Station","parent":"050GCC","stopAreaCode":"050GCC000000","type":"GBCS","updated":"2009-01-16T00:00:00"}}

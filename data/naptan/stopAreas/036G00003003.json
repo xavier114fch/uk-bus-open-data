@@ -1,1 +1,1 @@
-{"036G00003003":{"stopAreaCode":"036G00003003","parent":"910GMDNHEAD","name":"Railway Bridge","adminArea":"065","type":"GPBS","coordinates":[-0.721146,51.518635],"created":"2010-06-29T00:00:00","updated":"2010-07-15T00:00:00"}}
+{"036G00003003":{"adminArea":"065","coordinates":[-0.721146,51.518635],"created":"2010-06-29T00:00:00","name":"Railway Bridge","parent":"910GMDNHEAD","stopAreaCode":"036G00003003","type":"GPBS","updated":"2010-07-15T00:00:00"}}

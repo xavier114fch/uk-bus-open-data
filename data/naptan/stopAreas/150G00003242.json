@@ -1,1 +1,1 @@
-{"150G00003242":{"stopAreaCode":"150G00003242","parent":"","name":"Bus Interchange","adminArea":"080","type":"GBCS","coordinates":[0.5545592077,51.8778373673],"created":"2006-12-20T11:26:33","updated":"2023-04-17T10:52:54"}}
+{"150G00003242":{"adminArea":"080","coordinates":[0.5545592077,51.8778373673],"created":"2006-12-20T11:26:33","name":"Bus Interchange","parent":"","stopAreaCode":"150G00003242","type":"GBCS","updated":"2023-04-17T10:52:54"}}

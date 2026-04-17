@@ -1,1 +1,1 @@
-{"039G28140001":{"stopAreaCode":"039G28140001","parent":"039G28150001","name":"Station Road","adminArea":"046","type":"GCLS","coordinates":[-0.97223,51.45765],"created":"2011-03-04T00:00:00","updated":"2011-06-29T13:08:00"}}
+{"039G28140001":{"adminArea":"046","coordinates":[-0.97223,51.45765],"created":"2011-03-04T00:00:00","name":"Station Road","parent":"039G28150001","stopAreaCode":"039G28140001","type":"GCLS","updated":"2011-06-29T13:08:00"}}

@@ -1,1 +1,1 @@
-{"150G00003237":{"stopAreaCode":"150G00003237","parent":"910GCHLMSFD","name":"Bus Station","adminArea":"080","type":"GBCS","coordinates":[0.4668364565,51.736416416],"created":"2006-12-20T11:26:33","updated":"2022-01-18T10:56:38"}}
+{"150G00003237":{"adminArea":"080","coordinates":[0.4668364565,51.736416416],"created":"2006-12-20T11:26:33","name":"Bus Station","parent":"910GCHLMSFD","stopAreaCode":"150G00003237","type":"GBCS","updated":"2022-01-18T10:56:38"}}

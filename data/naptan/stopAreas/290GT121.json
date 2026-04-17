@@ -1,1 +1,1 @@
-{"290GT121":{"stopAreaCode":"290GT121","parent":"910GGUNTON","name":"Rail Station","adminArea":"091","type":"GPBS","coordinates":[1.3490767387788734,52.86640900011281],"created":"2009-01-15T14:14:35","updated":"2014-08-21T09:21:03"}}
+{"290GT121":{"adminArea":"091","coordinates":[1.3490767387788734,52.86640900011281],"created":"2009-01-15T14:14:35","name":"Rail Station","parent":"910GGUNTON","stopAreaCode":"290GT121","type":"GPBS","updated":"2014-08-21T09:21:03"}}

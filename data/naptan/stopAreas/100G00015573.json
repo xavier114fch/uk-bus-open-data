@@ -1,1 +1,1 @@
-{"100G00015573":{"stopAreaCode":"100G00015573","parent":"910GDVHL","name":"Bus Depot","adminArea":"075","type":"GPBS","coordinates":[-1.886976,53.299864],"created":"2006-06-26T00:00:00.000","updated":"2009-01-13T00:00:00.000"}}
+{"100G00015573":{"adminArea":"075","coordinates":[-1.886976,53.299864],"created":"2006-06-26T00:00:00.000","name":"Bus Depot","parent":"910GDVHL","stopAreaCode":"100G00015573","type":"GPBS","updated":"2009-01-13T00:00:00.000"}}

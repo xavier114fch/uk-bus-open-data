@@ -1,1 +1,1 @@
-{"110G000001":{"stopAreaCode":"110G000001","parent":"930GKBR","name":"Bus Station","adminArea":"076","type":"GBCS","coordinates":[-3.77696,50.28311],"created":"2018-06-12T00:00:00","updated":"2018-06-12T13:17:08"}}
+{"110G000001":{"adminArea":"076","coordinates":[-3.77696,50.28311],"created":"2018-06-12T00:00:00","name":"Bus Station","parent":"930GKBR","stopAreaCode":"110G000001","type":"GBCS","updated":"2018-06-12T13:17:08"}}

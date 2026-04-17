@@ -1,1 +1,1 @@
-{"270GLGC00005":{"stopAreaCode":"270GLGC00005","parent":"910GGTHM","name":"Bus Station","adminArea":"089","type":"GBCS","coordinates":[-0.641861068,52.909621129],"created":"2005-06-20T00:00:00","updated":"2009-12-11T11:06:32"}}
+{"270GLGC00005":{"adminArea":"089","coordinates":[-0.641861068,52.909621129],"created":"2005-06-20T00:00:00","name":"Bus Station","parent":"910GGTHM","stopAreaCode":"270GLGC00005","type":"GBCS","updated":"2009-12-11T11:06:32"}}

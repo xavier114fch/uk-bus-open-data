@@ -1,1 +1,1 @@
-{"035G91100001":{"stopAreaCode":"035G91100001","parent":"035G91100002","name":"Waitrose","adminArea":"066","type":"GCLS","coordinates":[-0.86546,51.47796],"created":"2002-12-31T00:00:00","updated":"2009-01-28T11:56:00"}}
+{"035G91100001":{"adminArea":"066","coordinates":[-0.86546,51.47796],"created":"2002-12-31T00:00:00","name":"Waitrose","parent":"035G91100002","stopAreaCode":"035G91100001","type":"GCLS","updated":"2009-01-28T11:56:00"}}

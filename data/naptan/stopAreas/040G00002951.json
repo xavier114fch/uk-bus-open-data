@@ -1,1 +1,1 @@
-{"040G00002951":{"stopAreaCode":"040G00002951","parent":"","name":"Bus Station","adminArea":"070","type":"GBCS","coordinates":[-0.756471,51.631333],"created":"2009-05-05T00:00:00.000","updated":"2009-05-05T00:00:00.000"}}
+{"040G00002951":{"adminArea":"070","coordinates":[-0.756471,51.631333],"created":"2009-05-05T00:00:00.000","name":"Bus Station","parent":"","stopAreaCode":"040G00002951","type":"GBCS","updated":"2009-05-05T00:00:00.000"}}

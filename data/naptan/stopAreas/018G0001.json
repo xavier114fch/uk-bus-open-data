@@ -1,1 +1,1 @@
-{"018G0001":{"stopAreaCode":"018G0001","parent":"910GBATHSPA","name":"Bath Bus Station","adminArea":"001","type":"GBCS","coordinates":[-2.359,51.37783],"created":"2021-02-18T00:00:00","updated":"2021-02-18T14:17:35"}}
+{"018G0001":{"adminArea":"001","coordinates":[-2.359,51.37783],"created":"2021-02-18T00:00:00","name":"Bath Bus Station","parent":"910GBATHSPA","stopAreaCode":"018G0001","type":"GBCS","updated":"2021-02-18T14:17:35"}}

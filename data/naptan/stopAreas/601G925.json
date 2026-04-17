@@ -1,1 +1,1 @@
-{"601G925":{"stopAreaCode":"601G925","parent":"601G922","name":"Road End","adminArea":"142","type":"GPBS","coordinates":[-7.383015,57.184798],"created":"2013-12-24T00:00:00.000","updated":"2013-12-24T00:00:00.000"}}
+{"601G925":{"adminArea":"142","coordinates":[-7.383015,57.184798],"created":"2013-12-24T00:00:00.000","name":"Road End","parent":"601G922","stopAreaCode":"601G925","type":"GPBS","updated":"2013-12-24T00:00:00.000"}}

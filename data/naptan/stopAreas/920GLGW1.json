@@ -1,1 +1,1 @@
-{"920GLGW1":{"stopAreaCode":"920GLGW1","parent":"920GLGW0","name":"London Gatwick Airport North Terminal","adminArea":"145","type":"GAIR","coordinates":[-0.17938062712,51.16069857494],"created":"2005-04-21T00:00:00","updated":"2008-10-10T15:03:00"}}
+{"920GLGW1":{"adminArea":"145","coordinates":[-0.17938062712,51.16069857494],"created":"2005-04-21T00:00:00","name":"London Gatwick Airport North Terminal","parent":"920GLGW0","stopAreaCode":"920GLGW1","type":"GAIR","updated":"2008-10-10T15:03:00"}}

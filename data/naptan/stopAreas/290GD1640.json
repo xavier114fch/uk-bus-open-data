@@ -1,1 +1,1 @@
-{"290GD1640":{"stopAreaCode":"290GD1640","parent":"910GDISS","name":"Railway Station","adminArea":"091","type":"GPBS","coordinates":[1.1235539658239606,52.373704965583975],"created":"2009-01-15T14:05:51","updated":"2009-06-30T14:05:38"}}
+{"290GD1640":{"adminArea":"091","coordinates":[1.1235539658239606,52.373704965583975],"created":"2009-01-15T14:05:51","name":"Railway Station","parent":"910GDISS","stopAreaCode":"290GD1640","type":"GPBS","updated":"2009-06-30T14:05:38"}}

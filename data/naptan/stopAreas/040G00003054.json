@@ -1,1 +1,1 @@
-{"040G00003054":{"stopAreaCode":"040G00003054","parent":"910GHWYCOMB","name":"High Street","adminArea":"070","type":"GPBS","coordinates":[-0.749318,51.628721],"created":"2007-01-29T00:00:00.000","updated":"2007-02-28T00:00:00.000"}}
+{"040G00003054":{"adminArea":"070","coordinates":[-0.749318,51.628721],"created":"2007-01-29T00:00:00.000","name":"High Street","parent":"910GHWYCOMB","stopAreaCode":"040G00003054","type":"GPBS","updated":"2007-02-28T00:00:00.000"}}

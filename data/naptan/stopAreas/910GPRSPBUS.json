@@ -1,1 +1,1 @@
-{"910GPRSPBUS":{"stopAreaCode":"910GPRSPBUS","parent":"910GPRSP","name":"Preston Park - London Road","adminArea":"110","type":"GRLS","coordinates":[-0.15154891004,50.84585073],"created":"2008-11-07T15:18:00","updated":"2008-11-07T15:39:00"}}
+{"910GPRSPBUS":{"adminArea":"110","coordinates":[-0.15154891004,50.84585073],"created":"2008-11-07T15:18:00","name":"Preston Park - London Road","parent":"910GPRSP","stopAreaCode":"910GPRSPBUS","type":"GRLS","updated":"2008-11-07T15:39:00"}}

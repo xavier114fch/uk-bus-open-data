@@ -1,1 +1,1 @@
-{"260G04643":{"stopAreaCode":"260G04643","parent":"910GNARBRO","name":"Station Approach","adminArea":"088","type":"GPBS","coordinates":[-1.203344,52.571344],"created":"2009-02-24T00:00:00.000","updated":"2009-02-24T00:00:00.000"}}
+{"260G04643":{"adminArea":"088","coordinates":[-1.203344,52.571344],"created":"2009-02-24T00:00:00.000","name":"Station Approach","parent":"910GNARBRO","stopAreaCode":"260G04643","type":"GPBS","updated":"2009-02-24T00:00:00.000"}}

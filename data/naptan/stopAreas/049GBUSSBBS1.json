@@ -1,1 +1,1 @@
-{"049GBUSSBBS1":{"stopAreaCode":"049GBUSSBBS1","parent":"910GBLTCHLY","name":"Bus Station","adminArea":"032","type":"GBCS","coordinates":[-0.7338985,51.9954793],"created":"2003-03-20T00:00:00.000","updated":"2007-09-12T07:46:00.000"}}
+{"049GBUSSBBS1":{"adminArea":"032","coordinates":[-0.7338985,51.9954793],"created":"2003-03-20T00:00:00.000","name":"Bus Station","parent":"910GBLTCHLY","stopAreaCode":"049GBUSSBBS1","type":"GBCS","updated":"2007-09-12T07:46:00.000"}}

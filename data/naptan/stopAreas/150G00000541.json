@@ -1,1 +1,1 @@
-{"150G00000541":{"stopAreaCode":"150G00000541","parent":"","name":"Middle Stop","adminArea":"080","type":"GPBS","coordinates":[0.8940842783,51.9145526095],"created":"2006-12-20T11:26:33","updated":"2016-03-18T09:57:45"}}
+{"150G00000541":{"adminArea":"080","coordinates":[0.8940842783,51.9145526095],"created":"2006-12-20T11:26:33","name":"Middle Stop","parent":"","stopAreaCode":"150G00000541","type":"GPBS","updated":"2016-03-18T09:57:45"}}

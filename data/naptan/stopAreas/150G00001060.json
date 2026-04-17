@@ -1,1 +1,1 @@
-{"150G00001060":{"stopAreaCode":"150G00001060","parent":"910GWHORNDN","name":"Railway Station","adminArea":"080","type":"GPBS","coordinates":[0.3404936259,51.5686750531],"created":"2006-12-20T11:26:33","updated":"2022-01-18T10:56:38"}}
+{"150G00001060":{"adminArea":"080","coordinates":[0.3404936259,51.5686750531],"created":"2006-12-20T11:26:33","name":"Railway Station","parent":"910GWHORNDN","stopAreaCode":"150G00001060","type":"GPBS","updated":"2022-01-18T10:56:38"}}

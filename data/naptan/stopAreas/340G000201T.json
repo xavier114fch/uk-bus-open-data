@@ -1,1 +1,1 @@
-{"340G000201T":{"stopAreaCode":"340G000201T","parent":"340G000201W","name":"Town Hall","adminArea":"096","type":"GPBS","coordinates":[-1.54597,51.94092],"created":"2020-09-15T00:00:00","updated":"2020-09-15T18:27:44"}}
+{"340G000201T":{"adminArea":"096","coordinates":[-1.54597,51.94092],"created":"2020-09-15T00:00:00","name":"Town Hall","parent":"340G000201W","stopAreaCode":"340G000201T","type":"GPBS","updated":"2020-09-15T18:27:44"}}

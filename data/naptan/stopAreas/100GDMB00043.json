@@ -1,1 +1,1 @@
-{"100GDMB00043":{"stopAreaCode":"100GDMB00043","parent":"910GMATLCKB","name":"Railway Station","adminArea":"075","type":"GPBS","coordinates":[-1.558883,53.122173],"created":"2006-06-26T00:00:00.000","updated":"2008-12-03T00:00:00.000"}}
+{"100GDMB00043":{"adminArea":"075","coordinates":[-1.558883,53.122173],"created":"2006-06-26T00:00:00.000","name":"Railway Station","parent":"910GMATLCKB","stopAreaCode":"100GDMB00043","type":"GPBS","updated":"2008-12-03T00:00:00.000"}}

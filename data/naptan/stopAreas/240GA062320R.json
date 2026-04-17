@@ -1,1 +1,1 @@
-{"240GA062320R":{"stopAreaCode":"240GA062320R","parent":"910GAPDR","name":"Railway Station","adminArea":"086","type":"GPBS","coordinates":[0.8164199,51.0335862],"created":"2007-06-12T15:23:00.000","updated":"2011-08-03T10:50:00.000"}}
+{"240GA062320R":{"adminArea":"086","coordinates":[0.8164199,51.0335862],"created":"2007-06-12T15:23:00.000","name":"Railway Station","parent":"910GAPDR","stopAreaCode":"240GA062320R","type":"GPBS","updated":"2011-08-03T10:50:00.000"}}

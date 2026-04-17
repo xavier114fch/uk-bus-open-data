@@ -1,1 +1,1 @@
-{"050GMA022072":{"stopAreaCode":"050GMA022072","parent":"910GMRCH","name":"Railway Station","adminArea":"071","type":"GCLS","coordinates":[0.09208011101935144,52.559831625728016],"created":"2006-05-19T00:00:00","updated":"2010-02-26T00:00:00"}}
+{"050GMA022072":{"adminArea":"071","coordinates":[0.09208011101935144,52.559831625728016],"created":"2006-05-19T00:00:00","name":"Railway Station","parent":"910GMRCH","stopAreaCode":"050GMA022072","type":"GCLS","updated":"2010-02-26T00:00:00"}}

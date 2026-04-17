@@ -1,1 +1,1 @@
-{"420G001002":{"stopAreaCode":"420G001002","parent":"910GWARWICK","name":"Warwick Railway Station","adminArea":"104","type":"GPBS","coordinates":[-1.580473011088142,52.285346410271394],"created":"2011-12-21T00:00:00","updated":"2012-01-17T00:00:00"}}
+{"420G001002":{"adminArea":"104","coordinates":[-1.580473011088142,52.285346410271394],"created":"2011-12-21T00:00:00","name":"Warwick Railway Station","parent":"910GWARWICK","stopAreaCode":"420G001002","type":"GPBS","updated":"2012-01-17T00:00:00"}}

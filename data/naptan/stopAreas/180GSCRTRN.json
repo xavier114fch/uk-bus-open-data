@@ -1,1 +1,1 @@
-{"180GSCRTRN":{"stopAreaCode":"180GSCRTRN","parent":"","name":"Salford Crescent train station","adminArea":"083","type":"GPBS","coordinates":[-2.2751229,53.4851556],"created":"2025-05-29T15:59:44.066","updated":"2025-05-29T15:59:44.066"}}
+{"180GSCRTRN":{"adminArea":"083","coordinates":[-2.2751229,53.4851556],"created":"2025-05-29T15:59:44.066","name":"Salford Crescent train station","parent":"","stopAreaCode":"180GSCRTRN","type":"GPBS","updated":"2025-05-29T15:59:44.066"}}

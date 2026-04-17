@@ -1,1 +1,1 @@
-{"270GLSC00020":{"stopAreaCode":"270GLSC00020","parent":"910GSKEGNES","name":"Bus Station","adminArea":"089","type":"GBCS","coordinates":[0.33355311,53.142322787],"created":"2006-02-27T00:00:00","updated":"2009-05-05T08:59:33"}}
+{"270GLSC00020":{"adminArea":"089","coordinates":[0.33355311,53.142322787],"created":"2006-02-27T00:00:00","name":"Bus Station","parent":"910GSKEGNES","stopAreaCode":"270GLSC00020","type":"GBCS","updated":"2009-05-05T08:59:33"}}

@@ -1,1 +1,1 @@
-{"159G0060002":{"stopAreaCode":"159G0060002","parent":"910GGRAYS","name":"Bus Station","adminArea":"059","type":"GBCS","coordinates":[0.320517,51.476715],"created":"2007-04-10T15:39:00.000","updated":"2008-12-19T11:04:00.000"}}
+{"159G0060002":{"adminArea":"059","coordinates":[0.320517,51.476715],"created":"2007-04-10T15:39:00.000","name":"Bus Station","parent":"910GGRAYS","stopAreaCode":"159G0060002","type":"GBCS","updated":"2008-12-19T11:04:00.000"}}

@@ -1,1 +1,1 @@
-{"100G00015287":{"stopAreaCode":"100G00015287","parent":"910GBAMFORD","name":"Bus Turnaround","adminArea":"075","type":"GPBS","coordinates":[-1.690302,53.338482],"created":"2006-06-26T00:00:00.000","updated":"2008-12-04T00:00:00.000"}}
+{"100G00015287":{"adminArea":"075","coordinates":[-1.690302,53.338482],"created":"2006-06-26T00:00:00.000","name":"Bus Turnaround","parent":"910GBAMFORD","stopAreaCode":"100G00015287","type":"GPBS","updated":"2008-12-04T00:00:00.000"}}

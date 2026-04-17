@@ -1,1 +1,1 @@
-{"430G06011":{"stopAreaCode":"430G06011","parent":"","name":"Walsall Bus Station","adminArea":"105","type":"GBCS","coordinates":[-1.982452037370804,52.58544820403376],"created":"2003-08-15T00:00:00","updated":"2026-03-13T00:00:00"}}
+{"430G06011":{"adminArea":"105","coordinates":[-1.982452037370804,52.58544820403376],"created":"2003-08-15T00:00:00","name":"Walsall Bus Station","parent":"","stopAreaCode":"430G06011","type":"GBCS","updated":"2026-03-13T00:00:00"}}

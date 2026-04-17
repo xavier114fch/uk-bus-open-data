@@ -1,1 +1,1 @@
-{"200G001001":{"stopAreaCode":"200G001001","parent":"","name":"Kidderminster Bus Station","adminArea":"109","type":"GBCS","coordinates":[-2.2505353,52.3861725],"created":"2011-08-16T00:00:00.000","updated":"2011-08-16T00:00:00.000"}}
+{"200G001001":{"adminArea":"109","coordinates":[-2.2505353,52.3861725],"created":"2011-08-16T00:00:00.000","name":"Kidderminster Bus Station","parent":"","stopAreaCode":"200G001001","type":"GBCS","updated":"2011-08-16T00:00:00.000"}}

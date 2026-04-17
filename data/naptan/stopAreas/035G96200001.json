@@ -1,1 +1,1 @@
-{"035G96200001":{"stopAreaCode":"035G96200001","parent":"035G96180001","name":"Tag Lane","adminArea":"066","type":"GPBS","coordinates":[-0.8442,51.49988],"created":"2002-12-31T00:00:00","updated":"2012-07-18T15:06:00"}}
+{"035G96200001":{"adminArea":"066","coordinates":[-0.8442,51.49988],"created":"2002-12-31T00:00:00","name":"Tag Lane","parent":"035G96180001","stopAreaCode":"035G96200001","type":"GPBS","updated":"2012-07-18T15:06:00"}}

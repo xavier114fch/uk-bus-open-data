@@ -1,1 +1,1 @@
-{"910GNBARNET":{"stopAreaCode":"910GNBARNET","parent":"","name":"New Barnet Rail Station","adminArea":"110","type":"GRLS","coordinates":[-0.1729970807,51.64857458093],"created":"2006-09-11T15:42:00","updated":"2006-09-11T00:00:00"}}
+{"910GNBARNET":{"adminArea":"110","coordinates":[-0.1729970807,51.64857458093],"created":"2006-09-11T15:42:00","name":"New Barnet Rail Station","parent":"","stopAreaCode":"910GNBARNET","type":"GRLS","updated":"2006-09-11T00:00:00"}}

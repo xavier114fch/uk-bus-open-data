@@ -1,1 +1,1 @@
-{"180GSCNTRN":{"stopAreaCode":"180GSCNTRN","parent":"","name":"Salford Central train station","adminArea":"083","type":"GPBS","coordinates":[-2.2545251,53.4829841],"created":"2025-05-29T15:57:25.745","updated":"2025-05-29T15:57:25.745"}}
+{"180GSCNTRN":{"adminArea":"083","coordinates":[-2.2545251,53.4829841],"created":"2025-05-29T15:57:25.745","name":"Salford Central train station","parent":"","stopAreaCode":"180GSCNTRN","type":"GPBS","updated":"2025-05-29T15:57:25.745"}}

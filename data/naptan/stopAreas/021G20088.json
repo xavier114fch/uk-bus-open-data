@@ -1,1 +1,1 @@
-{"021G20088":{"stopAreaCode":"021G20088","parent":"021G20092","name":"Railway Station","adminArea":"151","type":"GPBS","coordinates":[-0.49615,51.96276],"created":"1970-01-01T00:00:00","updated":"2022-05-12T12:41:03"}}
+{"021G20088":{"adminArea":"151","coordinates":[-0.49615,51.96276],"created":"1970-01-01T00:00:00","name":"Railway Station","parent":"021G20092","stopAreaCode":"021G20088","type":"GPBS","updated":"2022-05-12T12:41:03"}}

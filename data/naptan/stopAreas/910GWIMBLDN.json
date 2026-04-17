@@ -1,1 +1,1 @@
-{"910GWIMBLDN":{"stopAreaCode":"910GWIMBLDN","parent":"910GWDON","name":"Wimbledon Rail Station","adminArea":"110","type":"GRLS","coordinates":[-0.20637069729,51.42122164726],"created":"2006-09-11T15:42:00","updated":"2013-01-17T15:12:00"}}
+{"910GWIMBLDN":{"adminArea":"110","coordinates":[-0.20637069729,51.42122164726],"created":"2006-09-11T15:42:00","name":"Wimbledon Rail Station","parent":"910GWDON","stopAreaCode":"910GWIMBLDN","type":"GRLS","updated":"2013-01-17T15:12:00"}}

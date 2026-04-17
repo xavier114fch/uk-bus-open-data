@@ -1,1 +1,1 @@
-{"490G01201S":{"stopAreaCode":"490G01201S","parent":"910GNBARNET","name":"New Barnet Station","adminArea":"082","type":"GPBS","coordinates":[-0.17359,51.64901],"created":"2026-04-08T16:36:02.7595204+01:00","updated":"2021-12-03T09:12:44"}}
+{"490G01201S":{"adminArea":"082","coordinates":[-0.17359,51.64901],"created":"2026-04-08T16:36:02.7595204+01:00","name":"New Barnet Station","parent":"910GNBARNET","stopAreaCode":"490G01201S","type":"GPBS","updated":"2021-12-03T09:12:44"}}

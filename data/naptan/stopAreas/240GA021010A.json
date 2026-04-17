@@ -1,1 +1,1 @@
-{"240GA021010A":{"stopAreaCode":"240GA021010A","parent":"910GSWLY","name":"Railway Station","adminArea":"086","type":"GPBS","coordinates":[0.167536,51.394146],"created":"2007-06-18T12:39:00.000","updated":"2009-11-13T09:46:00.000"}}
+{"240GA021010A":{"adminArea":"086","coordinates":[0.167536,51.394146],"created":"2007-06-18T12:39:00.000","name":"Railway Station","parent":"910GSWLY","stopAreaCode":"240GA021010A","type":"GPBS","updated":"2009-11-13T09:46:00.000"}}

@@ -1,1 +1,1 @@
-{"050GFX003004":{"stopAreaCode":"050GFX003004","parent":"910GFOXTON","name":"Railway Station","adminArea":"071","type":"GPBS","coordinates":[0.05638554247400501,52.11962420132315],"created":"2006-05-19T00:00:00","updated":"2008-12-17T00:00:00"}}
+{"050GFX003004":{"adminArea":"071","coordinates":[0.05638554247400501,52.11962420132315],"created":"2006-05-19T00:00:00","name":"Railway Station","parent":"910GFOXTON","stopAreaCode":"050GFX003004","type":"GPBS","updated":"2008-12-17T00:00:00"}}

@@ -1,1 +1,1 @@
-{"036G00006001":{"stopAreaCode":"036G00006001","parent":"910GMDNHEAD","name":"Maidenhead Station","adminArea":"065","type":"GCLS","coordinates":[-0.72224,51.518701],"created":"2010-06-29T00:00:00","updated":"2011-11-09T00:00:00"}}
+{"036G00006001":{"adminArea":"065","coordinates":[-0.72224,51.518701],"created":"2010-06-29T00:00:00","name":"Maidenhead Station","parent":"910GMDNHEAD","stopAreaCode":"036G00006001","type":"GCLS","updated":"2011-11-09T00:00:00"}}

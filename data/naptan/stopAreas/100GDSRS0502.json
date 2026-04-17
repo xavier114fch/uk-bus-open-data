@@ -1,1 +1,1 @@
-{"100GDSRS0502":{"stopAreaCode":"100GDSRS0502","parent":"910GSHRBROK","name":"Railway Station","adminArea":"075","type":"GPBS","coordinates":[-1.202218,53.204151],"created":"2006-06-26T00:00:00.000","updated":"2008-12-03T00:00:00.000"}}
+{"100GDSRS0502":{"adminArea":"075","coordinates":[-1.202218,53.204151],"created":"2006-06-26T00:00:00.000","name":"Railway Station","parent":"910GSHRBROK","stopAreaCode":"100GDSRS0502","type":"GPBS","updated":"2008-12-03T00:00:00.000"}}

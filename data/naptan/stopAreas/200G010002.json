@@ -1,1 +1,1 @@
-{"200G010002":{"stopAreaCode":"200G010002","parent":"910GBRMSGRV","name":"Bromsgrove Railway Station","adminArea":"109","type":"GPBS","coordinates":[-2.049709,52.321007],"created":"2011-10-17T00:00:00.000","updated":"2011-10-17T00:00:00.000"}}
+{"200G010002":{"adminArea":"109","coordinates":[-2.049709,52.321007],"created":"2011-10-17T00:00:00.000","name":"Bromsgrove Railway Station","parent":"910GBRMSGRV","stopAreaCode":"200G010002","type":"GPBS","updated":"2011-10-17T00:00:00.000"}}

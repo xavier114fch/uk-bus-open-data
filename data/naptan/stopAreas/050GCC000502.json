@@ -1,1 +1,1 @@
-{"050GCC000502":{"stopAreaCode":"050GCC000502","parent":"050GCC878901","name":"Regent Street","adminArea":"071","type":"GCLS","coordinates":[0.12433374865558176,52.202701096205],"created":"2011-06-14T00:00:00","updated":"2011-06-14T00:00:00"}}
+{"050GCC000502":{"adminArea":"071","coordinates":[0.12433374865558176,52.202701096205],"created":"2011-06-14T00:00:00","name":"Regent Street","parent":"050GCC878901","stopAreaCode":"050GCC000502","type":"GCLS","updated":"2011-06-14T00:00:00"}}

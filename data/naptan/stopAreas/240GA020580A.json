@@ -1,1 +1,1 @@
-{"240GA020580A":{"stopAreaCode":"240GA020580A","parent":"910GSWLY","name":"Station Approach","adminArea":"086","type":"GPBS","coordinates":[0.1732052,51.3936458],"created":"2007-08-13T16:07:00.000","updated":"2009-11-13T09:42:00.000"}}
+{"240GA020580A":{"adminArea":"086","coordinates":[0.1732052,51.3936458],"created":"2007-08-13T16:07:00.000","name":"Station Approach","parent":"910GSWLY","stopAreaCode":"240GA020580A","type":"GPBS","updated":"2009-11-13T09:42:00.000"}}

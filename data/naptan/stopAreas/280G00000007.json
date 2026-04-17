@@ -1,1 +1,1 @@
-{"280G00000007":{"stopAreaCode":"280G00000007","parent":"910GHUYTON","name":"Huyton Bus Station","adminArea":"090","type":"GBCS","coordinates":[-2.83836,53.40973],"created":"1969-12-31T00:00:00","updated":"2016-05-11T10:19:46"}}
+{"280G00000007":{"adminArea":"090","coordinates":[-2.83836,53.40973],"created":"1969-12-31T00:00:00","name":"Huyton Bus Station","parent":"910GHUYTON","stopAreaCode":"280G00000007","type":"GBCS","updated":"2016-05-11T10:19:46"}}

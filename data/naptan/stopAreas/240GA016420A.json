@@ -1,1 +1,1 @@
-{"240GA016420A":{"stopAreaCode":"240GA016420A","parent":"910GLGFD","name":"Railway Station","adminArea":"086","type":"GPBS","coordinates":[0.3012475,51.3962818],"created":"2007-06-15T10:38:00.000","updated":"2009-11-13T10:31:00.000"}}
+{"240GA016420A":{"adminArea":"086","coordinates":[0.3012475,51.3962818],"created":"2007-06-15T10:38:00.000","name":"Railway Station","parent":"910GLGFD","stopAreaCode":"240GA016420A","type":"GPBS","updated":"2009-11-13T10:31:00.000"}}

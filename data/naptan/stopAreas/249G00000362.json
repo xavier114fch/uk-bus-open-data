@@ -1,1 +1,1 @@
-{"249G00000362":{"stopAreaCode":"249G00000362","parent":"910GRCHT","name":"Railway Station","adminArea":"029","type":"GPBS","coordinates":[0.505491,51.3896812],"created":"2015-11-27T16:54:00.000","updated":"2015-12-10T10:44:00.000"}}
+{"249G00000362":{"adminArea":"029","coordinates":[0.505491,51.3896812],"created":"2015-11-27T16:54:00.000","name":"Railway Station","parent":"910GRCHT","stopAreaCode":"249G00000362","type":"GPBS","updated":"2015-12-10T10:44:00.000"}}

@@ -1,1 +1,1 @@
-{"029G4532":{"stopAreaCode":"029G4532","parent":"029G4513","name":"Station Road","adminArea":"028","type":"GPBS","coordinates":[-0.46063,51.90529],"created":"2009-10-29T00:00:00","updated":"2009-10-29T08:56:00"}}
+{"029G4532":{"adminArea":"028","coordinates":[-0.46063,51.90529],"created":"2009-10-29T00:00:00","name":"Station Road","parent":"029G4513","stopAreaCode":"029G4532","type":"GPBS","updated":"2009-10-29T08:56:00"}}

@@ -1,1 +1,1 @@
-{"037G0521":{"stopAreaCode":"037G0521","parent":"910GSLOUGH","name":"Slough Bus Station","adminArea":"050","type":"GBCS","coordinates":[-0.592843,51.51147],"created":"2011-04-06T00:00:00.000","updated":"2011-05-23T00:00:00.000"}}
+{"037G0521":{"adminArea":"050","coordinates":[-0.592843,51.51147],"created":"2011-04-06T00:00:00.000","name":"Slough Bus Station","parent":"910GSLOUGH","stopAreaCode":"037G0521","type":"GBCS","updated":"2011-05-23T00:00:00.000"}}

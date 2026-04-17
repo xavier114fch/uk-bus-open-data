@@ -1,1 +1,1 @@
-{"300G025BS":{"stopAreaCode":"300G025BS","parent":"300G025BI","name":"North Gate Bus Station","adminArea":"093","type":"GBCS","coordinates":[-0.898259174,52.238789004],"created":"2013-11-15T15:49:56","updated":"2017-04-05T10:32:16"}}
+{"300G025BS":{"adminArea":"093","coordinates":[-0.898259174,52.238789004],"created":"2013-11-15T15:49:56","name":"North Gate Bus Station","parent":"300G025BI","stopAreaCode":"300G025BS","type":"GBCS","updated":"2017-04-05T10:32:16"}}

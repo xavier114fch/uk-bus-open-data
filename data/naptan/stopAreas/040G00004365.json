@@ -1,1 +1,1 @@
-{"040G00004365":{"stopAreaCode":"040G00004365","parent":"910GCHDNGTN","name":"Railway Station","adminArea":"070","type":"GPBS","coordinates":[-0.663499,51.855493],"created":"2007-01-29T00:00:00.000","updated":"2007-02-28T00:00:00.000"}}
+{"040G00004365":{"adminArea":"070","coordinates":[-0.663499,51.855493],"created":"2007-01-29T00:00:00.000","name":"Railway Station","parent":"910GCHDNGTN","stopAreaCode":"040G00004365","type":"GPBS","updated":"2007-02-28T00:00:00.000"}}

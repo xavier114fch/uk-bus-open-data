@@ -1,1 +1,1 @@
-{"100G51710":{"stopAreaCode":"100G51710","parent":"910GMATLOCK","name":"Interchange","adminArea":"075","type":"GBCS","coordinates":[-1.558045,53.138252],"created":"2007-06-19T00:00:00.000","updated":"2017-05-24T00:00:00.000"}}
+{"100G51710":{"adminArea":"075","coordinates":[-1.558045,53.138252],"created":"2007-06-19T00:00:00.000","name":"Interchange","parent":"910GMATLOCK","stopAreaCode":"100G51710","type":"GBCS","updated":"2017-05-24T00:00:00.000"}}
