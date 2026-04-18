@@ -60,16 +60,17 @@ def ftp_alive_or_reconnect(ftp: FTP, host: str, user: str, pwd: str) -> FTP:
 		return ftp
 
 # Helper: download with retries
-def download_file(ftp: FTP, ftp_host: str, ftp_user: str, ftp_pwd: str, remote_path: str, local_path: str, max_retries: int = 10, backoff_delay: int = 2):
+def download_file(ftp: FTP, host: str, user: str, pwd: str, remote_path: str, local_path: str, max_retries: int = 10, backoff_delay: int = 2):
 	for attempt in range(max_retries):
 		try:
 			with open(local_path, "wb") as fh:
+				ftp = ftp_alive_or_reconnect(ftp, host, user, pwd)
 				ftp.retrbinary(f"RETR {remote_path}", fh.write)
 			logger.info(f"Downloaded {remote_path} → {local_path}")
 			return
 		except Exception as exc:
 			logger.warning(f"Attempt {attempt} failed for {remote_path}: {exc}")
-			ftp = ftp_alive_or_reconnect(ftp, ftp_host, ftp_user, ftp_pwd)
+			ftp = ftp_alive_or_reconnect(ftp, host, user, pwd)
 			time.sleep(backoff_delay)
 			backoff_delay *= 2
 	raise SystemExit(f'Failed to download {remote_path} after {max_retries} attempts')
