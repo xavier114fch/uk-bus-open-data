@@ -60,7 +60,7 @@ def ftp_alive_or_reconnect(ftp: FTP, host: str, user: str, pwd: str) -> FTP:
 		return ftp
 
 # Helper: download with retries
-def download_file(ftp: FTP, remote_path: str, local_path: str, max_retries: int = 10, backoff_delay: int = 2):
+def download_file(ftp: FTP, ftp_host: str, ftp_user: str, ftp_pwd: str, remote_path: str, local_path: str, max_retries: int = 10, backoff_delay: int = 2):
 	for attempt in range(max_retries):
 		try:
 			with open(local_path, "wb") as fh:
@@ -69,6 +69,7 @@ def download_file(ftp: FTP, remote_path: str, local_path: str, max_retries: int 
 			return
 		except Exception as exc:
 			logger.warning(f"Attempt {attempt} failed for {remote_path}: {exc}")
+			ftp = ftp_alive_or_reconnect(ftp, ftp_host, ftp_user, ftp_pwd)
 			time.sleep(backoff_delay)
 			backoff_delay *= 2
 	raise SystemExit(f'Failed to download {remote_path} after {max_retries} attempts')
@@ -150,7 +151,7 @@ def fetch_tnds_data(_data_dir: str) -> None:
 		if _local_ts is None or _remote_ts > _local_ts:
 			logger.info(f'Getting {_file_name} from TNDS FTP ...')
 			os.makedirs(_data_dir, exist_ok=True)
-			download_file(_ftp, _file_name, _local_file_path)
+			download_file(_ftp, _ftp_host, _ftp_user, _ftp_pwd, _file_name, _local_file_path)
 
 	if ftp_alive_or_reconnect(_ftp, _ftp_host, _ftp_user, _ftp_pwd):
 		_ftp.quit()
