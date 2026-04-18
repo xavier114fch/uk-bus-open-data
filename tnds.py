@@ -33,7 +33,8 @@ _all_stops = {}
 
 # Helper: establish connection
 def get_ftp_session(host: str, user: str, pwd: str) -> FTP:
-	ftp = FTP(host, timeout=60)
+	ftp = FTP(host, timeout=120)
+	ftp.sock.settimeout(120)
 	ftp.login(user, pwd)
 	ftp.set_pasv(True)
 	logger.info(f"FTP connected to {host}")
@@ -41,9 +42,10 @@ def get_ftp_session(host: str, user: str, pwd: str) -> FTP:
 
 # Helper: keep-alive / reconnect
 def ftp_alive_or_reconnect(ftp: FTP, host: str, user: str, pwd: str) -> FTP:
+	if ftp.sock is None:
+		ftp = get_ftp_session(host, user, pwd)
+		return ftp
 	try:
-		if ftp.sock is None:
-			raise all_errors("socket closed")
 		ftp.voidcmd("NOOP")
 		logger.debug("FTP session is alive.")
 		return ftp
