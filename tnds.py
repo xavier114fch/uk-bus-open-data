@@ -357,7 +357,7 @@ def extract_routes(_directory: str, _file: str, _data: dict) -> None:
 								_activities.append('setDown')
 
 							else:
-								_activities.append(_jptl.get('To', {}).get('Activity', 'pickUpAndSetDown'))
+								_activities.append(_jptl.get('To', {}).get('Activity', ''))
 
 							_jptl_stops.append(_to_stop_point)
 							_timing_statuses.append(_jptl.get('To', {}).get('TimingStatus', ''))
@@ -372,7 +372,7 @@ def extract_routes(_directory: str, _file: str, _data: dict) -> None:
 			_journey_pattern.setdefault('activities', _activities)
 			_journey_pattern.setdefault('waitTimes', _wait_times)
 			_journey_pattern.setdefault('timingStatuses', _timing_statuses)
-			_journey_pattern.setdefault('sequenceNumber', _sequences)
+			_journey_pattern.setdefault('sequenceNumber', [int(_s) for _s in _sequences])
 			_journey_pattern.setdefault('dynamicDestinationDisplay', _display)
 
 			_vehicle_journey_list = _data.get('VehicleJourneys', {}).get('VehicleJourney', [])
