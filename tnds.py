@@ -34,7 +34,6 @@ _all_stops = {}
 # Helper: establish connection
 def get_ftp_session(host: str, user: str, pwd: str) -> FTP:
 	ftp = FTP(host, timeout=120)
-	ftp.sock.settimeout(120)
 	ftp.login(user, pwd)
 	ftp.set_pasv(True)
 	logger.info(f"FTP connected to {host}")
@@ -42,22 +41,20 @@ def get_ftp_session(host: str, user: str, pwd: str) -> FTP:
 
 # Helper: keep-alive / reconnect
 def ftp_alive_or_reconnect(ftp: FTP, host: str, user: str, pwd: str) -> FTP:
-	if ftp.sock is None:
-		ftp = get_ftp_session(host, user, pwd)
-		return ftp
 	try:
+		if ftp.sock is None:
+			ftp = get_ftp_session(host, user, pwd)
+			logger.info("Reconnected to FTP.")
+
 		ftp.voidcmd("NOOP")
 		logger.debug("FTP session is alive.")
-		return ftp
+		
 	except all_errors as exc:
 		logger.warning(f"FTP session dropped – reconnecting: {exc}")
-		try:
-			ftp.quit()
-		except Exception:
-			pass
 		ftp = get_ftp_session(host, user, pwd)
 		logger.info("Reconnected to FTP.")
-		return ftp
+
+	return ftp
 
 # Helper: download with retries
 def download_file(ftp: FTP, host: str, user: str, pwd: str, remote_path: str, local_path: str, max_retries: int = 10, backoff_delay: int = 2):
@@ -70,9 +67,8 @@ def download_file(ftp: FTP, host: str, user: str, pwd: str, remote_path: str, lo
 			return
 		except Exception as exc:
 			logger.warning(f"Attempt {attempt} failed for {remote_path}: {exc}")
-			ftp = ftp_alive_or_reconnect(ftp, host, user, pwd)
-			# time.sleep(backoff_delay)
-			# backoff_delay *= 2
+			time.sleep(backoff_delay)
+			backoff_delay *= 2
 	raise SystemExit(f'Failed to download {remote_path} after {max_retries} attempts')
 
 # Helper: batch zip extraction
