@@ -2,27 +2,47 @@ import os
 import json
 import requests
 import time
+import logging
 from datetime import datetime
-from pypolyline.cutil import encode_coordinates, decode_polyline
+from pypolyline.cutil import encode_coordinates
+
+# Logger configuration
+logging.basicConfig(
+	level=logging.INFO,
+	format='%(asctime)s [%(levelname)s] %(message)s',
+	datefmt='%Y-%m-%d %H:%M:%S'
+)
+logger = logging.getLogger(__name__)
 
 _data_dir = 'data/tnds'
 
-def retryRequest(url):
-	while True:
-		r = requests.get(url)
+# Session configuration
+session = requests.Session()
+request_timeout = 30
 
-		if r.status_code == 200:
-			return r
+def retry_request(url: str, *, max_retries: int = 5, backoff_delay: int = 1) -> requests.Response:
+	"""Return a Response object or exit after repeated failures.
 
-		elif r.status_code == 400 or r.status_code == 404:
-			raise Exception(r.status_code, url)
-			break
-
-		elif r.status_code == 429:
-			time.sleep(10)
-
-		else:
-			raise Exception(r.status_code, url)
+	The function retries on HTTP status 429 (rate‑limited) or any
+	:class:`requests.RequestException`.  After the maximum number of
+	attempts the process exits with a message.
+	"""
+	for attempt in range(max_retries):
+		try:
+			resp = session.get(url, timeout=request_timeout)
+			if resp.status_code == 200:
+				return resp
+			if resp.status_code == 429:
+				logger.warning(f'Rate limited (429). Waiting {backoff_delay}s before retry…')
+				time.sleep(backoff_delay)
+				backoff_delay *= 2
+				continue
+			resp.raise_for_status()
+		except requests.RequestException as exc:
+			logger.error(f'Request exception: {exc}. Retrying…')
+			time.sleep(backoff_delay)
+			backoff_delay *= 2
+	raise SystemExit(f'Failed to fetch {url} after {max_retries} attempts.')
 
 def compareDates(_start, _end) -> bool:
 	_today = datetime.today().date()
@@ -31,14 +51,14 @@ def compareDates(_start, _end) -> bool:
 
 	return (_today < _start) or (_start <= _today <= _end)
 
-def getSlugs(_data_dir) -> dict:
+def getSlugs(_data_dir) -> None:
 	_all_slugs = {}
 	_total_slugs = 0
 
 	_directories = sorted([_item for _item in os.listdir(_data_dir) if os.path.isdir(os.path.join(_data_dir, _item)) and _item != 'stopPoints'])
 
 	for _directory in _directories:
-		print(f'Getting slugs in {_directory} ...')
+		logger.info(f'Getting slugs in {_directory} ...')
 
 		# NCSD XMLs are in one level deeper
 		_dir = f'{_data_dir}/{_directory}/{_directory}_TXC' if _directory == 'NCSD' else f'{_data_dir}/{_directory}'
@@ -57,29 +77,45 @@ def getSlugs(_data_dir) -> dict:
 						for _service in _services:
 							_routes = _service.get('routes', [])
 
+							# convert tracks to polyline-encoded string if tracks is a list of coordinates, or convert empty tracks to empty string
 							for _route in _routes:
 								_tracks = _route.get('tracks', None)
 
 								if _tracks == []:
 									_route['tracks'] = ''
 									_tracks_updated = True
-									print(f'{_slug} has converted empty tracks to empty string.')
+									logger.info(f'{_slug} has converted empty tracks to empty string.')
 
 								elif isinstance(_tracks, list):
 									_route['tracks'] = encode_coordinates(_tracks, 6).decode('utf-8')
 									_tracks_updated = True
-									print(f'{_slug} has converted from coordinates to polyine encoded string.')
+									logger.info(f'{_slug} has converted from coordinates to polyine-encoded string.')
 
-							# _timetables = _service.get('timetables', {})
+							_timetables = _service.get('timetables', {})
 
-							# for _j, _journeys in _timetables.items():
-							# 	for _journey in _journeys:
-							# 		_note = _journey.get('note', [])
+							for _j, _journeys in _timetables.items():
+								for _journey in _journeys:
+									# Convert multiple notes to single note if there are multiple notes, or convert empty notes to empty list
+									_note = _journey.get('note', [])
 
-							# 		if len(_note) > 0:
-							# 			_journey['note'] = [_note[0]]
-							# 			_notes_updated = True
-							# 			print(f'{_slug} has stripped multiple notes to single note')
+									if len(_note) > 0:
+										_journey['note'] = [_note[0]]
+										_notes_updated = True
+										logger.info(f'{_slug} has stripped multiple notes to single note.')
+
+									# Convert sequence numbers from string to integers if there are sequence numbers, or convert empty sequence numbers to empty list
+									_sequences = _journey.get('sequenceNumber', [])
+
+									if len(_sequences) > 0:
+										_journey['sequenceNumber'] = [int(_s) for _s in _sequences if isinstance(_s, str) and _s.isdigit()]
+										logger.info(f'{_slug} has changed sequence numbers from string to integers.')
+
+									# Convert activities to empty string if there are pick up and set down activities, or convert empty activities to empty list
+									_activities = _journey.get('activities', [])
+
+									if (len(_activities)) > 0:
+										_journey['activities'] = ['' for _a in _activities if isinstance(_a, str) and _a == 'pickUpAndSetDown']
+										logger.info(f'{_slug} has stripped multiple pickUpAndSetDown.')
 
 							_start_date = _service.get('startDate', None)
 							_end_date = _service.get('endDate', None)
@@ -143,18 +179,18 @@ def getSlugs(_data_dir) -> dict:
 
 		if len(_services) == 0:
 			_all_slugs.pop(_slug, None)
-			print(f'{_slug} has removed {_duplicated} duplicated and {_overlapped} overlapped services with nothing left.')
+			logger.info(f'{_slug} has removed {_duplicated} duplicated and {_overlapped} overlapped services with nothing left.')
 
 		elif _duplicated > 0 or _overlapped > 0:
-			print(f'{_slug} has removed {_duplicated} duplicated and {_overlapped} overlapped services out of {_total}.')
+			logger.info(f'{_slug} has removed {_duplicated} duplicated and {_overlapped} overlapped services out of {_total}.')
 
 		_all_slugs[_slug] = _services
 
 	with open(os.path.join(_data_dir, 'all_slugs.json'), 'w') as f:
 		f.write(json.dumps(_all_slugs, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 		_len = len(_all_slugs)
-		print(f'Filtered {_len} over {_total_slugs} slugs.')
-	print('=====')
+		logger.info(f'Filtered {_len} over {_total_slugs} slugs.')
+	logger.info('=====')
 
 def getStopPoints(_data_dir):
 	_all_stops = []
@@ -162,7 +198,7 @@ def getStopPoints(_data_dir):
 	_directories = sorted([_item for _item in os.listdir(_data_dir) if os.path.isdir(os.path.join(_data_dir, _item)) and _item != 'stopPoints'])
 
 	for _directory in _directories:
-		print(f'Getting stops in {_directory} ...')
+		logger.info(f'Getting stops in {_directory} ...')
 
 		# NCSD XMLs are in one level deeper
 		_dir = f'{_data_dir}/{_directory}/{_directory}_TXC' if _directory == 'NCSD' else f'{_data_dir}/{_directory}'
@@ -185,8 +221,8 @@ def getStopPoints(_data_dir):
 	with open(os.path.join(_data_dir, 'all_stop_points.json'), 'w') as f:
 		f.write(json.dumps(_all_stops, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 		_len = len(_all_stops)
-		print(f'Filtered {_len} stops.')
-	print('=====')
+		logger.info(f'Filtered {_len} stops.')
+	logger.info('=====')
 
 def compareStopPoints(_data_dir):
 	def openTndsStopPoints() -> bool:
@@ -196,7 +232,7 @@ def compareStopPoints(_data_dir):
 				_tnds_stop_list = json.load(f)
 
 		except BaseException:
-			print('Cannot open TNDS all stop point list.')
+			logger.info('Cannot open TNDS all stop point list.')
 
 		else:
 			return True
@@ -204,11 +240,11 @@ def compareStopPoints(_data_dir):
 	def openNaptan() -> bool:
 		global _naptan_list
 		try:
-			_response = retryRequest('https://github.com/xavier114fch/uk-bus-open-data/raw/gh-pages/data/naptan/naptan_stop_points_all.json')
+			_response = retry_request('https://github.com/xavier114fch/uk-bus-open-data/raw/gh-pages/data/naptan/naptan_stop_points_all.json')
 			_naptan_list = _response.json()
 
 		except BaseException:
-			print('Cannot open Naptan list.')
+			logger.info('Cannot open Naptan list.')
 
 		else:
 			return True
@@ -226,14 +262,14 @@ def compareStopPoints(_data_dir):
 
 		with open(os.path.join(_data_dir, 'stops_tnds_only.json'), 'w') as f:
 			f.write(json.dumps(_stops_in_tnds, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
-			print(f'There are {len(_stops_in_tnds)} stop points only appear in TNDS')
-			print('=====')
+			logger.info(f'There are {len(_stops_in_tnds)} stop points only appear in TNDS')
+			logger.info('=====')
 
-		# print('Stops only in TNDS:')
-		# print(list(_stops_in_tnds.keys()))
-		# print('===')
-		# print('Stops only in Naptan:')
-		# print(list(_stops_in_naptan.keys()))
+		# logger.info('Stops only in TNDS:')
+		# logger.info(list(_stops_in_tnds.keys()))
+		# logger.info('===')
+		# logger.info('Stops only in Naptan:')
+		# logger.info(list(_stops_in_naptan.keys()))
 
 def main():
 	getSlugs(_data_dir)
