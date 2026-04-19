@@ -113,9 +113,15 @@ def get_slugs(_data_dir: str) -> None:
 									# Convert activities to empty string if there are pick up and set down activities, or convert empty activities to empty list
 									_activities = _journey.get('activities', [])
 
-									if (len(_activities)) > 0:
+									if len(_activities) > 0:
 										_journey['activities'] = ['' for _a in _activities if isinstance(_a, str) and _a == 'pickUpAndSetDown']
 										logger.info(f'{_slug} has stripped multiple pickUpAndSetDown.')
+
+									_displays = _journey.get('dynamicDestinationDisplay', [])
+
+									if len(_displays) > 0 and all(_d == '' for _d in _displays):
+										_journey['dynamicDestinationDisplay'] = []
+										logger.info(f'{_slug} has stripped empty dynamicDestinationDisplay.')
 
 							_start_date = _service.get('startDate', None)
 							_end_date = _service.get('endDate', None)

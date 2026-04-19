@@ -89,7 +89,7 @@ def download_file(ftp: FTP, host: str, user: str, pwd: str, remote_path: str, lo
 
 			time.sleep(backoff_delay)
 			backoff_delay *= 2
-			
+
 	raise SystemExit(f'Failed to download {remote_path} after {max_retries} attempts')
 
 # Helper: batch zip extraction
@@ -394,7 +394,7 @@ def extract_routes(_directory: str, _file: str, _data: dict) -> None:
 			_journey_pattern.setdefault('waitTimes', _wait_times)
 			_journey_pattern.setdefault('timingStatuses', _timing_statuses)
 			_journey_pattern.setdefault('sequenceNumber', [int(_s) for _s in _sequences if isinstance(_s, str) and _s.isdigit()])
-			_journey_pattern.setdefault('dynamicDestinationDisplay', _display)
+			_journey_pattern.setdefault('dynamicDestinationDisplay', [] if all(_d == '' for _d in _display) else _display)
 
 			_vehicle_journey_list = _data.get('VehicleJourneys', {}).get('VehicleJourney', [])
 			_vehicle_journey_list = as_list(_vehicle_journey_list)
