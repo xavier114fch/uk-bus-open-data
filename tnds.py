@@ -46,9 +46,10 @@ def ftp_alive_or_reconnect(ftp: FTP, host: str, user: str, pwd: str) -> FTP:
 			ftp = get_ftp_session(host, user, pwd)
 			logger.info("Reconnected to FTP.")
 
-		ftp.voidcmd("NOOP")
-		logger.debug("FTP session is alive.")
-		
+		else:
+			ftp.voidcmd("NOOP")
+			logger.info("FTP session is alive.")
+			
 	except all_errors as exc:
 		logger.warning(f"FTP session dropped – reconnecting: {exc}")
 		ftp = get_ftp_session(host, user, pwd)
