@@ -90,6 +90,12 @@ def get_slugs(_data_dir: str) -> None:
 									_updated = True
 									logger.info(f'{_slug} has converted from coordinates to polyine-encoded string.')
 
+								_direction = _route.get('_direction', [])
+
+								if len(_direction) > 0:
+									if 'inbound' in _direction and 'outbound' in _direction:
+										logger.info(f'{_slug} has both inbound and outbound directions.')
+
 							_timetables = _service.get('timetables', {})
 
 							for _j, _journeys in _timetables.items():
