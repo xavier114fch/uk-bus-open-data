@@ -44,14 +44,14 @@ def retry_request(url: str, *, max_retries: int = 5, backoff_delay: int = 1) -> 
 			backoff_delay *= 2
 	raise SystemExit(f'Failed to fetch {url} after {max_retries} attempts.')
 
-def compareDates(_start, _end) -> bool:
+def compare_dates(_start, _end) -> bool:
 	_today = datetime.today().date()
 	_start = datetime.fromisoformat(_start).date() if _start and _start != '' else _today
 	_end = datetime.fromisoformat(_end).date() if _end and _end != '' else datetime.max.date()
 
 	return (_today < _start) or (_start <= _today <= _end)
 
-def getSlugs(_data_dir) -> None:
+def get_slugs(_data_dir) -> None:
 	_all_slugs = {}
 	_total_slugs = 0
 
@@ -121,7 +121,7 @@ def getSlugs(_data_dir) -> None:
 							_end_date = _service.get('endDate', None)
 							_last_modified = _service.get('lastModified', None)
 
-							if compareDates(_start_date, _end_date):
+							if compare_dates(_start_date, _end_date):
 								_all_slugs[_slug].append({
 									'filename': _service.get('filename')[1:],
 									'mode': _service.get('mode'),
@@ -192,7 +192,7 @@ def getSlugs(_data_dir) -> None:
 		logger.info(f'Filtered {_len} over {_total_slugs} slugs.')
 	logger.info('=====')
 
-def getStopPoints(_data_dir):
+def get_stop_points(_data_dir):
 	_all_stops = []
 
 	_directories = sorted([_item for _item in os.listdir(_data_dir) if os.path.isdir(os.path.join(_data_dir, _item)) and _item != 'stopPoints'])
@@ -224,8 +224,8 @@ def getStopPoints(_data_dir):
 		logger.info(f'Filtered {_len} stops.')
 	logger.info('=====')
 
-def compareStopPoints(_data_dir):
-	def openTndsStopPoints() -> bool:
+def compare_stop_points(_data_dir):
+	def open_TNDS_stop_points() -> bool:
 		global _tnds_stop_list
 		try:
 			with open(os.path.join(f'{_data_dir}','all_stop_points.json'), 'r') as f:
@@ -237,7 +237,7 @@ def compareStopPoints(_data_dir):
 		else:
 			return True
 
-	def openNaptan() -> bool:
+	def open_naptan() -> bool:
 		global _naptan_list
 		try:
 			_response = retry_request('https://github.com/xavier114fch/uk-bus-open-data/raw/gh-pages/data/naptan/naptan_stop_points_all.json')
@@ -250,7 +250,7 @@ def compareStopPoints(_data_dir):
 			return True
 
 	try:
-		openTndsStopPoints() and openNaptan()
+		open_TNDS_stop_points() and open_naptan()
 
 	except BaseException:
 		pass
@@ -272,9 +272,9 @@ def compareStopPoints(_data_dir):
 		# logger.info(list(_stops_in_naptan.keys()))
 
 def main():
-	getSlugs(_data_dir)
-	getStopPoints(_data_dir)
-	compareStopPoints(_data_dir)
+	get_slugs(_data_dir)
+	get_stop_points(_data_dir)
+	compare_stop_points(_data_dir)
 
 if __name__ == "__main__":
 	main()
