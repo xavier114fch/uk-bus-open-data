@@ -121,9 +121,17 @@ def get_slugs(_data_dir: str) -> None:
 							_end_date = _service.get('endDate', None)
 							_last_modified = _service.get('lastModified', None)
 
+							_filename = _service.get('filename', None)
+							if _filename:
+								if _filename.startswith('_') and _filename.endswith('.json'):
+									_filename = _filename[1:]
+
+								if _filename.endswith('.xml'):
+									_filename = os.path.splitext(_filename)[0] + '.json'
+
 							if compare_dates(_start_date, _end_date):
 								_all_slugs[_slug].append({
-									'filename': _service.get('filename')[1:],
+									'filename': _filename,
 									'mode': _service.get('mode'),
 									'region': _service.get('region'),
 									'name': _service.get('name'),
