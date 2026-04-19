@@ -62,15 +62,34 @@ def ftp_alive_or_reconnect(ftp: FTP, host: str, user: str, pwd: str) -> FTP:
 def download_file(ftp: FTP, host: str, user: str, pwd: str, remote_path: str, local_path: str, max_retries: int = 10, backoff_delay: int = 2):
 	for attempt in range(max_retries):
 		try:
-			with open(local_path, "wb") as fh:
-				ftp = ftp_alive_or_reconnect(ftp, host, user, pwd)
-				ftp.retrbinary(f"RETR {remote_path}", fh.write)
-			logger.info(f"Downloaded {remote_path} → {local_path}")
+			ftp = ftp_alive_or_reconnect(ftp, host, user, pwd)
+
+			offset = 0
+			if os.path.exists(local_path):
+				offset = os.path.getsize(local_path)
+
+			mode = 'ab' if offset > 0 else 'wb'
+
+			with open(local_path, mode) as fh:
+				if offset > 0:
+					logger.info(f'Resuming from byte {offset}')
+					ftp.sendcmd(f'REST {offset}')
+
+				ftp.retrbinary(f'RETR {remote_path}', fh.write)
+			logger.info(f'Downloaded {remote_path} → {local_path}')
 			return
-		except Exception as exc:
+
+		except (ConnectionResetError, error_temp, EOFError, OSError) as exc:
 			logger.warning(f"Attempt {attempt} failed for {remote_path}: {exc}")
+
+			try:
+				ftp.close()
+			except:
+				pass
+
 			time.sleep(backoff_delay)
 			backoff_delay *= 2
+			
 	raise SystemExit(f'Failed to download {remote_path} after {max_retries} attempts')
 
 # Helper: batch zip extraction
