@@ -51,7 +51,7 @@ def compare_dates(_start, _end) -> bool:
 
 	return (_today < _start) or (_start <= _today <= _end)
 
-def get_slugs(_data_dir) -> None:
+def get_slugs(_data_dir: str) -> None:
 	_all_slugs = {}
 	_total_slugs = 0
 
@@ -192,7 +192,7 @@ def get_slugs(_data_dir) -> None:
 		logger.info(f'Filtered {_len} over {_total_slugs} slugs.')
 	logger.info('=====')
 
-def get_stop_points(_data_dir):
+def get_stop_points(_data_dir: str) -> None:
 	_all_stops = []
 
 	_directories = sorted([_item for _item in os.listdir(_data_dir) if os.path.isdir(os.path.join(_data_dir, _item)) and _item != 'stopPoints'])
@@ -224,7 +224,7 @@ def get_stop_points(_data_dir):
 		logger.info(f'Filtered {_len} stops.')
 	logger.info('=====')
 
-def compare_stop_points(_data_dir):
+def compare_stop_points(_data_dir: str) -> None:
 	def open_TNDS_stop_points() -> bool:
 		global _tnds_stop_list
 		try:
