@@ -55,13 +55,13 @@ def get_slugs(_data_dir: str) -> None:
 	_all_slugs = {}
 	_total_slugs = 0
 
-	_directories = sorted([_item for _item in os.listdir(_data_dir) if os.path.isdir(os.path.join(_data_dir, _item)) and _item != 'stopPoints'])
+	_directories = sorted([os.path.join(_data_dir, _item) for _item in os.listdir(_data_dir) if os.path.isdir(os.path.join(_data_dir, _item)) and _item != 'stopPoints'])
 
-	for _directory in _directories:
-		logger.info(f'Getting slugs in {_directory} ...')
+	for _dir in _directories:
+		logger.info(f'Getting slugs in {_dir} ...')
 
 		# NCSD XMLs are in one level deeper
-		_dir = f'{_data_dir}/{_directory}/{_directory}_TXC' if _directory == 'NCSD' else f'{_data_dir}/{_directory}'
+		#_dir = f'{_data_dir}/{_directory}/{_directory}_TXC' if _directory == 'NCSD' else f'{_data_dir}/{_directory}'
 
 		for _file in sorted(os.listdir(_dir)):
 			if _file.endswith('.json'):
@@ -217,13 +217,13 @@ def get_slugs(_data_dir: str) -> None:
 def get_stop_points(_data_dir: str) -> None:
 	_all_stops = []
 
-	_directories = sorted([_item for _item in os.listdir(_data_dir) if os.path.isdir(os.path.join(_data_dir, _item)) and _item != 'stopPoints'])
+	_directories = sorted([os.path.join(_data_dir, _item) for _item in os.listdir(_data_dir) if os.path.isdir(os.path.join(_data_dir, _item)) and _item != 'stopPoints'])
 
-	for _directory in _directories:
+	for _dir in _directories:
 		logger.info(f'Getting stops in {_directory} ...')
 
 		# NCSD XMLs are in one level deeper
-		_dir = f'{_data_dir}/{_directory}/{_directory}_TXC' if _directory == 'NCSD' else f'{_data_dir}/{_directory}'
+		# _dir = f'{_data_dir}/{_directory}/{_directory}_TXC' if _directory == 'NCSD' else f'{_data_dir}/{_directory}'
 
 		for _file in sorted(os.listdir(_dir)):
 			if _file.endswith('.json'):
@@ -255,6 +255,7 @@ def compare_stop_points(_data_dir: str) -> None:
 
 		except BaseException:
 			logger.info('Cannot open TNDS all stop point list.')
+			return False
 
 		else:
 			return True
@@ -267,6 +268,7 @@ def compare_stop_points(_data_dir: str) -> None:
 
 		except BaseException:
 			logger.info('Cannot open Naptan list.')
+			return False
 
 		else:
 			return True
