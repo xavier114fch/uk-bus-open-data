@@ -45,17 +45,18 @@ def ftp_alive_or_reconnect(ftp: FTP, host: str, user: str, pwd: str) -> FTP:
 		if ftp.sock is None:
 			ftp = get_ftp_session(host, user, pwd)
 			logger.info("Reconnected to FTP.")
+			return ftp
 
 		else:
 			ftp.voidcmd("NOOP")
 			logger.info("FTP session is alive.")
+			return ftp
 			
 	except all_errors as exc:
 		logger.warning(f"FTP session dropped – reconnecting: {exc}")
 		ftp = get_ftp_session(host, user, pwd)
 		logger.info("Reconnected to FTP.")
-
-	return ftp
+		return ftp
 
 # Helper: download with retries
 def download_file(ftp: FTP, host: str, user: str, pwd: str, remote_path: str, local_path: str, max_retries: int = 10, backoff_delay: int = 2):
