@@ -68,8 +68,7 @@ def get_slugs(_data_dir: str) -> None:
 				with open(os.path.join(_dir, _file), 'r') as f:
 					_data = json.load(f)
 					_total_slugs = _total_slugs + len(list(_data.keys()))
-					_tracks_updated = False
-					_notes_updated = False
+					_updated = False
 
 					for _slug, _services in _data.items():
 						_all_slugs.setdefault(_slug, [])
@@ -83,12 +82,12 @@ def get_slugs(_data_dir: str) -> None:
 
 								if _tracks == []:
 									_route['tracks'] = ''
-									_tracks_updated = True
+									_updated = True
 									logger.info(f'{_slug} has converted empty tracks to empty string.')
 
 								elif isinstance(_tracks, list):
 									_route['tracks'] = encode_coordinates(_tracks, 6).decode('utf-8')
-									_tracks_updated = True
+									_updated = True
 									logger.info(f'{_slug} has converted from coordinates to polyine-encoded string.')
 
 							_timetables = _service.get('timetables', {})
@@ -100,7 +99,7 @@ def get_slugs(_data_dir: str) -> None:
 
 									if len(_note) > 0:
 										_journey['note'] = [_note[0]]
-										_notes_updated = True
+										_updated = True
 										logger.info(f'{_slug} has stripped multiple notes to single note.')
 
 									# Convert sequence numbers from string to integers if there are sequence numbers, or convert empty sequence numbers to empty list
@@ -108,6 +107,7 @@ def get_slugs(_data_dir: str) -> None:
 
 									if len(_sequences) > 0:
 										_journey['sequenceNumber'] = [int(_s) for _s in _sequences if isinstance(_s, str) and _s.isdigit()]
+										_updated = True
 										logger.info(f'{_slug} has changed sequence numbers from string to integers.')
 
 									# Convert activities to empty string if there are pick up and set down activities, or convert empty activities to empty list
@@ -115,12 +115,14 @@ def get_slugs(_data_dir: str) -> None:
 
 									if len(_activities) > 0:
 										_journey['activities'] = ['' for _a in _activities if isinstance(_a, str) and _a == 'pickUpAndSetDown']
+										_updated = True
 										logger.info(f'{_slug} has stripped multiple pickUpAndSetDown.')
 
 									_displays = _journey.get('dynamicDestinationDisplay', [])
 
 									if len(_displays) > 0 and all(_d == '' for _d in _displays):
 										_journey['dynamicDestinationDisplay'] = []
+										_updated = True
 										logger.info(f'{_slug} has stripped empty dynamicDestinationDisplay.')
 
 							_start_date = _service.get('startDate', None)
@@ -152,7 +154,7 @@ def get_slugs(_data_dir: str) -> None:
 						if len(_all_slugs[_slug]) == 0:
 							_all_slugs.pop(_slug, None)
 
-					if _tracks_updated or _notes_updated:
+					if _updated:
 						with open(os.path.join(_dir, _file), 'w') as f:
 							f.write(json.dumps(_data, ensure_ascii = False, separators=(',', ':'), sort_keys=True))
 
