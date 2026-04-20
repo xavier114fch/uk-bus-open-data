@@ -178,19 +178,19 @@ def get_slugs(_data_dir: str) -> None:
 			for _i in range(1, _total):
 				_previous_service = _services[_i - 1]
 				_previous_start_date = _previous_service.get('startDate')
-				_previous_start_date = datetime.fromisoformat(_previous_start_date).date() if _previous_start_date else None
+				_previous_start_date = datetime.fromisoformat(_previous_start_date).date() if _previous_start_date else datetime.today().date()
 				_previous_end_date = _previous_service.get('endDate')
-				_previous_end_date = datetime.fromisoformat(_previous_end_date).date() if _previous_end_date else None
+				_previous_end_date = datetime.fromisoformat(_previous_end_date).date() if _previous_end_date else datetime.max.date()
 				_previous_last_modified = _previous_service.get('lastModified')
-				_previous_last_modified = datetime.fromisoformat(_previous_last_modified).date() if _previous_last_modified else None
+				_previous_last_modified = datetime.fromisoformat(_previous_last_modified).date() if _previous_last_modified else datetime.today().date()
 
 				_current_service = _services[_i]
 				_current_start_date = _current_service.get('startDate')
-				_current_start_date = datetime.fromisoformat(_current_start_date).date() if _current_start_date else None
+				_current_start_date = datetime.fromisoformat(_current_start_date).date() if _current_start_date else datetime.today().date()
 				_current_end_date = _current_service.get('endDate')
-				_current_end_date = datetime.fromisoformat(_current_end_date).date() if _current_end_date else None
+				_current_end_date = datetime.fromisoformat(_current_end_date).date() if _current_end_date else datetime.max.date()
 				_current_last_modified = _current_service.get('lastModified')
-				_current_last_modified = datetime.fromisoformat(_current_last_modified).date() if _current_last_modified else None
+				_current_last_modified = datetime.fromisoformat(_current_last_modified).date() if _current_last_modified else datetime.today().date()
 
 				if all((_previous_start_date, _previous_end_date, _previous_last_modified, _current_start_date, _current_end_date, _current_last_modified)):
 					if _previous_start_date == _current_start_date and _previous_end_date == _current_end_date and  _previous_last_modified <= _current_last_modified:
