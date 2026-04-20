@@ -83,12 +83,12 @@ def get_slugs(_data_dir: str) -> None:
 								if _tracks == []:
 									_route['tracks'] = ''
 									_updated = True
-									logger.info(f'{_slug} has converted empty tracks to empty string.')
+									logger.debug(f'{_slug} has converted empty tracks to empty string.')
 
 								elif isinstance(_tracks, list):
 									_route['tracks'] = encode_coordinates(_tracks, 6).decode('utf-8')
 									_updated = True
-									logger.info(f'{_slug} has converted from coordinates to polyine-encoded string.')
+									logger.debug(f'{_slug} has converted from coordinates to polyine-encoded string.')
 
 								_direction = _route.get('_direction', [])
 
@@ -106,7 +106,7 @@ def get_slugs(_data_dir: str) -> None:
 									if len(_note) > 0:
 										_journey['note'] = [_note[0]]
 										_updated = True
-										logger.info(f'{_slug} has stripped multiple notes to single note.')
+										logger.debug(f'{_slug} has stripped multiple notes to single note.')
 
 									# Convert sequence numbers from string to integers if there are sequence numbers, or convert empty sequence numbers to empty list
 									_sequences = _journey.get('sequenceNumber', [])
@@ -114,7 +114,7 @@ def get_slugs(_data_dir: str) -> None:
 									if len(_sequences) > 0:
 										_journey['sequenceNumber'] = [int(_s) for _s in _sequences if isinstance(_s, str) and _s.isdigit()]
 										_updated = True
-										logger.info(f'{_slug} has changed sequence numbers from string to integers.')
+										logger.debug(f'{_slug} has changed sequence numbers from string to integers.')
 
 									# Convert activities to empty string if there are pick up and set down activities, or convert empty activities to empty list
 									_activities = _journey.get('activities', [])
@@ -122,14 +122,14 @@ def get_slugs(_data_dir: str) -> None:
 									if len(_activities) > 0:
 										_journey['activities'] = ['' for _a in _activities if isinstance(_a, str) and _a == 'pickUpAndSetDown']
 										_updated = True
-										logger.info(f'{_slug} has stripped multiple pickUpAndSetDown.')
+										logger.debug(f'{_slug} has stripped multiple pickUpAndSetDown.')
 
 									_displays = _journey.get('dynamicDestinationDisplay', [])
 
 									if len(_displays) > 0 and all(_d == '' for _d in _displays):
 										_journey['dynamicDestinationDisplay'] = []
 										_updated = True
-										logger.info(f'{_slug} has stripped empty dynamicDestinationDisplay.')
+										logger.debug(f'{_slug} has stripped empty dynamicDestinationDisplay.')
 
 							_start_date = _service.get('startDate', None)
 							_end_date = _service.get('endDate', None)
@@ -156,6 +156,10 @@ def get_slugs(_data_dir: str) -> None:
 									'startDate': _start_date,
 									'endDate': _end_date,
 								})
+
+							else:
+								_data = {}
+								_updated = True
 
 						if len(_all_slugs[_slug]) == 0:
 							_all_slugs.pop(_slug, None)
@@ -220,7 +224,7 @@ def get_stop_points(_data_dir: str) -> None:
 	_directories = sorted([os.path.join(_data_dir, _item) for _item in os.listdir(_data_dir) if os.path.isdir(os.path.join(_data_dir, _item)) and _item != 'stopPoints'])
 
 	for _dir in _directories:
-		logger.info(f'Getting stops in {_directory} ...')
+		logger.info(f'Getting stops in {_dir} ...')
 
 		# NCSD XMLs are in one level deeper
 		# _dir = f'{_data_dir}/{_directory}/{_directory}_TXC' if _directory == 'NCSD' else f'{_data_dir}/{_directory}'
