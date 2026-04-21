@@ -205,8 +205,8 @@ def get_slugs(_data_dir: str) -> None:
                     continue
 
                 # Overlap handling – keep newer based on lastModified
-                current_start = datetime.fromisoformat(svc['startDate']) if isinstance(svc['startDate'], str) and svc['startDate'] != '' else datetime.today().date()
-                prev_end = datetime.fromisoformat(prev['endDate']) if isinstance(prev['endDate'], str) and prev['endDate'] != '' else datetime.max.date()
+                current_start = datetime.fromisoformat(svc['startDate']) if isinstance(svc['startDate'], str) and svc['startDate'] != '' else datetime.today()
+                prev_end = datetime.fromisoformat(prev['endDate']) if isinstance(prev['endDate'], str) and prev['endDate'] != '' else datetime.max
                 if current_start < prev_end:
                     if svc['lastModified'] > prev['lastModified']:
                         _filtered.pop()
