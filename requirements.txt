@@ -9,5 +9,5 @@ requests==2.33.1
 six==1.17.0
 tenacity==9.1.4
 tzdata==2026.1
-urllib3==2.6.3
+urllib3==2.7.0
 xmltodict==1.0.4
