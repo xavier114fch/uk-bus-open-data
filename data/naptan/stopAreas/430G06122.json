@@ -1,1 +1,1 @@
-{"430G06122":{"adminArea":"105","coordinates":[-2.0148386485580785,52.59843874415271],"created":"2003-07-02T00:00:00","name":"Ambulance Station","parent":"","stopAreaCode":"430G06122","type":"GPBS","updated":"2026-03-13T00:00:00"}}
+{"430G06122":{"adminArea":"105","coordinates":[-2.01484,52.59844],"created":"2026-06-03T11:55:21.1865812+01:00","name":"Ambulance Station","parent":"430G06123","stopAreaCode":"430G06122","type":"GPBS","updated":"2021-11-11T12:33:07"}}

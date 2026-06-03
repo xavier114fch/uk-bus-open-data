@@ -1,1 +1,1 @@
-{"430G09102":{"adminArea":"105","coordinates":[-2.038529506466943,52.47567666432576],"created":"2003-10-30T00:00:00","name":"Bus Interchange","parent":"","stopAreaCode":"430G09102","type":"GPBS","updated":"2026-03-13T00:00:00"}}
+{"430G09102":{"adminArea":"105","coordinates":[-2.03853,52.47568],"created":"2026-06-03T11:56:58.218934+01:00","name":"Bus Interchange","parent":"430G09103","stopAreaCode":"430G09102","type":"GPBS","updated":"2026-04-21T10:02:06"}}

@@ -1,1 +1,1 @@
-{"430G01564":{"adminArea":"105","coordinates":[-1.7882421615324118,52.4146674689399],"created":"2003-07-08T00:00:00","name":"Solihull Station Interchange","parent":"","stopAreaCode":"430G01564","type":"GBCS","updated":"2026-05-26T00:00:00"}}
+{"430G01564":{"adminArea":"105","coordinates":[-1.78824,52.41467],"created":"2026-06-03T11:58:35.563796+01:00","name":"Solihull Rail Station","parent":"910GSOLIHUL","stopAreaCode":"430G01564","type":"GPBS","updated":"2026-04-13T10:52:51"}}
