@@ -230,7 +230,7 @@ def as_list(value: list | str) -> list:
     return value if isinstance(value, list) else [value]
 
 def create_slug(_line_names: list, _origin: str, _dest: str) -> str:
-	_line_name_list = '+'.join(_line_names)
+	_line_name_list = '+'.join(name if name is not None else 'noname' for name in _line_names)
 	_slug = (f'{_line_name_list}-{_origin.replace(' / ', ' ').replace(' ', '-')}-{_dest.replace(' / ', ' ').replace(' ', '-')}').lower()
 	_slug = _safe_chars.sub('', _slug)
 	return _slug
@@ -279,6 +279,9 @@ def extract_routes(_directory: str, _file: str, _data: dict) -> None:
 		for _line in _line_list:
 			_line_names.append(_line.get('LineName', ''))
 			_line_ids.append(_line.get('id', ''))
+
+		if None in _line_names:
+			print(f'{_directory}/{_file} has empty line names.')
 
 		_mode = _service.get('Mode', 'bus')
 		_desc = _service.get('Description', '')
