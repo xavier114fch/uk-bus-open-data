@@ -281,7 +281,7 @@ def extract_routes(_directory: str, _file: str, _data: dict) -> None:
 			_line_ids.append(_line.get('id', ''))
 
 		if None in _line_names:
-			print(f'{_directory}/{_file} has empty line names.')
+			logger.warning(f'{_directory}/{_file} has empty line names.')
 
 		_mode = _service.get('Mode', 'bus')
 		_desc = _service.get('Description', '')
