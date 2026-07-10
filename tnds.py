@@ -891,6 +891,10 @@ def extract_stops(_directory: str, _file: str, _data: dict) -> None:
 
 		_slug = create_slug(_line_names, _origin, _dest)
 
+		if not _stop_points:
+            logger.warning(f'{_directory}/{_file} does not have any stop points.')
+            continue
+
 		if 'StopPoint' in _stop_points:
 			_stops = _stop_points.get('StopPoint', [])
 
