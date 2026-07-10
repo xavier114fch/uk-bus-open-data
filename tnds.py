@@ -88,7 +88,7 @@ def download_file(ftp: FTP, host: str, user: str, pwd: str, remote_path: str, lo
 				pass
 
 			time.sleep(backoff_delay)
-			backoff_delay *= 2
+			# backoff_delay *= 2
 
 	raise SystemExit(f'Failed to download {remote_path} after {max_retries} attempts')
 
