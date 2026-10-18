@@ -466,6 +466,8 @@ def extract_routes(_directory: str, _file: str, _data: dict) -> None:
 					_other_public_holiday_list = as_list(_other_public_holiday_list)
 
 					for _other_public_holiday in _other_public_holiday_list:
+						_other_public_holiday = _other_public_holiday or {}
+						
 						_other_public_holidays.append({
 							'description': _other_public_holiday.get('Description', ''),
 							'date': _other_public_holiday.get('Date', '')
@@ -488,6 +490,8 @@ def extract_routes(_directory: str, _file: str, _data: dict) -> None:
 					_other_public_holidays = []
 
 					for _other_public_holiday in _other_public_holiday_list:
+						_other_public_holiday = _other_public_holiday or {}
+
 						_other_public_holidays.append({
 							'description': _other_public_holiday.get('Description', ''),
 							'date': _other_public_holiday.get('Date', '')
